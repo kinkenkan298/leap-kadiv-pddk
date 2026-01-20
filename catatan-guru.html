@@ -1,0 +1,878 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashboard Leap</title>
+    <link rel="stylesheet" href="./plugins/fontawesome-free/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
+
+    <!-- Theme style -->
+    <link rel="stylesheet" href="./css/adminlte.min.css" />
+    <style>
+      .bg-blue-soft {
+        background-color: #eff6ff;
+        color: #2563eb;
+      }
+      .text-slate-500 {
+        color: #64748b;
+      }
+      .bg-slate-100 {
+        background-color: #f1f5f9;
+      }
+
+      .badge-success-soft {
+        background-color: rgba(40, 167, 69, 0.1) !important;
+        color: #28a745 !important;
+      }
+      .badge-warning-soft {
+        background-color: rgba(40, 167, 69, 0.1) !important;
+        color: #ffc107 !important;
+      }
+
+      .card-custom {
+        border: 1px solid #e9ecef;
+        border-radius: 0.75rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        background: white;
+        transition: all 0.2s ease;
+      }
+
+      .card-report:hover {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        transform: translateY(-2px);
+      }
+
+      .rounded-xl {
+        border-radius: 0.75rem !important;
+      }
+      .rounded-lg {
+        border-radius: 0.5rem !important;
+      }
+
+      .text-muted-small {
+        font-size: 0.75rem;
+        color: #6c757d;
+      }
+
+      /* Accordion Styling Override */
+      .accordion .card-header {
+        background-color: white;
+        border-bottom: 1px solid #f1f3f5;
+        padding: 1rem 1.25rem;
+      }
+
+      .accordion .btn-link {
+        color: #343a40;
+        text-decoration: none;
+        font-weight: 600;
+        padding: 0;
+      }
+
+      .accordion .btn-link:hover {
+        text-decoration: none;
+      }
+
+      /* Badge Customization */
+      .badge-soft-blue {
+        background-color: #eff6ff;
+        color: #2563eb;
+        font-weight: 500;
+        padding: 0.5em 0.8em;
+      }
+
+      .badge-soft-secondary {
+        background-color: #f1f5f9;
+        color: #475569;
+      }
+
+      /* Avatar Circle */
+      .avatar-circle {
+        width: 32px;
+        height: 32px;
+        background-color: #e2e8f0;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: #475569;
+      }
+
+      .avatar-circle-lg {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+        background-color: #eff6ff;
+        color: #2563eb;
+      }
+
+      /* Scroll Area imitation */
+      .scroll-area {
+        max-height: 300px;
+        overflow-y: auto;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 0.375rem;
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body class="hold-transition sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+      <!-- Navbar -->
+      <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button">
+              <i class="fas fa-bars"></i>
+            </a>
+          </li>
+        </ul>
+
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+          <!-- Notifications Dropdown Menu -->
+          <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="#">
+              <i class="far fa-bell"></i>
+              <span class="badge badge-warning navbar-badge">15</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+              <span class="dropdown-item dropdown-header"
+                >15 Notifications</span
+              >
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+                <i class="fas fa-envelope mr-2"></i> 4 new messages
+                <span class="float-right text-muted text-sm">3 mins</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+                <i class="fas fa-users mr-2"></i> 8 friend requests
+                <span class="float-right text-muted text-sm">12 hours</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+                <i class="fas fa-file mr-2"></i> 3 new reports
+                <span class="float-right text-muted text-sm">2 days</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item dropdown-footer"
+                >See All Notifications</a
+              >
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.navbar -->
+      <!-- Main Sidebar Container -->
+      <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a href="./index.html" class="brand-link">
+          <img
+            src="./img/leap.png"
+            alt="AdminLTE Logo"
+            class="brand-image elevation-3"
+            style="opacity: 0.8"
+          />
+          <span class="brand-text font-weight-light">Leap Surabaya</span>
+        </a>
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <!-- Sidebar user (optional) -->
+          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+              <img
+                src="./img/user2-160x160.jpg"
+                class="img-circle elevation-2"
+                alt="User Image"
+              />
+            </div>
+            <div class="info">
+              <a href="#" class="d-block">M Rahmat Muttaqin</a>
+            </div>
+          </div>
+          <!-- Sidebar Menu -->
+          <nav class="mt-2">
+            <ul
+              class="nav nav-pills nav-sidebar flex-column"
+              data-widget="treeview"
+              role="menu"
+              data-accordion="false"
+            >
+              <li class="nav-item">
+                <a href="./index.html" class="nav-link">
+                  <i data-lucide="layout-dashboard"></i>
+                  <p>Dashboard</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./kalendar.html" class="nav-link">
+                  <i data-lucide="calendar-days"></i>
+                  <p>Kalendar Pendidikan</p>
+                </a>
+              </li>
+              <li class="nav-header">AKADEMIK</li>
+              <li class="nav-item">
+                <a href="./kelas.html" class="nav-link">
+                  <i data-lucide="users"></i>
+                  <p>Kelas & Murid</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./rapot.html" class="nav-link">
+                  <i data-lucide="book-open-check"></i>
+                  <p>Rapor & Absensi</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./catatan.html" class="nav-link">
+                  <i data-lucide="users"></i>
+                  <p>Catatan Siswa</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./catatan-guru.html" class="nav-link active">
+                  <i data-lucide="square-user-round"></i>
+                  <p>Catatan Kelas</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./surat.html" class="nav-link">
+                  <i data-lucide="file-text"></i>
+                  <p>Surat Tugas</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./penilian.html" class="nav-link">
+                  <i data-lucide="award"></i>
+                  <p>Penilian Kinerja</p>
+                </a>
+              </li>
+              <li class="nav-header">PENGATURAN</li>
+
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-cog"></i>
+                  <p>Pengaturan</p>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+      </aside>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1>Rekap Laporan Kelas</h1>
+              </div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                  <li class="breadcrumb-item active">Laporan kelas</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-tools">
+                    <div class="row" style="gap: 5px">
+                      <div class="col">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span
+                              class="input-group-text bg-white border-right-0"
+                              ><i class="fas fa-user text-muted"></i
+                            ></span>
+                          </div>
+                          <select
+                            class="custom-select border-left-0"
+                            id="filterKursus"
+                          >
+                            <option selected disabled value="">
+                              Pilih Kursus
+                            </option>
+                            <option>
+                              LEAP - Coding Class 2025 / Curious Creators
+                            </option>
+                            <option>LEAP - Leap Literacy Club 2025</option>
+                            <option>LEAP - Aplikasi Perkantoran</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span
+                              class="input-group-text bg-white border-right-0"
+                              ><i class="fas fa-tags text-muted"></i
+                            ></span>
+                          </div>
+                          <select
+                            class="custom-select border-left-0"
+                            id="filterTags"
+                          >
+                            <option selected disabled value="">
+                              Pilih Tag Materi Diskusi
+                            </option>
+                            <option value="T00003">Kendala Siswa</option>
+                            <option value="T00004">Kendala Kelas</option>
+                            <option value="T00005">Kendala Jadwal</option>
+                            <option value="T00006">
+                              Ujian Susulan & Remidi
+                            </option>
+                            <option value="T00007">
+                              Kendala Zoom, Class In, Koneksi & Device
+                            </option>
+                            <option value="T00008">Update Diskusi</option>
+                            <option value="T00009">
+                              Siswa Off/Postponed/Pindah Program
+                            </option>
+                            <option value="T00010">Progress Siswa</option>
+                            <option value="T00011">
+                              Update Siswa Sit-in/Trial/Baru
+                            </option>
+                            <option value="T00012">Siswa Tidak Naik</option>
+                            <option value="T00013">Tambahan Sesi</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span
+                              class="input-group-text bg-white border-right-0"
+                              ><i class="fas fa-book-open text-muted"></i
+                            ></span>
+                          </div>
+                          <select
+                            class="custom-select border-left-0"
+                            id="filterRombel"
+                          >
+                            <option selected disabled value="">
+                              Pilih Rombel
+                            </option>
+                            <option>
+                              Coding 1C Curious Creators Tue 6-7 (Yusril)
+                            </option>
+                            <option>09 GOGO 1 SR2 (ULFA)</option>
+                            <option>02 GOGO 1 SK2 (Risma)</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span
+                              class="input-group-text bg-white border-right-0"
+                              ><i class="fas fa-calendar text-muted"></i
+                            ></span>
+                          </div>
+                          <select
+                            class="custom-select border-left-0"
+                            id="filterMonth"
+                          >
+                            <option selected disabled value="">
+                              Pilih Tahun
+                            </option>
+                            <option>2026</option>
+                            <option>2025</option>
+                            <option>2024</option>
+                            <option>2023</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="accordion" id="LaporanKelasWeek">
+                    <div class="card card-custom">
+                      <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                          <button
+                            class="btn btn-link btn-block text-left"
+                            type="button"
+                            data-toggle="collapse"
+                            data-target="#collapseOne"
+                            aria-expanded="true"
+                            aria-controls="collapseOne"
+                          >
+                            <div
+                              class="d-flex align-items-center"
+                              style="gap: 5px"
+                            >
+                              <div
+                                class="align-items-center p-2 bg-blue-soft"
+                                style="border-radius: 25%"
+                              >
+                                <i data-lucide="calendar"></i>
+                              </div>
+                              <span class="text-body mr-auto"
+                                >Minggu 3: Jan 15 - Jan 21</span
+                              >
+                              <span
+                                class="badge badge-pill badge-light border text-muted"
+                                >4 reports</span
+                              >
+                            </div>
+                          </button>
+                        </h2>
+                      </div>
+                      <div
+                        id="collapseOne"
+                        class="collapse"
+                        aria-labelledby="headingOne"
+                        data-parent="#LaporanKelasWeek"
+                      >
+                        <div class="card-body">
+                          <div class="row row-cols-lg-4 row-cols-1">
+                            <div class="col">
+                              <div class="card card-custom card-report">
+                                <div class="card-body pb-0">
+                                  <div
+                                    class="d-flex justify-content-between align-items-start mb-2"
+                                  >
+                                    <div class="text-muted small">
+                                      <i class="fas fa-calendar"></i>
+                                      <span>Tue, Jan 16</span>
+                                    </div>
+                                    <span class="badge badge-soft-secondary">
+                                      LEAP - Coding Class 2025
+                                    </span>
+                                  </div>
+                                  <div class="d-flex text-muted-small mb-3">
+                                    <span class="mr-2">
+                                      <i class="far fa-clock"></i>
+                                      11:30 AM
+                                    </span>
+                                    <span>
+                                      <i class="fas fa-tag"></i>
+                                      Update Diskusi, Progress Siswa
+                                    </span>
+                                  </div>
+                                  <div class="d-flex align-items-center mb-2">
+                                    <div class="avatar-circle mr-2">MY</div>
+                                    <div style="line-height: 1.2">
+                                      <span
+                                        class="d-block font-weight-bold small"
+                                        >Muhammad Yusril</span
+                                      >
+                                    </div>
+                                    <span class="ml-auto text-muted-small"
+                                      >Coding 1C Curious Creators</span
+                                    >
+                                  </div>
+                                  <p class="small text-secondary text-truncate">
+                                    Sesi ke-23 dilaksanakan secara hybrid dan
+                                    dihadiri oleh seluruh siswa tepat waktu,
+                                    kecuali Tian yang datang terlambat. Materi
+                                    yang dibahas meliputi teori serta pembuatan
+                                  </p>
+                                </div>
+                                <div
+                                  class="card-footer bg-white border-top-0 pt-0"
+                                >
+                                  <button
+                                    class="btn btn-sm btn-light text-primary btn-block font-weight-bold"
+                                    data-toggle="modal"
+                                    data-target="#readFullReportModal"
+                                  >
+                                    Baca Laporan Lengkap
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card card-custom">
+                      <div class="card-header" id="headingTwo">
+                        <h2 class="mb-0">
+                          <button
+                            class="btn btn-link btn-block text-left"
+                            type="button"
+                            data-toggle="collapse"
+                            data-target="#collapseTwo"
+                            aria-expanded="false"
+                            aria-controls="collapseTwo"
+                          >
+                            <div
+                              class="d-flex align-items-center"
+                              style="gap: 5px"
+                            >
+                              <div
+                                class="align-items-center p-2 bg-blue-soft"
+                                style="border-radius: 25%"
+                              >
+                                <i data-lucide="calendar"></i>
+                              </div>
+                              <span class="text-body mr-auto"
+                                >Minggu 2: Jan 8 - Jan 14</span
+                              >
+                              <span
+                                class="badge badge-pill badge-light border text-muted"
+                                >2 reports</span
+                              >
+                            </div>
+                          </button>
+                        </h2>
+                      </div>
+                      <div
+                        id="collapseTwo"
+                        class="collapse"
+                        aria-labelledby="headingTwo"
+                        data-parent="#LaporanKelasWeek"
+                      >
+                        <div class="card-body">
+                          <table
+                            class="table table-borderless table-responsive-lg"
+                          >
+                            <thead>
+                              <tr>
+                                <th>Tanggal</th>
+                                <th>Nama Guru</th>
+                                <th>Rombel</th>
+                                <th>Kursus</th>
+                                <th>Tags</th>
+                                <th>Aksi</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <div class="d-flex flex-column">
+                                    <span class="text-muted small">
+                                      <i class="fas fa-calendar"></i>
+                                      Mon, Jan 14
+                                    </span>
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="d-flex flex-column">
+                                    <span class="text-muted small"
+                                      >Muhammad Yusril Romadhoni</span
+                                    >
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="d-flex flex-column">
+                                    <span class="text-muted small"
+                                      >Coding 1C Curious Creators</span
+                                    >
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="d-flex flex-column">
+                                    <span class="text-muted small"
+                                      >LEAP - Coding Class 2025</span
+                                    >
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="d-flex flex-column">
+                                    <span class="text-muted small"
+                                      ><i class="fas fa-tags"></i> Update
+                                      Diskusi, Progress Siswa</span
+                                    >
+                                  </div>
+                                </td>
+                                <td>
+                                  <button
+                                    class="btn btn-sm btn-light text-primary font-weight-bold"
+                                    data-toggle="modal"
+                                    data-target="#readFullReportModal"
+                                  >
+                                    Baca Laporan
+                                  </button>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <div class="d-flex flex-column">
+                                    <span class="text-muted small">
+                                      <i class="fas fa-calendar"></i>
+                                      Thu, Jan 8
+                                    </span>
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="d-flex flex-column">
+                                    <span class="text-muted small"
+                                      >Ulfasiyah, S.S.</span
+                                    >
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="d-flex flex-column">
+                                    <span class="text-muted small"
+                                      >09 GOGO 1 SR2</span
+                                    >
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="d-flex flex-column">
+                                    <span class="text-muted small"
+                                      >LEAP - General English 2024</span
+                                    >
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="d-flex flex-column">
+                                    <span class="text-muted small"
+                                      ><i class="fas fa-tags"></i>
+                                      Update Siswa Sit-in/Trial/Baru
+                                    </span>
+                                  </div>
+                                </td>
+                                <td>
+                                  <button
+                                    class="btn btn-sm btn-light text-primary font-weight-bold"
+                                    data-toggle="modal"
+                                    data-target="#readFullReportModal"
+                                  >
+                                    Baca Laporan
+                                  </button>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card card-custom">
+                      <div class="card-header" id="headingThree">
+                        <h2 class="mb-0">
+                          <button
+                            class="btn btn-link btn-block text-left"
+                            type="button"
+                            data-toggle="collapse"
+                            data-target="#collapseThree"
+                            aria-expanded="false"
+                            aria-controls="collapseThree"
+                          >
+                            <div
+                              class="d-flex align-items-center"
+                              style="gap: 5px"
+                            >
+                              <div
+                                class="align-items-center p-2 bg-blue-soft"
+                                style="border-radius: 25%"
+                              >
+                                <i data-lucide="calendar"></i>
+                              </div>
+                              <span class="text-body mr-auto"
+                                >Minggu 1: Jan 1 - Jan 7</span
+                              >
+                              <span
+                                class="badge badge-pill badge-light border text-muted"
+                                >1 reports</span
+                              >
+                            </div>
+                          </button>
+                        </h2>
+                      </div>
+                      <div
+                        id="collapseThree"
+                        class="collapse"
+                        aria-labelledby="headingThree"
+                        data-parent="#LaporanKelasWeek"
+                      >
+                        <div class="card-body">
+                          And lastly, the placeholder content for the third and
+                          final accordion panel. This panel is hidden by
+                          default.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- /.content -->
+      </div>
+      <!-- /.content-wrapper -->
+
+      <div
+        class="modal fade"
+        id="readFullReportModal"
+        tabindex="-1"
+        role="dialog"
+        aria-hidden="true"
+        aria-labelledby="readFullReportModal"
+      >
+        <div
+          class="modal-dialog modal-dialog-centered modal-xl"
+          role="document"
+        >
+          <div class="modal-content card-custom border-0">
+            <div class="modal-header border-bottom-0 pb-0">
+              <h5 class="modal-title font-weight-bold">
+                <i class="fas fa-file-alt text-primary mr-2"></i>
+                Detail Laporan
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body pt-2">
+              <p class="text-muted small mb-4" id="modalDateInfo">
+                13 January 2026
+              </p>
+              <div class="row small mb-3">
+                <div class="col-6 mb-3">
+                  <div class="bg-light p-2 rounded border">
+                    <span class="text-muted d-block text-xs mb-1">Guru</span>
+                    <div class="font-weight-bold d-flex align-items-center">
+                      <div
+                        class="avatar-circle bg-primary text-white mr-2"
+                        style="width: 24px; height: 24px; font-size: 10px"
+                        id="modalAvatar"
+                      >
+                        MY
+                      </div>
+                      <span id="modalTeacher">Muhammad Yusril</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6 mb-3">
+                  <div class="bg-light p-2 rounded border">
+                    <span class="text-muted d-block text-xs mb-1"
+                      >Kursus / Tingkatan</span
+                    >
+                    <div class="font-weight-bold">
+                      <span id="modalCourse">
+                        LEAP - Coding Class 2025 / Curious Creators
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="bg-light p-2 rounded border">
+                    <span class="text-muted d-block text-xs mb-1">Tempat</span>
+                    <div class="font-weight-bold">
+                      <i class="fas fa-map-marker-alt text-muted mr-1"></i>
+                      <span id="modalLocation">
+                        Lab Komputer
+                        <span class="badge badge-primary badge-pill">
+                          Hybrid
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="bg-light p-2 rounded border">
+                    <span class="text-muted d-block text-xs mb-1"
+                      >Hari Waktu</span
+                    >
+                    <div class="font-weight-bold" id="modalWeek">
+                      <i class="far fa-clock text-muted mr-1"></i>
+                      Selasa, 18:00 - 19:00
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 mt-3">
+                  <div class="bg-light p-2 rounded border">
+                    <span class="text-muted d-block text-xs mb-1">Tags</span>
+                    <div class="font-weight-bold" id="modalTags">
+                      <i class="fas fa-tags text-muted mr-1"></i>
+                      Update Diskusi, Progress Siswa
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <h6 class="font-weight-bold mb-2">Isi Laporan</h6>
+              <div class="scroll-area" id="modalContent">
+                Sesi ke-23 dilaksanakan secara hybrid dan dihadiri oleh seluruh
+                siswa tepat waktu, kecuali Tian yang datang terlambat. Materi
+                yang dibahas meliputi teori serta pembuatan outline proyek
+                trivia game yang berjalan dengan baik. Pada persiapan kelas,
+                guru sempat mengalami kendala teknis terkait mekanisme sistem
+                co-host zoom, sehingga dilakukan kesepakatan dengan Miss Luluk
+                untuk bergabung pada pukul 18.00 WIB serta memberikan pengingat
+                agar ditetapkan sebagai co-host. Permasalahan bug pada BSD telah
+                dikomunikasikan kepada tim BSD yang dijelaskan terjadi akibat
+                pemuatan browser yang kurang sempurna, khususnya saat pengerjaan
+                skrip JavaScript. Tim BSD menyampaikan komitmen untuk segera
+                melakukan perbaikan. Sebagai solusi sementara, siswa diarahkan
+                untuk melakukan refresh halaman, clear cache browser, kembali ke
+                langkah sebelumnya, serta memastikan browser selalu dalam
+                kondisi terbaru. Secara umum, progres pemahaman JavaScript
+                seluruh siswa menunjukkan peningkatan, kecuali Lintang yang
+                mengalami kendala karena kondisi fisik kurang fit dan padatnya
+                aktivitas. Guru terus memberikan motivasi, menginstruksikan
+                pengerjaan lanjutan proyek di rumah, serta memberikan bimbingan
+                tambahan melalui WhatsApp apabila siswa mengalami kesulitan
+                dalam memahami materi dan mengerjakan proyek.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="main-footer">
+        <strong
+          >Copyright &copy; 2022-2026
+          <a href="https://leapsurabaya.sch.id/"
+            >Leap English and Digital Class</a
+          >.</strong
+        >
+        All rights reserved.
+      </footer>
+
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+      </aside>
+      <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- jQuery -->
+    <script src="./plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <!-- AdminLTE App -->
+    <script src="./js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <!-- <script src="./js/demo.js"></script> -->
+    <script>
+      lucide.createIcons();
+    </script>
+  </body>
+</html>
