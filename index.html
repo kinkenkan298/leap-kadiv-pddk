@@ -1,529 +1,193 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dashboard Leap</title>
-    <link rel="stylesheet" href="./plugins/fontawesome-free/css/all.min.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Leap Surabaya</title>
+
+    <!-- Google Fonts (Nunito) -->
     <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap"
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
     />
+    <link rel="stylesheet" href="./plugins/fontawesome-free/css/all.min.css" />
 
     <!-- Theme style -->
     <link rel="stylesheet" href="./css/adminlte.min.css" />
+
     <style>
-      /* 1. Card Styling */
-      .card-custom {
-        background: white;
-        border: 1px solid #e2e8f0;
-        border-radius: 0.5rem;
-        /* rounded-md */
-        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      body {
+        background-color: #f2f7ff;
+        font-family: "Nunito", sans-serif;
       }
 
-      /* 2. Soft Badges (Kunci estetika modern) */
-      .badge-soft-success {
-        background-color: #dcfce7;
-        /* green-100 */
-        color: #166534;
-        /* green-800 */
-        border: 1px solid #bbf7d0;
+      #auth {
+        height: 100vh;
+        overflow-x: hidden;
       }
 
-      .badge-soft-warning {
-        background-color: #fef9c3;
-        /* yellow-100 */
-        color: #854d0e;
-        /* yellow-800 */
-        border: 1px solid #fde047;
-      }
-
-      .badge-soft-danger {
-        background-color: #fee2e2;
-        /* red-100 */
-        color: #991b1b;
-        /* red-800 */
-        border: 1px solid #fecaca;
-      }
-
-      .badge-pill-custom {
-        padding: 0.35em 0.8em;
-        font-weight: 500;
-        font-size: 0.75rem;
-        border-radius: 9999px;
-      }
-
-      /* 3. Avatar */
-      .avatar-circle {
-        width: 32px;
-        height: 32px;
-        background-color: #dbeafe;
-        /* blue-100 */
-        color: #1d4ed8;
-        /* blue-700 */
-        border-radius: 50%;
+      /* Layout Kiri (Form) */
+      #auth-left {
+        padding: 5rem 3rem;
+        height: 100%;
         display: flex;
-        align-items: center;
+        flex-direction: column;
         justify-content: center;
-        font-size: 0.75rem;
-        font-weight: 600;
-        margin-right: 0.75rem;
+        background-color: rgba(255, 255, 255, 1);
       }
 
-      /* 4. Table Tweaks */
-      .table th {
-        font-size: 0.875rem;
-        font-weight: 500;
-        color: #64748b;
-        /* slate-500 */
-        border-top: none;
-        border-bottom: 1px solid #e2e8f0;
+      .auth-logo {
+        margin-bottom: 2rem;
       }
 
-      .table td {
-        vertical-align: middle;
-        font-size: 0.875rem;
-        border-top: 1px solid #f1f5f9;
-        color: #334155;
+      .auth-logo img {
+        width: 5rem;
+        height: 5rem;
       }
 
-      /* 5. Input Icons */
-      .has-search .form-control {
-        padding-left: 2.375rem;
+      .auth-title {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        color: #25396f;
+        font-weight: 700;
       }
 
-      .has-search .form-control-feedback {
+      .auth-subtitle {
+        color: #a8aebb;
+        font-size: 1.1rem;
+        line-height: 1.5;
+      }
+
+      /* Input Styling ala Mazer */
+      .form-group {
+        position: relative;
+        margin-bottom: 1.5rem;
+      }
+
+      .form-control-xl {
+        padding: 1.3rem 5rem 1.3rem 2.8rem;
+        font-size: 1rem;
+        border-radius: 0.5rem;
+        background-color: #f2f7ff;
+        border: 1px solid #dce7f1;
+      }
+
+      .form-control-xl:focus {
+        background-color: #fff;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 0.25rem rgba(67, 94, 190, 0.25);
+      }
+
+      .form-control-icon {
         position: absolute;
-        z-index: 2;
-        display: block;
-        width: 2.375rem;
-        height: 2.375rem;
-        line-height: 2.375rem;
-        text-align: center;
-        pointer-events: none;
-        color: #94a3b8;
-        /* slate-400 */
+        top: 50%;
+        transform: translateY(-50%);
+        left: 1rem;
+        color: #a8aebb;
+        font-size: 1.2rem;
+        transition: color 0.3s;
+      }
+
+      .form-control:focus ~ .form-control-icon {
+        color: #435ebe;
+      }
+
+      .font-bold {
+        font-weight: 700;
+        text-decoration: none;
+        color: #435ebe;
+      }
+
+      #auth-right {
+        height: 100%;
+        background-image: url("./img/background.png");
+        background-size: cover;
+        background-position: center;
+        position: relative;
+      }
+
+      .auth-right::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(67, 94, 190, 0.6);
+      }
+
+      @media (max-width: 991.98px) {
+        #auth-left {
+          padding: 3rem;
+        }
+      }
+      @media (max-width: 575.98px) {
+        #auth-left {
+          padding: 2rem;
+        }
+        .auth-title {
+          font-size: 2rem;
+        }
       }
     </style>
   </head>
 
-  <body class="hold-transition sidebar-mini">
-    <!-- Site wrapper -->
-    <div class="wrapper">
-      <!-- Navbar -->
-      <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-        <!-- Left navbar links -->
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" href="#" role="button">
-              <i class="fas fa-bars"></i>
-            </a>
-          </li>
-        </ul>
-
-        <!-- Right navbar links -->
-        <ul class="navbar-nav ml-auto">
-          <!-- Notifications Dropdown Menu -->
-          <li class="nav-item dropdown">
-            <a class="nav-link" data-toggle="dropdown" href="#">
-              <i class="far fa-bell"></i>
-              <span class="badge badge-warning navbar-badge">15</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-              <span class="dropdown-item dropdown-header"
-                >15 Notifications</span
-              >
-              <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item">
-                <i class="fas fa-envelope mr-2"></i> 4 new messages
-                <span class="float-right text-muted text-sm">3 mins</span>
+  <body>
+    <div id="auth">
+      <div class="row h-100 g-0">
+        <!-- Kolom Kiri: Form Login -->
+        <div class="col-lg-5 col-12">
+          <div id="auth-left">
+            <!-- Logo SVG asli Mazer -->
+            <div class="auth-logo">
+              <a href="index.html">
+                <img src="./img/leap.png" alt="Logo" />
               </a>
-              <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item">
-                <i class="fas fa-users mr-2"></i> 8 friend requests
-                <span class="float-right text-muted text-sm">12 hours</span>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item">
-                <i class="fas fa-file mr-2"></i> 3 new reports
-                <span class="float-right text-muted text-sm">2 days</span>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item dropdown-footer"
-                >See All Notifications</a
-              >
             </div>
-          </li>
-        </ul>
-      </nav>
-      <!-- /.navbar -->
 
-      <!-- Main Sidebar Container -->
-      <aside class="main-sidebar sidebar-dark-primary elevation-4">
-        <!-- Brand Logo -->
-        <a href="./index.html" class="brand-link">
-          <img
-            src="./img/leap.png"
-            alt="AdminLTE Logo"
-            class="brand-image elevation-3"
-            style="opacity: 0.8"
-          />
-          <span class="brand-text font-weight-light">Leap Surabaya</span>
-        </a>
+            <h1 class="auth-title">Log in.</h1>
+            <p class="auth-subtitle mb-5">
+              Gunakan Username dan Password Anda untuk masuk
+            </p>
 
-        <div class="sidebar">
-          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-              <img
-                src="./img/user2-160x160.jpg"
-                class="img-circle elevation-2"
-                alt="User Image"
-              />
-            </div>
-            <div class="info">
-              <a href="#" class="d-block">M Rahmat Muttaqin</a>
-            </div>
+            <form action="dashboard.html">
+              <!-- Input Username -->
+              <div class="form-group position-relative has-icon-left mb-4">
+                <input
+                  type="text"
+                  class="form-control form-control-xl"
+                  placeholder="Username"
+                />
+                <div class="form-control-icon">
+                  <i class="fas fa-user"></i>
+                </div>
+              </div>
+
+              <!-- Input Password -->
+              <div class="form-group position-relative has-icon-left mb-4">
+                <input
+                  type="password"
+                  class="form-control form-control-xl"
+                  placeholder="Password"
+                />
+                <div class="form-control-icon">
+                  <i class="fas fa-lock"></i>
+                </div>
+              </div>
+
+              <!-- Tombol Login -->
+              <button class="btn btn-primary btn-block btn-lg mt-3 w-100">
+                Log in
+              </button>
+            </form>
           </div>
-
-          <nav class="mt-2">
-            <ul
-              class="nav nav-pills nav-sidebar flex-column"
-              data-widget="treeview"
-              role="menu"
-              data-accordion="false"
-            >
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link active">
-                  <i data-lucide="layout-dashboard"></i>
-                  <p>Dashboard</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./kalendar.html" class="nav-link">
-                  <i data-lucide="calendar-days"></i>
-                  <p>Kalendar Pendidikan</p>
-                </a>
-              </li>
-              <li class="nav-header">AKADEMIK</li>
-              <li class="nav-item">
-                <a href="./kelas.html" class="nav-link">
-                  <i data-lucide="users"></i>
-                  <p>Kelas & Murid</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./rapot.html" class="nav-link">
-                  <i data-lucide="book-open-check"></i>
-                  <p>Rapor & Absensi</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./catatan.html" class="nav-link">
-                  <i data-lucide="users"></i>
-                  <p>Catatan Siswa</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./catatan-guru.html" class="nav-link">
-                  <i data-lucide="square-user-round"></i>
-                  <p>Catatan Kelas</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./surat.html" class="nav-link">
-                  <i data-lucide="file-text"></i>
-                  <p>Surat Tugas</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./penilian.html" class="nav-link">
-                  <i data-lucide="award"></i>
-                  <p>Penilian Kinerja</p>
-                </a>
-              </li>
-              <li class="nav-header">PENGATURAN</li>
-
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-cog"></i>
-                  <p>Pengaturan</p>
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <!-- /.sidebar-menu -->
         </div>
-        <!-- /.sidebar -->
-      </aside>
 
-      <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-          <div class="container-fluid">
-            <div class="row mb-2">
-              <div class="col-sm-6">
-                <h1>Dashboard</h1>
-              </div>
-              <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <li class="breadcrumb-item active">Dashboard</li>
-                </ol>
-              </div>
-            </div>
-          </div>
-          <!-- /.container-fluid -->
-        </section>
-
-        <!-- Main content -->
-        <section class="content">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-lg-3 col-6">
-                <div class="small-box bg-info">
-                  <div class="inner">
-                    <h3>10</h3>
-                    <p>Jumlah Guru</p>
-                  </div>
-                  <div class="icon">
-                    <i class="fas fa-graduation-cap"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-6">
-                <div class="small-box bg-success">
-                  <div class="inner">
-                    <h3>20</h3>
-                    <p>Jumlah Kursus / Pendidikan</p>
-                  </div>
-                  <div class="icon">
-                    <i class="fas fa-book-open"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-6">
-                <div class="small-box bg-primary">
-                  <div class="inner">
-                    <h3>10</h3>
-                    <p>Siswa Baru</p>
-                  </div>
-                  <div class="icon">
-                    <i class="fas fa-user-plus"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-6">
-                <div class="small-box bg-danger">
-                  <div class="inner">
-                    <h3>0</h3>
-                    <p>Siswa Keluar</p>
-                  </div>
-                  <div class="icon">
-                    <i class="fas fa-user-minus"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="container-fluid">
-            <h4 class="mb-4 font-weight-bold">Status Laporan Guru</h4>
-            <div class="row mb-4">
-              <div class="col-sm-6 col-md-4 mb-2 mb-sm-0">
-                <div class="form-group has-search mb-0">
-                  <span class="fa fa-search form-control-feedback"></span>
-                  <input
-                    type="text"
-                    id="searchInput"
-                    class="form-control"
-                    placeholder="Cari nama guru..."
-                  />
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-3 ml-auto">
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text bg-white border-right-0">
-                      <i class="text-muted small" data-lucide="funnel"></i>
-                    </span>
-                  </div>
-                  <select class="form-control border-left-0" id="statusFilter">
-                    <option value="all">Semua Status</option>
-                    <option value="submitted">Sudah Lapor</option>
-                    <option value="pending">Belum Lapor</option>
-                    <option value="late">Terlambat</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            <div class="card card-custom overflow-hidden">
-              <div class="table-responsive">
-                <table class="table table-hover mb-0">
-                  <thead class="bg-light">
-                    <tr>
-                      <th scope="col" class="pl-4">Nama Guru</th>
-                      <th scope="col">Rombel</th>
-                      <th scope="col">Kursus / Tingkatan</th>
-                      <th scope="col">Status Laporan</th>
-                      <th scope="col">Terakhir Submit</th>
-                      <th scope="col" class="text-right pr-4">Aksi</th>
-                    </tr>
-                  </thead>
-                  <tbody id="tableBody">
-                    <!-- <tr>
-                      <td colspan="6" class="text-center py-5 text-muted">
-                        <i class="fas fa-inbox fa-2x mb-3 text-light-gray"></i>
-                        <p class="mb-0">Tidak ada data guru yang ditemukan.</p>
-                      </td>
-                    </tr> -->
-                    <tr>
-                      <td class="pl-4">
-                        <div class="d-flex align-items-center">
-                          <div class="avatar-circle">MY</div>
-                          <span class="font-weight-bold text-dark"
-                            >Muhammad Yusril</span
-                          >
-                        </div>
-                      </td>
-                      <td>Coding 1C Curious Creators</td>
-                      <td>LEAP - Coding Class 2025 / Curious Creators</td>
-                      <td>
-                        <span class="badge badge-soft-success badge-pill-custom"
-                          >Sudah Lapor</span
-                        >
-                      </td>
-                      <td class="text-muted small">15 Jan 2026</td>
-                      <td class="text-right pr-4">-</td>
-                    </tr>
-                    <tr>
-                      <td class="pl-4">
-                        <div class="d-flex align-items-center">
-                          <div class="avatar-circle">UY</div>
-                          <span class="font-weight-bold text-dark"
-                            >Ulfasiyah, S.S.</span
-                          >
-                        </div>
-                      </td>
-                      <td>09 GOGO 1 SR2</td>
-                      <td>LEAP - General English 2024 / GOGO 1</td>
-                      <td>
-                        <span class="badge badge-soft-warning badge-pill-custom"
-                          >Belum Lapor</span
-                        >
-                      </td>
-                      <td class="text-muted small">-</td>
-                      <td class="text-right pr-4">
-                        <button
-                          class="btn btn-sm btn-outline-warning text-dark font-weight-bold"
-                          style="
-                            border-color: #fdba74;
-                            background-color: transparent;
-                          "
-                          onmouseover="this.style.backgroundColor = '#fff7ed'"
-                          onmouseout="
-                            this.style.backgroundColor = 'transparent'
-                          "
-                          onclick="alert('Mengirim email pengingat ke guru...')"
-                        >
-                          <i
-                            class="fas fa-envelope-open-text mr-1 text-warning"
-                          ></i>
-                          Ingatkan
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="pl-4">
-                        <div class="d-flex align-items-center">
-                          <div class="avatar-circle">RB</div>
-                          <span class="font-weight-bold text-dark"
-                            >Rini Budi Rahayu, S.Pd.</span
-                          >
-                        </div>
-                      </td>
-                      <td>41 WINNER 6 SR3</td>
-                      <td>LEAP - General English 2024 / WINNER 6</td>
-                      <td>
-                        <span class="badge badge-soft-danger badge-pill-custom"
-                          >Terlambat</span
-                        >
-                      </td>
-                      <td class="text-muted small">-</td>
-                      <td class="text-right pr-4">
-                        <button
-                          class="btn btn-sm btn-outline-warning text-dark font-weight-bold"
-                          style="
-                            border-color: #fdba74;
-                            background-color: transparent;
-                          "
-                          onmouseover="this.style.backgroundColor = '#fff7ed'"
-                          onmouseout="
-                            this.style.backgroundColor = 'transparent'
-                          "
-                          onclick="alert('Mengirim email pengingat ke guru')"
-                        >
-                          <i
-                            class="fas fa-envelope-open-text mr-1 text-warning"
-                          ></i>
-                          Ingatkan
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="pl-4">
-                        <div class="d-flex align-items-center">
-                          <div class="avatar-circle">QO</div>
-                          <span class="font-weight-bold text-dark"
-                            >Qorin Rahmaniyah, S.Pd.</span
-                          >
-                        </div>
-                      </td>
-                      <td>17 GOGO 3 SelK2</td>
-                      <td>LEAP - General English 2024 / GOGO 3</td>
-                      <td>
-                        <span class="badge badge-soft-success badge-pill-custom"
-                          >Sudah Lapor</span
-                        >
-                      </td>
-                      <td class="text-muted small">12 Jan 2026</td>
-                      <td class="text-right pr-4">-</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </section>
+        <!-- Kolom Kanan: Splash Image -->
+        <div class="col-lg-7 d-none d-lg-block">
+          <div id="auth-right"></div>
+        </div>
       </div>
-
-      <footer class="main-footer">
-        <strong
-          >Copyright &copy; 2022-2026
-          <a href="https://leapsurabaya.sch.id/"
-            >Leap English and Digital Class</a
-          >.</strong
-        >
-        All rights reserved.
-      </footer>
-
-      <aside class="control-sidebar control-sidebar-dark"></aside>
     </div>
-
-    <!-- jQuery -->
-    <script src="./plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-
-    <!-- AdminLTE App -->
-    <script src="./js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <!-- <script src="./js/demo.js"></script> -->
-    <script>
-      lucide.createIcons();
-    </script>
   </body>
 </html>
