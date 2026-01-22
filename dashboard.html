@@ -105,6 +105,56 @@
         color: #94a3b8;
         /* slate-400 */
       }
+
+      /* Styles for Remidi Cards */
+      .small-box {
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .small-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .small-box.bg-remidi-orange {
+        background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
+        color: white;
+      }
+
+      .small-box.bg-remidi-purple {
+        background: linear-gradient(135deg, #a855f7 0%, #d946ef 100%);
+        color: white;
+      }
+
+      .modal-detail-remidi {
+        font-size: 0.875rem;
+      }
+
+      .remidi-table-header {
+        background-color: #f8fafc;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 0.05em;
+      }
+
+      .remidi-item {
+        padding: 0.75rem 0;
+        border-bottom: 1px solid #f1f5f9;
+      }
+
+      .remidi-item:last-child {
+        border-bottom: none;
+      }
+
+      .guru-section {
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        background-color: #f8fafc;
+        border-radius: 0.5rem;
+        border-left: 4px solid #f97316;
+      }
     </style>
   </head>
 
@@ -119,6 +169,25 @@
             <a class="nav-link" data-widget="pushmenu" href="#" role="button">
               <i class="fas fa-bars"></i>
             </a>
+          </li>
+          <!-- Semester Filter -->
+          <li class="nav-item ml-3">
+            <div style="display: flex; align-items: center; gap: 0.5rem">
+              <span style="font-size: 0.875rem; color: #64748b">Semester:</span>
+              <select
+                id="globalSemesterFilter"
+                class="form-control"
+                style="
+                  width: 140px;
+                  font-size: 0.875rem;
+                  padding: 0.375rem 0.75rem;
+                "
+              >
+                <option value="">Semua Semester</option>
+                <option value="1">Semester 1</option>
+                <option value="2">Semester 2</option>
+              </select>
+            </div>
           </li>
         </ul>
 
@@ -214,8 +283,14 @@
               </li>
               <li class="nav-item">
                 <a href="./rapot.html" class="nav-link">
-                  <i data-lucide="book-open-check"></i>
-                  <p>Rapor & Absensi</p>
+                  <i data-lucide="book-open"></i>
+                  <p>Rekap Rapor</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./absensi.html" class="nav-link">
+                  <i data-lucide="check-square"></i>
+                  <p>Rekap Absensi</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -280,6 +355,7 @@
         <!-- Main content -->
         <section class="content">
           <div class="container-fluid">
+            <!-- Statistics Small Boxes -->
             <div class="row">
               <div class="col-lg-3 col-6">
                 <div class="small-box bg-info">
@@ -322,6 +398,40 @@
                   </div>
                   <div class="icon">
                     <i class="fas fa-user-minus"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Remidi Statistics -->
+            <div class="row mb-4">
+              <div class="col-lg-3 col-6">
+                <div
+                  class="small-box bg-remidi-orange"
+                  data-toggle="modal"
+                  data-target="#remidiDetailModal"
+                >
+                  <div class="inner">
+                    <h3 id="totalSiswaRemidi">0</h3>
+                    <p>Total Siswa Remidi</p>
+                  </div>
+                  <div class="icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-6">
+                <div
+                  class="small-box bg-remidi-purple"
+                  data-toggle="modal"
+                  data-target="#guruRemidiModal"
+                >
+                  <div class="inner">
+                    <h3 id="totalGuruRemidi">0</h3>
+                    <p>Guru dengan Siswa Remidi</p>
+                  </div>
+                  <div class="icon">
+                    <i class="fas fa-chalkboard-user"></i>
                   </div>
                 </div>
               </div>
@@ -494,6 +604,38 @@
                 </table>
               </div>
             </div>
+
+            <!-- Tabel Daftar Guru dengan Siswa Remidi -->
+            <h4 class="mb-4 font-weight-bold mt-5">
+              Daftar Guru dengan Siswa Remidi
+            </h4>
+            <div class="card card-custom overflow-hidden">
+              <div class="table-responsive">
+                <table class="table table-hover mb-0" id="remidiTable">
+                  <thead class="bg-light">
+                    <tr>
+                      <th scope="col" class="pl-4">No</th>
+                      <th scope="col">Nama Guru</th>
+                      <th scope="col">Kelas</th>
+                      <th scope="col">Kursus/Tingkatan</th>
+                      <th scope="col" style="text-align: center">
+                        Total Siswa
+                      </th>
+                      <th scope="col" style="text-align: center">
+                        Siswa Remidi
+                      </th>
+                      <th scope="col" style="text-align: center">
+                        Nilai Rata-rata
+                      </th>
+                      <th scope="col" class="text-right pr-4">Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody id="remidiTableBody">
+                    <!-- Content will be populated by JavaScript -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </section>
       </div>
@@ -509,6 +651,119 @@
       </footer>
 
       <aside class="control-sidebar control-sidebar-dark"></aside>
+
+      <!-- Modal Detail Remidi Siswa -->
+      <div
+        class="modal fade"
+        id="remidiDetailModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="remidiDetailLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="remidiDetailLabel">
+                <i
+                  class="fas fa-exclamation-triangle mr-2"
+                  style="color: #f97316"
+                ></i>
+                Detail Siswa Remidi -
+                <span id="modalSemesterLabel">Semester Ini</span>
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div
+              class="modal-body modal-detail-remidi"
+              id="remidiDetailContent"
+            >
+              <!-- Content will be populated by JavaScript -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="modal fade"
+        id="detailSiswaRemidi"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="remidiDetailLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="detailSiswaRemidiLabel">
+                <i
+                  class="fas fa-exclamation-triangle mr-2"
+                  style="color: #f97316"
+                ></i>
+                Detail Guru dengan siswa remidi -
+                <span id="modalSiswaRemidi">Semester Ini</span>
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div
+              class="modal-body modal-detail-remidi"
+              id="detailSiswaRemidiContent"
+            >
+              <!-- Content will be populated by JavaScript -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Detail Guru dengan Siswa Remidi -->
+      <div
+        class="modal fade"
+        id="guruRemidiModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="guruRemidiLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="guruRemidiLabel">
+                <i
+                  class="fas fa-chalkboard-user mr-2"
+                  style="color: #a855f7"
+                ></i>
+                Daftar Guru dengan Siswa Remidi -
+                <span id="modalGuruSemesterLabel">Semester Ini</span>
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body modal-detail-remidi" id="guruRemidiContent">
+              <!-- Content will be populated by JavaScript -->
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- jQuery -->
@@ -524,6 +779,628 @@
     <!-- <script src="./js/demo.js"></script> -->
     <script>
       lucide.createIcons();
+
+      // Data Remidi dengan struktur berdasarkan semester
+      const remidiData = {
+        1: [
+          // Semester 1
+          {
+            id: 1,
+            guru: "Muhammad Yusril",
+            guruInitial: "MY",
+            kelas: "Coding 1C Curious Creators",
+            kursus: "LEAP - Coding Class 2025",
+            siswa: [
+              { nama: "Andi Pratama", status: "Remidi" },
+              { nama: "Budi Santoso", status: "Remidi" },
+              { nama: "Citra Dewi", status: "Remidi" },
+            ],
+          },
+          {
+            id: 2,
+            guru: "Ulfasiyah, S.S.",
+            guruInitial: "UY",
+            kelas: "09 GOGO 1 SR2",
+            kursus: "LEAP - General English 2024",
+            siswa: [
+              { nama: "Dian Kusuma", status: "Remidi" },
+              { nama: "Eka Putri", status: "Remidi" },
+            ],
+          },
+          {
+            id: 3,
+            guru: "Rini Budi Rahayu, S.Pd.",
+            guruInitial: "RB",
+            kelas: "41 WINNER 6 SR3",
+            kursus: "LEAP - General English 2024",
+            siswa: [
+              { nama: "Fajar Hermawan", status: "Remidi" },
+              { nama: "Gina Malika", status: "Remidi" },
+              { nama: "Hendra Wijaya", status: "Remidi" },
+              { nama: "Indah Cahyani", status: "Remidi" },
+            ],
+          },
+        ],
+        2: [
+          // Semester 2
+          {
+            id: 4,
+            guru: "Muhammad Yusril",
+            guruInitial: "MY",
+            kelas: "Coding 2B Creative Mind",
+            kursus: "LEAP - Coding Class 2025",
+            siswa: [
+              { nama: "Joko Susilo", status: "Remidi" },
+              { nama: "Karina Sari", status: "Remidi" },
+            ],
+          },
+          {
+            id: 5,
+            guru: "Qorin Rahmaniyah, S.Pd.",
+            guruInitial: "QO",
+            kelas: "17 GOGO 3 SelK2",
+            kursus: "LEAP - General English 2024",
+            siswa: [
+              { nama: "Luki Pratama", status: "Remidi" },
+              { nama: "Maya Selsabila", status: "Remidi" },
+              { nama: "Nana Widia", status: "Remidi" },
+            ],
+          },
+        ],
+      };
+
+      // Fungsi untuk mendapatkan semester saat ini
+      function getCurrentSemester() {
+        const selected = document.getElementById("globalSemesterFilter").value;
+        if (selected === "") {
+          return null; // Semua semester
+        }
+        return parseInt(selected);
+      }
+
+      // Fungsi untuk mendapatkan data remidi berdasarkan semester
+      function getRemidiDataBySemester(semester) {
+        if (semester === null) {
+          // Gabungkan semua semester
+          const allData = [...remidiData[1], ...remidiData[2]];
+          return allData;
+        }
+        return remidiData[semester] || [];
+      }
+
+      // Fungsi untuk hitung total siswa remidi
+      function getTotalRemidiStudents(semester) {
+        const data = getRemidiDataBySemester(semester);
+        return data.reduce((total, item) => total + item.siswa.length, 0);
+      }
+
+      // Fungsi untuk hitung total guru dengan siswa remidi
+      function getTotalGuruRemidi(semester) {
+        const data = getRemidiDataBySemester(semester);
+        return data.length;
+      }
+
+      // Fungsi untuk update tampilan statistik
+      // Fungsi untuk populate tabel remidi
+      function populateRemidiTable() {
+        const currentSemester = getCurrentSemester();
+        const data = getRemidiDataBySemester(currentSemester);
+        const tableBody = document.getElementById("remidiTableBody");
+        let content = "";
+
+        if (data.length === 0) {
+          content = `
+            <tr>
+              <td colspan="8" class="text-center py-5 text-muted">
+                <i class="fas fa-inbox fa-2x mb-3 text-light-gray"></i>
+                <p class="mb-0">Tidak ada data guru dengan siswa remidi untuk periode ini.</p>
+              </td>
+            </tr>
+          `;
+        } else {
+          data.forEach((item, index) => {
+            const avatarColor = index % 2 === 0 ? "#dbeafe" : "#fce7f3";
+            const avatarTextColor = index % 2 === 0 ? "#1d4ed8" : "#be185d";
+            content += `
+              <tr>
+                <td class="pl-4">${index + 1}</td>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <div class="avatar-circle" style="background-color: ${avatarColor}; color: ${avatarTextColor};">
+                      ${item.guruInitial}
+                    </div>
+                    <span class="font-weight-bold text-dark">${item.guru}</span>
+                  </div>
+                </td>
+                <td>${item.kelas}</td>
+                <td>${item.kursus}</td>
+                <td style="text-align: center;">
+                  <span class="badge badge-info badge-pill-custom">${guruRemidiDetail[item.id].totalSiswa}</span>
+                </td>
+                <td style="text-align: center;">
+                  <span class="badge badge-soft-danger badge-pill-custom">${item.siswa.length}</span>
+                </td>
+                <td style="text-align: center;">
+                  <span class="badge badge-soft-warning badge-pill-custom">${guruRemidiDetail[item.id].nilaiRataRata.toFixed(1)}</span>
+                </td>
+                <td class="text-right pr-4">
+                  <button
+                    class="btn btn-sm btn-outline-info text-dark font-weight-bold"
+                    style="border-color: #3b82f6; background-color: transparent;"
+                    onmouseover="this.style.backgroundColor = '#dbeafe'"
+                    onmouseout="this.style.backgroundColor = 'transparent'"
+                    onclick="showGuruDetail(${index})"
+                  >
+                    <i class="fas fa-eye mr-1 text-info"></i>
+                    Detail
+                  </button>
+                </td>
+              </tr>
+            `;
+          });
+        }
+
+        tableBody.innerHTML = content;
+      }
+
+      function updateRemidiStats() {
+        const currentSemester = getCurrentSemester();
+        const totalSiswa = getTotalRemidiStudents(currentSemester);
+        const totalGuru = getTotalGuruRemidi(currentSemester);
+
+        document.getElementById("totalSiswaRemidi").textContent = totalSiswa;
+        document.getElementById("totalGuruRemidi").textContent = totalGuru;
+
+        // Update label semester di modal
+        let semesterLabel = currentSemester
+          ? `Semester ${currentSemester}`
+          : "Semua Semester";
+        document.getElementById("modalSemesterLabel").textContent =
+          semesterLabel;
+        document.getElementById("modalGuruSemesterLabel").textContent =
+          semesterLabel;
+
+        // Populate tabel remidi
+        populateRemidiTable();
+      }
+
+      // Fungsi untuk populate modal detail siswa remidi
+      function populateRemidiDetailModal() {
+        const currentSemester = getCurrentSemester();
+        const data = getRemidiDataBySemester(currentSemester);
+        let content = "";
+
+        if (data.length === 0) {
+          content =
+            '<div class="alert alert-info">Tidak ada data siswa remidi untuk periode ini.</div>';
+        } else {
+          data.forEach((item, index) => {
+            content += `
+              <div class="guru-section">
+                <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                  <div class="avatar-circle" style="width: 40px; height: 40px; background-color: #dbeafe; color: #1d4ed8; font-size: 0.9rem;">
+                    ${item.guruInitial}
+                  </div>
+                  <div style="flex: 1;">
+                    <h6 class="mb-0" style="font-weight: 600; color: #1e293b;">${item.guru}</h6>
+                    <small class="text-muted">${item.kelas}</small>
+                  </div>
+                </div>
+
+                <div style="margin-bottom: 1rem;">
+                  <small style="color: #64748b; font-weight: 600;">Kursus:</small>
+                  <p style="margin: 0.25rem 0 0 0; color: #475569;">${item.kursus}</p>
+                </div>
+
+                <div>
+                  <small style="color: #64748b; font-weight: 600; text-transform: uppercase;">Siswa Remidi (${item.siswa.length}):</small>
+                  <ul style="margin: 0.75rem 0 0 0; padding-left: 1.25rem; list-style: none;">
+                    ${item.siswa
+                      .map(
+                        (s, idx) => `
+                      <li style="padding: 0.35rem 0; color: #334155;">
+                        <i class="fas fa-circle" style="font-size: 0.35rem; margin-right: 0.5rem; color: #f97316;"></i>
+                        ${s.nama}
+                      </li>
+                    `,
+                      )
+                      .join("")}
+                  </ul>
+                </div>
+              </div>
+            `;
+          });
+        }
+
+        document.getElementById("remidiDetailContent").innerHTML = content;
+      }
+
+      // Fungsi untuk populate modal guru dengan siswa remidi
+      function populateGuruRemidiModal() {
+        const currentSemester = getCurrentSemester();
+        const data = getRemidiDataBySemester(currentSemester);
+        let content = "";
+
+        if (data.length === 0) {
+          content =
+            '<div class="alert alert-info">Tidak ada guru dengan siswa remidi untuk periode ini.</div>';
+        } else {
+          content =
+            '<table class="table table-hover" style="margin-bottom: 0;">';
+          content += `
+            <thead class="remidi-table-header">
+              <tr>
+                <th>No</th>
+                <th>Nama Guru</th>
+                <th>Kelas</th>
+                <th>Jumlah Siswa Remidi</th>
+              </tr>
+            </thead>
+            <tbody>
+          `;
+
+          data.forEach((item, idx) => {
+            content += `
+              <tr style="cursor: pointer;" onclick="showGuruDetail(${idx})">
+                <td>${idx + 1}</td>
+                <td>
+                  <div style="display: flex; align-items: center;">
+                    <div class="avatar-circle" style="width: 32px; height: 32px; background-color: #dbeafe; color: #1d4ed8; font-size: 0.8rem; margin-right: 0.5rem;">
+                      ${item.guruInitial}
+                    </div>
+                    <span>${item.guru}</span>
+                  </div>
+                </td>
+                <td>${item.kelas}</td>
+                <td>
+                  <span class="badge badge-pill" style="background-color: #f97316; color: white;">
+                    ${item.siswa.length}
+                  </span>
+                </td>
+              </tr>
+            `;
+          });
+
+          content += "</tbody></table>";
+        }
+
+        document.getElementById("guruRemidiContent").innerHTML = content;
+      }
+
+      // Data mockup detail remidi untuk setiap guru
+      const guruRemidiDetail = {
+        1: {
+          guru: "Muhammad Yusril",
+          guruInitial: "MY",
+          email: "m.yusril@leapsurabaya.sch.id",
+          noHP: "+62 812-3456-7890",
+          kelas: "Coding 1C Curious Creators",
+          kursus: "LEAP - Coding Class 2025",
+          tingkat: "Tingkat 1",
+          semester: 1,
+          totalSiswa: 25,
+          siswaSukses: 22,
+          siswaRemidi: 3,
+          nilaiRataRata: 78.5,
+          statusRemidi: "Aktif",
+          tanggalMulaiRemidi: "15 Januari 2026",
+          siswa: [
+            {
+              nama: "Andi Pratama",
+              nisn: "001",
+              nilaiAkhir: 65,
+              status: "Remidi",
+              kehadiran: "95%",
+              catatan: "Kurang pemahaman konsep looping",
+            },
+            {
+              nama: "Budi Santoso",
+              nisn: "002",
+              nilaiAkhir: 62,
+              status: "Remidi",
+              kehadiran: "88%",
+              catatan: "Kesulitan dengan array",
+            },
+            {
+              nama: "Citra Dewi",
+              nisn: "003",
+              nilaiAkhir: 68,
+              status: "Remidi",
+              kehadiran: "92%",
+              catatan: "Perlu penjelasan ulang function",
+            },
+          ],
+        },
+        2: {
+          guru: "Ulfasiyah, S.S.",
+          guruInitial: "UY",
+          email: "ulfasiyah@leapsurabaya.sch.id",
+          noHP: "+62 812-9876-5432",
+          kelas: "09 GOGO 1 SR2",
+          kursus: "LEAP - General English 2024",
+          tingkat: "Tingkat 2",
+          semester: 1,
+          totalSiswa: 20,
+          siswaSukses: 18,
+          siswaRemidi: 2,
+          nilaiRataRata: 82.3,
+          statusRemidi: "Aktif",
+          tanggalMulaiRemidi: "18 Januari 2026",
+          siswa: [
+            {
+              nama: "Dian Kusuma",
+              nisn: "004",
+              nilaiAkhir: 70,
+              status: "Remidi",
+              kehadiran: "90%",
+              catatan: "Speaking skill perlu ditingkatkan",
+            },
+            {
+              nama: "Eka Putri",
+              nisn: "005",
+              nilaiAkhir: 72,
+              status: "Remidi",
+              kehadiran: "87%",
+              catatan: "Grammar masih kurang",
+            },
+          ],
+        },
+        3: {
+          guru: "Rini Budi Rahayu, S.Pd.",
+          guruInitial: "RB",
+          email: "rini.rahayu@leapsurabaya.sch.id",
+          noHP: "+62 812-5555-6666",
+          kelas: "41 WINNER 6 SR3",
+          kursus: "LEAP - General English 2024",
+          tingkat: "Tingkat 3",
+          semester: 1,
+          totalSiswa: 28,
+          siswaSukses: 24,
+          siswaRemidi: 4,
+          nilaiRataRata: 75.8,
+          statusRemidi: "Aktif",
+          tanggalMulaiRemidi: "20 Januari 2026",
+          siswa: [
+            {
+              nama: "Fajar Hermawan",
+              nisn: "006",
+              nilaiAkhir: 65,
+              status: "Remidi",
+              kehadiran: "85%",
+              catatan: "Listening comprehension lemah",
+            },
+            {
+              nama: "Gina Malika",
+              nisn: "007",
+              nilaiAkhir: 68,
+              status: "Remidi",
+              kehadiran: "91%",
+              catatan: "Vocabulary perlu diperluas",
+            },
+            {
+              nama: "Hendra Wijaya",
+              nisn: "008",
+              nilaiAkhir: 64,
+              status: "Remidi",
+              kehadiran: "82%",
+              catatan: "Perlu bimbingan intensif",
+            },
+            {
+              nama: "Indah Cahyani",
+              nisn: "009",
+              nilaiAkhir: 70,
+              status: "Remidi",
+              kehadiran: "88%",
+              catatan: "Writing skill kurang",
+            },
+          ],
+        },
+        4: {
+          guru: "Muhammad Yusril",
+          guruInitial: "MY",
+          email: "m.yusril@leapsurabaya.sch.id",
+          noHP: "+62 812-3456-7890",
+          kelas: "Coding 2B Creative Mind",
+          kursus: "LEAP - Coding Class 2025",
+          tingkat: "Tingkat 2",
+          semester: 2,
+          totalSiswa: 24,
+          siswaSukses: 22,
+          siswaRemidi: 2,
+          nilaiRataRata: 81.2,
+          statusRemidi: "Aktif",
+          tanggalMulaiRemidi: "10 Februari 2026",
+          siswa: [
+            {
+              nama: "Joko Susilo",
+              nisn: "010",
+              nilaiAkhir: 69,
+              status: "Remidi",
+              kehadiran: "93%",
+              catatan: "Database concept belum jelas",
+            },
+            {
+              nama: "Karina Sari",
+              nisn: "011",
+              nilaiAkhir: 71,
+              status: "Remidi",
+              kehadiran: "89%",
+              catatan: "OOP principles masih bingung",
+            },
+          ],
+        },
+        5: {
+          guru: "Qorin Rahmaniyah, S.Pd.",
+          guruInitial: "QO",
+          email: "qorin.rahmaniyah@leapsurabaya.sch.id",
+          noHP: "+62 812-7777-8888",
+          kelas: "17 GOGO 3 SelK2",
+          kursus: "LEAP - General English 2024",
+          tingkat: "Tingkat 3",
+          semester: 2,
+          totalSiswa: 26,
+          siswaSukses: 23,
+          siswaRemidi: 3,
+          nilaiRataRata: 79.6,
+          statusRemidi: "Aktif",
+          tanggalMulaiRemidi: "12 Februari 2026",
+          siswa: [
+            {
+              nama: "Luki Pratama",
+              nisn: "012",
+              nilaiAkhir: 67,
+              status: "Remidi",
+              kehadiran: "86%",
+              catatan: "Conversation practice diperlukan",
+            },
+            {
+              nama: "Maya Selsabila",
+              nisn: "013",
+              nilaiAkhir: 69,
+              status: "Remidi",
+              kehadiran: "90%",
+              catatan: "Reading comprehension perlu diperbaiki",
+            },
+            {
+              nama: "Nana Widia",
+              nisn: "014",
+              nilaiAkhir: 68,
+              status: "Remidi",
+              kehadiran: "88%",
+              catatan: "Pronunciation dan fluency improvement",
+            },
+          ],
+        },
+      };
+
+      // Fungsi untuk show detail guru (bisa diexpand)
+      window.showGuruDetail = function (index) {
+        const currentSemester = getCurrentSemester();
+        const data = getRemidiDataBySemester(currentSemester);
+        const item = data[index];
+        const detail = guruRemidiDetail[item.id];
+
+        if (!detail) {
+          alert("Detail tidak ditemukan");
+          return;
+        }
+
+        // Create a more detailed modal instead of alert
+        let content = `
+          <div style="font-size: 0.875rem;">
+            <!-- Header Info -->
+            <div style="background-color: #f8fafc; padding: 1rem; border-radius: 0.5rem; margin-bottom: 1.5rem; border-left: 4px solid #f97316;">
+              <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #f97316 0%, #fb923c 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 1.1rem; margin-right: 1rem;">
+                  ${detail.guruInitial}
+                </div>
+                <div>
+                  <h6 style="margin: 0; font-weight: 600; color: #1e293b;">${detail.guru}</h6>
+                  <small style="color: #64748b;">${detail.email} | ${detail.noHP}</small>
+                </div>
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                <div>
+                  <small style="color: #64748b; font-weight: 600;">Kelas</small>
+                  <p style="margin: 0.25rem 0 0 0; color: #475569;">${detail.kelas}</p>
+                </div>
+                <div>
+                  <small style="color: #64748b; font-weight: 600;">Kursus</small>
+                  <p style="margin: 0.25rem 0 0 0; color: #475569;">${detail.kursus}</p>
+                </div>
+                <div>
+                  <small style="color: #64748b; font-weight: 600;">Tingkat</small>
+                  <p style="margin: 0.25rem 0 0 0; color: #475569;">${detail.tingkat}</p>
+                </div>
+                <div>
+                  <small style="color: #64748b; font-weight: 600;">Status</small>
+                  <p style="margin: 0.25rem 0 0 0;"><span style="background-color: #dcfce7; color: #166534; padding: 0.25rem 0.75rem; border-radius: 9999px; font-weight: 600; font-size: 0.75rem;">${detail.statusRemidi}</span></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Statistics -->
+            <div style="margin-bottom: 1.5rem;">
+              <h6 style="margin: 0 0 1rem 0; font-weight: 600; color: #1e293b; border-bottom: 2px solid #f1f5f9; padding-bottom: 0.5rem;">Statistik Kelas</h6>
+              <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem;">
+                <div style="background-color: #dbeafe; padding: 0.75rem; border-radius: 0.5rem; text-align: center;">
+                  <div style="font-weight: 600; font-size: 1.5rem; color: #1e40af;">${detail.totalSiswa}</div>
+                  <small style="color: #1e40af; font-weight: 600;">Total Siswa</small>
+                </div>
+                <div style="background-color: #dcfce7; padding: 0.75rem; border-radius: 0.5rem; text-align: center;">
+                  <div style="font-weight: 600; font-size: 1.5rem; color: #166534;">${detail.siswaSukses}</div>
+                  <small style="color: #166534; font-weight: 600;">Siswa Sukses</small>
+                </div>
+                <div style="background-color: #ffedd5; padding: 0.75rem; border-radius: 0.5rem; text-align: center;">
+                  <div style="font-weight: 600; font-size: 1.5rem; color: #9a3412;">${detail.siswaRemidi}</div>
+                  <small style="color: #9a3412; font-weight: 600;">Siswa Remidi</small>
+                </div>
+              </div>
+            </div>
+
+            <!-- Siswa Remidi Detail Table -->
+            <div>
+              <h6 style="margin: 0 0 1rem 0; font-weight: 600; color: #1e293b; border-bottom: 2px solid #f1f5f9; padding-bottom: 0.5rem;">Detail Siswa Remidi (${detail.siswa.length})</h6>
+              <table style="width: 100%; border-collapse: collapse; font-size: 0.8rem;">
+                <thead>
+                  <tr style="background-color: #f8fafc;">
+                    <th style="padding: 0.5rem; text-align: left; border-bottom: 1px solid #e2e8f0; font-weight: 600; color: #64748b;">Nama</th>
+                    <th style="padding: 0.5rem; text-align: center; border-bottom: 1px solid #e2e8f0; font-weight: 600; color: #64748b;">Nilai</th>
+                    <th style="padding: 0.5rem; text-align: center; border-bottom: 1px solid #e2e8f0; font-weight: 600; color: #64748b;">Kehadiran</th>
+                    <th style="padding: 0.5rem; text-align: left; border-bottom: 1px solid #e2e8f0; font-weight: 600; color: #64748b;">Catatan</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${detail.siswa
+                    .map(
+                      (s, idx) => `
+                    <tr style="border-bottom: 1px solid #f1f5f9;">
+                      <td style="padding: 0.5rem; color: #334155;"><strong>${s.nama}</strong></td>
+                      <td style="padding: 0.5rem; text-align: center; color: #334155;">
+                        <span style="background-color: ${s.nilaiAkhir >= 70 ? "#fee2e2" : "#ffedd5"}; color: ${s.nilaiAkhir >= 70 ? "#991b1b" : "#9a3412"}; padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-weight: 600;">
+                          ${s.nilaiAkhir}
+                        </span>
+                      </td>
+                      <td style="padding: 0.5rem; text-align: center; color: #334155;">${s.kehadiran}</td>
+                      <td style="padding: 0.5rem; color: #64748b; font-size: 0.75rem;"><em>${s.catatan}</em></td>
+                    </tr>
+                  `,
+                    )
+                    .join("")}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        `;
+
+        // Show modal with detail
+        const modal = new bootstrap.Modal(
+          document.getElementById("detailSiswaRemidi"),
+        );
+        document.getElementById("detailSiswaRemidiContent").innerHTML = content;
+        modal.show();
+      };
+
+      // Event listener untuk filter semester
+      document
+        .getElementById("globalSemesterFilter")
+        .addEventListener("change", function () {
+          updateRemidiStats();
+        });
+
+      // Initialize saat page load
+      document.addEventListener("DOMContentLoaded", function () {
+        updateRemidiStats();
+
+        // Update modal saat dibuka
+        $("#remidiDetailModal").on("show.bs.modal", function () {
+          populateRemidiDetailModal();
+        });
+
+        $("#guruRemidiModal").on("show.bs.modal", function () {
+          populateGuruRemidiModal();
+        });
+      });
     </script>
   </body>
 </html>
