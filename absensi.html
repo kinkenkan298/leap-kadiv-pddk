@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashboard Leap</title>
+    <link rel="stylesheet" href="./plugins/fontawesome-free/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
+
+    <!-- Theme style -->
+    <link rel="stylesheet" href="./css/adminlte.min.css" />
+    <style>
+      /* --- Custom UI Styling --- */
+      .card-custom {
+        border: 1px solid #e2e8f0;
+        border-radius: 0.75rem;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        background-color: white;
+        margin-bottom: 1.5rem;
+        transition: all 0.2s;
+      }
+
+      .card-header-custom {
+        background-color: white;
+        border-bottom: 1px solid #f1f5f9;
+        padding: 1.25rem 1.5rem;
+        border-top-left-radius: 0.75rem !important;
+        border-top-right-radius: 0.75rem !important;
+      }
+
+      /* Soft Badges */
+      .badge-soft-success {
+        background-color: #dcfce7;
+        color: #166534;
+      }
+      .badge-soft-danger {
+        background-color: #fee2e2;
+        color: #991b1b;
+      }
+      .badge-soft-primary {
+        background-color: #dbeafe;
+        color: #1e40af;
+      }
+      .badge-soft-warning {
+        background-color: #fef9c3;
+        color: #854d0e;
+      }
+      .badge-soft-orange {
+        background-color: #ffedd5;
+        color: #9a3412;
+      }
+
+      .badge-pill-custom {
+        padding: 0.4em 0.8em;
+        font-weight: 600;
+        font-size: 0.75rem;
+        border-radius: 9999px;
+      }
+
+      /* Stats Icons */
+      .icon-circle {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+      }
+
+      /* Table Styling */
+      .table th {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #64748b;
+        border-top: none;
+        border-bottom: 1px solid #e2e8f0;
+        background-color: #f8fafc;
+      }
+      .table td {
+        vertical-align: middle;
+        font-size: 0.875rem;
+        border-top: 1px solid #f1f5f9;
+      }
+      .table-hover tbody tr:hover {
+        background-color: #f1f5f9;
+      }
+
+      /* Modal Styling */
+      .modal-content {
+        border-radius: 0.75rem;
+        border: none;
+      }
+      .detail-section-title {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: #1e293b;
+        margin-bottom: 1rem;
+        border-bottom: 2px solid #f1f5f9;
+        padding-bottom: 0.5rem;
+      }
+
+      /* Sticky Column for Horizontal Scrolling */
+      .sticky-col {
+        position: -webkit-sticky;
+        position: sticky;
+        left: 0;
+        background-color: #fff;
+        z-index: 10;
+        border-right: 2px solid #f1f5f9;
+        min-width: 250px; /* Ensure name column has width */
+      }
+
+      /* Ensure header is also sticky with higher z-index */
+      th.sticky-col {
+        background-color: #f8fafc;
+        z-index: 20;
+      }
+
+      /* Hover state integration for sticky col */
+      .table-hover tbody tr:hover .sticky-col {
+        background-color: #f1f5f9;
+      }
+    </style>
+  </head>
+  <body class="hold-transition sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+      <!-- Navbar -->
+      <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button">
+              <i class="fas fa-bars"></i>
+            </a>
+          </li>
+        </ul>
+
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+          <!-- Notifications Dropdown Menu -->
+          <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="#">
+              <i class="far fa-bell"></i>
+              <span class="badge badge-warning navbar-badge">15</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+              <span class="dropdown-item dropdown-header"
+                >15 Notifications</span
+              >
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+                <i class="fas fa-envelope mr-2"></i> 4 new messages
+                <span class="float-right text-muted text-sm">3 mins</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+                <i class="fas fa-users mr-2"></i> 8 friend requests
+                <span class="float-right text-muted text-sm">12 hours</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+                <i class="fas fa-file mr-2"></i> 3 new reports
+                <span class="float-right text-muted text-sm">2 days</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item dropdown-footer"
+                >See All Notifications</a
+              >
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.navbar -->
+
+      <!-- Main Sidebar Container -->
+      <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a href="./dashboard.html" class="brand-link">
+          <img
+            src="./img/leap.png"
+            alt="AdminLTE Logo"
+            class="brand-image elevation-3"
+            style="opacity: 0.8"
+          />
+          <span class="brand-text font-weight-light">Leap Surabaya</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <!-- Sidebar user (optional) -->
+          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+              <img
+                src="./img/user2-160x160.jpg"
+                class="img-circle elevation-2"
+                alt="User Image"
+              />
+            </div>
+            <div class="info">
+              <a href="#" class="d-block">M Rahmat Muttaqin</a>
+            </div>
+          </div>
+
+          <!-- Sidebar Menu -->
+          <nav class="mt-2">
+            <ul
+              class="nav nav-pills nav-sidebar flex-column"
+              data-widget="treeview"
+              role="menu"
+              data-accordion="false"
+            >
+              <li class="nav-item">
+                <a href="./dashboard.html" class="nav-link">
+                  <i data-lucide="layout-dashboard"></i>
+                  <p>Dashboard</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./kalendar.html" class="nav-link">
+                  <i data-lucide="calendar-days"></i>
+                  <p>Kalendar Pendidikan</p>
+                </a>
+              </li>
+
+              <li class="nav-header">AKADEMIK</li>
+              <li class="nav-item">
+                <a href="./kelas.html" class="nav-link">
+                  <i data-lucide="users"></i>
+                  <p>Kelas & Murid</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./rapot.html" class="nav-link active">
+                  <i data-lucide="book-open"></i>
+                  <p>Rekap Rapor</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="./catatan.html" class="nav-link">
+                  <i data-lucide="users"></i>
+                  <p>Catatan Siswa</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./catatan-guru.html" class="nav-link">
+                  <i data-lucide="square-user-round"></i>
+                  <p>Catatan Kelas</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./surat.html" class="nav-link">
+                  <i data-lucide="file-text"></i>
+                  <p>Surat Tugas</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./penilian.html" class="nav-link">
+                  <i data-lucide="award"></i>
+                  <p>Penilian Kinerja</p>
+                </a>
+              </li>
+              <li class="nav-header">PENGATURAN</li>
+
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-cog"></i>
+                  <p>Pengaturan</p>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+      </aside>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1>Rekap Rapor</h1>
+              </div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item">
+                    <a href="dashboard.html">Home</a>
+                  </li>
+                  <li class="breadcrumb-item">
+                    <a href="rapot.html">Rekap Rapor</a>
+                  </li>
+                  <li class="breadcrumb-item active">Rekap Absensi</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+          <div class="container-fluid">
+            <!-- Class Info Section -->
+            <div class="row mb-2">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-body">
+                    <div
+                      class="row row-cols-1 row-cols-md-2 row-cols-lg-6 mt-3"
+                    >
+                      <div class="col">
+                        <div class="text-muted small"><b>Tahun Ajar</b></div>
+                        2025/2026
+                      </div>
+                      <div class="col">
+                        <div class="text-muted small"><b>Kursus</b></div>
+                        LEAP - Coding Class 2025
+                      </div>
+                      <div class="col">
+                        <div class="text-muted small"><b>Rombel</b></div>
+                        Coding 1C Curious Creators Tue 6-7 (Yusril)
+                      </div>
+                      <div class="col">
+                        <div class="text-muted small"><b>Hari</b></div>
+                        Selasa
+                      </div>
+                      <div class="col">
+                        <div class="text-muted small"><b>Level</b></div>
+                        Curious Creators
+                      </div>
+                      <div class="col">
+                        <div class="text-muted small">
+                          <b>Mode Belajar / Tempat</b>
+                        </div>
+                        Hybrid LAB KOMPUTER
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Detailed Attendance Table -->
+            <div class="card card-custom">
+              <div
+                class="card-header-custom d-flex flex-column flex-md-row justify-content-between align-items-md-center sticky-top bg-white"
+                style="z-index: 10"
+              >
+                <div class="mb-3 mb-md-0">
+                  <h5 class="font-weight-bold mb-1">Detail Absensi Siswa</h5>
+                </div>
+              </div>
+              <div class="table-responsive">
+                <table class="table table-hover mb-0 text-center">
+                  <thead>
+                    <tr>
+                      <th class="sticky-col text-left">Nama Siswa</th>
+                      <th>
+                        <div class="small text-muted">PTM 1</div>
+                        <div>10/01/25</div>
+                      </th>
+                      <th>
+                        <div class="small text-muted">PTM 2</div>
+                        <div>17/01/25</div>
+                      </th>
+                      <th>
+                        <div class="small text-muted">PTM 3</div>
+                        <div>24/01/25</div>
+                      </th>
+                      <th>
+                        <div class="small text-muted">PTM 4</div>
+                        <div>31/01/25</div>
+                      </th>
+                      <th>
+                        <div class="small text-muted">PTM 5</div>
+                        <div>07/02/25</div>
+                      </th>
+                      <th>
+                        <div class="small text-muted">PTM 6</div>
+                        <div>14/02/25</div>
+                      </th>
+                      <th>
+                        <div class="small text-muted">PTM 7</div>
+                        <div>21/02/25</div>
+                      </th>
+                      <th>
+                        <div class="small text-muted">PTM 8</div>
+                        <div>28/02/25</div>
+                      </th>
+                      <th>
+                        <div class="small text-muted">PTM 9</div>
+                        <div>07/03/25</div>
+                      </th>
+                      <th>
+                        <div class="small text-muted">PTM 10</div>
+                        <div>14/03/25</div>
+                      </th>
+                      <th>
+                        <div class="small text-muted">PTM 11</div>
+                        <div>14/03/25</div>
+                      </th>
+                      <th>
+                        <div class="small text-muted">PTM 12</div>
+                        <div>18/03/25</div>
+                      </th>
+                      <th>
+                        <div class="small text-muted">PTM 13</div>
+                        <div>14/05/25</div>
+                      </th>
+                      <th>
+                        <div class="small text-muted">PTM 14</div>
+                        <div>14/06/25</div>
+                      </th>
+                      <th>
+                        <div class="small text-muted">PTM 15</div>
+                        <div>12/07/25</div>
+                      </th>
+                      <th>
+                        <div class="small text-muted">PTM 16</div>
+                        <div>12/07/25</div>
+                      </th>
+                      <th>
+                        <div class="small text-muted">PTM 17</div>
+                        <div>12/07/25</div>
+                      </th>
+                      <th>
+                        <div class="small text-muted">PTM 18</div>
+                        <div>12/07/25</div>
+                      </th>
+                      <th>
+                        <div class="small text-muted">PTM 19</div>
+                        <div>12/07/25</div>
+                      </th>
+                      <th>
+                        <div class="small text-muted">PTM 20</div>
+                        <div>12/07/25</div>
+                      </th>
+                      <th>
+                        <div class="small text-muted">PTM 21</div>
+                        <div>12/07/25</div>
+                      </th>
+                      <th>
+                        <div class="small text-muted">PTM 22</div>
+                        <div>12/07/25</div>
+                      </th>
+                      <th>
+                        <div class="small text-muted">PTM 23</div>
+                        <div>12/07/25</div>
+                      </th>
+                      <th>
+                        <div class="small text-muted">PTM 24</div>
+                        <div>12/07/25</div>
+                      </th>
+                      <th>
+                        <div class="small text-muted">PTM 25</div>
+                        <div>12/07/25</div>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="sticky-col text-left font-weight-bold">
+                        AKIO KHALIFANO VICTORIO
+                      </td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td>
+                        <span class="text-danger font-weight-bold">S</span>
+                      </td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                    </tr>
+                    <tr>
+                      <td class="sticky-col text-left font-weight-bold">
+                        LIONEL CHRISTANDI
+                      </td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                    </tr>
+                    <tr>
+                      <td class="sticky-col text-left font-weight-bold">
+                        AHMAD FADHIL PUTRA AJI
+                      </td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td>
+                        <span class="text-warning font-weight-bold">I</span>
+                      </td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td>
+                        <span class="text-danger font-weight-bold">A</span>
+                      </td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td>
+                        <span class="text-warning font-weight-bold">I</span>
+                      </td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td>
+                        <span class="text-danger font-weight-bold">A</span>
+                      </td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td>
+                        <span class="text-warning font-weight-bold">I</span>
+                      </td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                    </tr>
+                    <tr>
+                      <td class="sticky-col text-left font-weight-bold">
+                        JESSICA VERANDA
+                      </td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                    </tr>
+                    <tr>
+                      <td class="sticky-col text-left font-weight-bold">
+                        MELODY NURRAMDHANI
+                      </td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td>
+                        <span class="text-danger font-weight-bold">S</span>
+                      </td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                      <td><i class="fas fa-check text-success"></i></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <footer class="main-footer">
+        <strong
+          >Copyright &copy; 2022-2026
+          <a href="https://leapsurabaya.sch.id/"
+            >Leap English and Digital Class</a
+          >.</strong
+        >
+        All rights reserved.
+      </footer>
+
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+      </aside>
+      <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- jQuery -->
+    <script src="./plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <!-- AdminLTE App -->
+    <script src="./js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <!-- <script src="./js/demo.js"></script> -->
+    <script>
+      lucide.createIcons();
+    </script>
+  </body>
+</html>
