@@ -941,17 +941,15 @@
         const totalSiswa = getTotalRemidiStudents(currentSemester);
         const totalGuru = getTotalGuruRemidi(currentSemester);
 
-        document.getElementById("totalSiswaRemidi").textContent = totalSiswa;
-        document.getElementById("totalGuruRemidi").textContent = totalGuru;
+        $("#totalSiswaRemidi").text(totalSiswa);
+        $("#totalGuruRemidi").text(totalGuru);
 
         // Update label semester di modal
         let semesterLabel = currentSemester
           ? `Semester ${currentSemester}`
           : "Semua Semester";
-        document.getElementById("modalSemesterLabel").textContent =
-          semesterLabel;
-        document.getElementById("modalGuruSemesterLabel").textContent =
-          semesterLabel;
+        $("#modalSemesterLabel").text(semesterLabel);
+        $("#modalGuruSemesterLabel").text(semesterLabel);
 
         // Populate tabel remidi
         populateRemidiTable();
@@ -1005,7 +1003,7 @@
           });
         }
 
-        document.getElementById("remidiDetailContent").innerHTML = content;
+        $("#remidiDetailContent").html(content);
       }
 
       // Fungsi untuk populate modal guru dengan siswa remidi
@@ -1057,7 +1055,7 @@
           content += "</tbody></table>";
         }
 
-        document.getElementById("guruRemidiContent").innerHTML = content;
+        $("#guruRemidiContent").html(content);
       }
 
       // Data mockup detail remidi untuk setiap guru
@@ -1267,7 +1265,7 @@
       };
 
       // Fungsi untuk show detail guru (bisa diexpand)
-      window.showGuruDetail = function (index) {
+      function showGuruDetail(index) {
         const currentSemester = getCurrentSemester();
         const data = getRemidiDataBySemester(currentSemester);
         const item = data[index];
@@ -1366,13 +1364,11 @@
           </div>
         `;
 
-        // Show modal with detail
-        const modal = new bootstrap.Modal(
-          document.getElementById("detailSiswaRemidi"),
-        );
-        document.getElementById("detailSiswaRemidiContent").innerHTML = content;
-        modal.show();
-      };
+        $("#guruRemidiModal").modal("hide");
+
+        $("#detailSiswaRemidiContent").html(content);
+        $("#detailSiswaRemidi").modal("show");
+      }
 
       // Event listener untuk filter semester
       document

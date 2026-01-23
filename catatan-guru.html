@@ -12,6 +12,12 @@
 
     <!-- Theme style -->
     <link rel="stylesheet" href="./css/adminlte.min.css" />
+    <link rel="stylesheet" href="./plugins/select2/css/select2.min.css" />
+    <link
+      rel="stylesheet"
+      href="./plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"
+    />
+
     <style>
       .bg-blue-soft {
         background-color: #eff6ff;
@@ -299,7 +305,13 @@
               <div class="card">
                 <div class="card-header">
                   <div class="card-tools">
-                    <div class="row" style="gap: 5px">
+                    <div class="row align-items-center" style="gap: 5px">
+                      <div class="col">
+                        <button class="btn btn-primary btn-block">
+                          <i class="fa fa-archive"></i>
+                          Kelas Archive
+                        </button>
+                      </div>
                       <div class="col">
                         <div class="input-group">
                           <div class="input-group-prepend">
@@ -408,8 +420,54 @@
                     </div>
                   </div>
                 </div>
+
                 <div class="card-body">
                   <div class="accordion" id="LaporanKelasWeek">
+                    <div class="card card-custom">
+                      <div class="card-header" id="headingThree">
+                        <h2 class="mb-0">
+                          <button
+                            class="btn btn-link btn-block text-left"
+                            type="button"
+                            data-toggle="collapse"
+                            data-target="#collapseThree"
+                            aria-expanded="false"
+                            aria-controls="collapseThree"
+                          >
+                            <div
+                              class="d-flex align-items-center"
+                              style="gap: 5px"
+                            >
+                              <div
+                                class="align-items-center p-2 bg-blue-soft"
+                                style="border-radius: 25%"
+                              >
+                                <i data-lucide="calendar"></i>
+                              </div>
+                              <span class="text-body mr-auto"
+                                >Minggu 4: 22 Jan - 31 Jan</span
+                              >
+                              <span
+                                class="badge badge-pill badge-light border text-muted"
+                                >1 reports</span
+                              >
+                            </div>
+                          </button>
+                        </h2>
+                      </div>
+                      <div
+                        id="collapseThree"
+                        class="collapse"
+                        aria-labelledby="headingThree"
+                        data-parent="#LaporanKelasWeek"
+                      >
+                        <div class="card-body">
+                          And lastly, the placeholder content for the third and
+                          final accordion panel. This panel is hidden by
+                          default.
+                        </div>
+                      </div>
+                    </div>
                     <div class="card card-custom">
                       <div class="card-header" id="headingOne">
                         <h2 class="mb-0">
@@ -444,7 +502,7 @@
                       </div>
                       <div
                         id="collapseOne"
-                        class="collapse"
+                        class="collapse show"
                         aria-labelledby="headingOne"
                         data-parent="#LaporanKelasWeek"
                       >
@@ -456,8 +514,7 @@
                                   <tr>
                                     <th>Tanggal</th>
                                     <th>Nama Guru</th>
-                                    <th>Rombel</th>
-                                    <th>Kursus</th>
+                                    <th>Rombel / Kursus</th>
                                     <th>Tags</th>
                                     <th>Aksi</th>
                                   </tr>
@@ -482,14 +539,8 @@
                                     <td>
                                       <div class="d-flex flex-column">
                                         <span class="text-muted small"
-                                          >Coding 1C Curious Creators</span
-                                        >
-                                      </div>
-                                    </td>
-                                    <td>
-                                      <div class="d-flex flex-column">
-                                        <span class="text-muted small"
-                                          >LEAP - Coding Class 2025</span
+                                          >Coding 1C Curious Creators / LEAP -
+                                          Coding Class 2025</span
                                         >
                                       </div>
                                     </td>
@@ -506,8 +557,19 @@
                                         class="btn btn-sm btn-light text-primary font-weight-bold"
                                         data-toggle="modal"
                                         data-target="#readFullReportModal"
+                                        title="Baca Laporan"
                                       >
+                                        <i class="fab fa-readme"></i>
                                         Baca Laporan
+                                      </button>
+                                      <button
+                                        class="btn btn-sm btn-light text-primary font-weight-bold"
+                                        data-toggle="modal"
+                                        data-target="#commentReportModal"
+                                        title="Komentar Laporan"
+                                      >
+                                        <i class="fa fa-comment"></i>
+                                        Komentar
                                       </button>
                                     </td>
                                   </tr>
@@ -530,14 +592,8 @@
                                     <td>
                                       <div class="d-flex flex-column">
                                         <span class="text-muted small"
-                                          >09 GOGO 1 SR2</span
-                                        >
-                                      </div>
-                                    </td>
-                                    <td>
-                                      <div class="d-flex flex-column">
-                                        <span class="text-muted small"
-                                          >LEAP - General English 2024</span
+                                          >09 GOGO 1 SR2 / LEAP - General
+                                          English 2024</span
                                         >
                                       </div>
                                     </td>
@@ -554,8 +610,19 @@
                                         class="btn btn-sm btn-light text-primary font-weight-bold"
                                         data-toggle="modal"
                                         data-target="#readFullReportModal"
+                                        title="Baca Laporan"
                                       >
+                                        <i class="fab fa-readme"></i>
                                         Baca Laporan
+                                      </button>
+                                      <button
+                                        class="btn btn-sm btn-light text-primary font-weight-bold"
+                                        data-toggle="modal"
+                                        data-target="#commentReportModal"
+                                        title="Komentar Laporan"
+                                      >
+                                        <i class="fa fa-comment"></i>
+                                        Komentar
                                       </button>
                                     </td>
                                   </tr>
@@ -578,15 +645,9 @@
                                     <td>
                                       <div class="d-flex flex-column">
                                         <span class="text-muted small"
-                                          >41 WINNER 6 SR3</span
+                                          >41 WINNER 6 SR3 / LEAP - General
+                                          English 2024</span
                                         >
-                                      </div>
-                                    </td>
-                                    <td>
-                                      <div class="d-flex flex-column">
-                                        <span class="text-muted small"
-                                          >LEAP - General English 2024
-                                        </span>
                                       </div>
                                     </td>
                                     <td>
@@ -601,8 +662,19 @@
                                         class="btn btn-sm btn-light text-primary font-weight-bold"
                                         data-toggle="modal"
                                         data-target="#readFullReportModal"
+                                        title="Baca Laporan"
                                       >
+                                        <i class="fab fa-readme"></i>
                                         Baca Laporan
+                                      </button>
+                                      <button
+                                        class="btn btn-sm btn-light text-primary font-weight-bold"
+                                        data-toggle="modal"
+                                        data-target="#commentReportModal"
+                                        title="Komentar Laporan"
+                                      >
+                                        <i class="fa fa-comment"></i>
+                                        Komentar
                                       </button>
                                     </td>
                                   </tr>
@@ -652,118 +724,11 @@
                         data-parent="#LaporanKelasWeek"
                       >
                         <div class="card-body">
-                          <div class="table-responsive-lg">
-                            <table class="table table-borderless">
-                              <thead>
-                                <tr>
-                                  <th>Tanggal</th>
-                                  <th>Nama Guru</th>
-                                  <th>Rombel</th>
-                                  <th>Kursus</th>
-                                  <th>Tags</th>
-                                  <th>Aksi</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td>
-                                    <div class="d-flex flex-column">
-                                      <span class="text-muted small">
-                                        <i class="fas fa-calendar"></i>
-                                        Mon, Jan 14
-                                      </span>
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <div class="d-flex flex-column">
-                                      <span class="text-muted small"
-                                        >Muhammad Yusril Romadhoni</span
-                                      >
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <div class="d-flex flex-column">
-                                      <span class="text-muted small"
-                                        >Coding 1C Curious Creators</span
-                                      >
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <div class="d-flex flex-column">
-                                      <span class="text-muted small"
-                                        >LEAP - Coding Class 2025</span
-                                      >
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <div class="d-flex flex-column">
-                                      <span class="text-muted small"
-                                        ><i class="fas fa-tags"></i> Update
-                                        Diskusi, Progress Siswa</span
-                                      >
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <button
-                                      class="btn btn-sm btn-light text-primary font-weight-bold"
-                                      data-toggle="modal"
-                                      data-target="#readFullReportModal"
-                                    >
-                                      Baca Laporan
-                                    </button>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <div class="d-flex flex-column">
-                                      <span class="text-muted small">
-                                        <i class="fas fa-calendar"></i>
-                                        Thu, Jan 8
-                                      </span>
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <div class="d-flex flex-column">
-                                      <span class="text-muted small"
-                                        >Ulfasiyah, S.S.</span
-                                      >
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <div class="d-flex flex-column">
-                                      <span class="text-muted small"
-                                        >09 GOGO 1 SR2</span
-                                      >
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <div class="d-flex flex-column">
-                                      <span class="text-muted small"
-                                        >LEAP - General English 2024</span
-                                      >
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <div class="d-flex flex-column">
-                                      <span class="text-muted small"
-                                        ><i class="fas fa-tags"></i>
-                                        Update Siswa Sit-in/Trial/Baru
-                                      </span>
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <button
-                                      class="btn btn-sm btn-light text-primary font-weight-bold"
-                                      data-toggle="modal"
-                                      data-target="#readFullReportModal"
-                                    >
-                                      Baca Laporan
-                                    </button>
-                                  </td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
+                          Lorem ipsum dolor sit amet consectetur, adipisicing
+                          elit. Deleniti quidem ad vitae obcaecati! Ea deleniti
+                          voluptates animi dignissimos voluptate error enim
+                          harum expedita? Unde provident, voluptates non
+                          suscipit expedita porro.
                         </div>
                       </div>
                     </div>
@@ -876,6 +841,7 @@
                     >
                     <div class="font-weight-bold">
                       <span id="modalCourse">
+                        <i class="fas fa-calendar-day text-muted mr-1"></i>
                         LEAP - Coding Class 2025 / Curious Creators
                       </span>
                     </div>
@@ -906,12 +872,23 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-12 mt-3">
+                <div class="col-6 mt-3">
                   <div class="bg-light p-2 rounded border">
                     <span class="text-muted d-block text-xs mb-1">Tags</span>
                     <div class="font-weight-bold" id="modalTags">
                       <i class="fas fa-tags text-muted mr-1"></i>
                       Update Diskusi, Progress Siswa
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6 mt-3">
+                  <div class="bg-light p-2 rounded border">
+                    <span class="text-muted d-block text-xs mb-1"
+                      >Tahun Ajar</span
+                    >
+                    <div class="font-weight-bold" id="modalTags">
+                      <i class="fas fa-calendar text-muted mr-1"></i>
+                      2025 / 2026
                     </div>
                   </div>
                 </div>
@@ -946,6 +923,87 @@
         </div>
       </div>
 
+      <div
+        class="modal fade"
+        id="commentReportModal"
+        tabindex="-1"
+        role="dialog"
+        aria-hidden="true"
+        aria-labelledby="commentReportModal"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content card-custom border-0">
+            <div class="modal-header border-bottom-0 pb-0">
+              <h5 class="modal-title font-weight-bold">
+                <i class="fas fa-user-check text-primary mr-2"></i>
+                Follow Up
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body pt-2">
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <label for="catatan">Catatan</label>
+                  <textarea
+                    name="catatan"
+                    id="catatan"
+                    rows="3"
+                    class="form-control"
+                  >
+Sesi ke-23 dilaksanakan secara hybrid dan dihadiri oleh seluruh siswa tepat waktu, kecuali Tian yang datang terlambat. Materi yang dibahas meliputi teori serta pembuatan outline proyek trivia game yang berjalan dengan baik. Pada persiapan kelas, guru sempat mengalami kendala teknis terkait mekanisme sistem co-host zoom, sehingga dilakukan kesepakatan dengan Miss Luluk untuk bergabung pada pukul 18.00 WIB serta memberikan pengingat agar ditetapkan sebagai co-host. Permasalahan bug pada BSD telah dikomunikasikan kepada tim BSD yang dijelaskan terjadi akibat pemuatan browser yang kurang sempurna, khususnya saat pengerjaan skrip JavaScript. Tim BSD menyampaikan komitmen untuk segera melakukan perbaikan. Sebagai solusi sementara, siswa diarahkan untuk melakukan refresh halaman, clear cache browser, kembali ke langkah sebelumnya, serta memastikan browser selalu dalam kondisi terbaru. Secara umum, progres pemahaman JavaScript seluruh siswa menunjukkan peningkatan, kecuali Lintang yang mengalami kendala karena kondisi fisik kurang fit dan padatnya aktivitas. Guru terus memberikan motivasi, menginstruksikan pengerjaan lanjutan proyek di rumah, serta memberikan bimbingan tambahan melalui WhatsApp apabila siswa mengalami kesulitan dalam memahami materi dan mengerjakan proyek.</textarea
+                  >
+                </div>
+                <div class="form-group col-md-12">
+                  <label for="materi">Materi Diskusi</label>
+                  <textarea
+                    name="materi"
+                    id="materi"
+                    class="form-control"
+                    rows="3"
+                  ></textarea>
+                </div>
+                <div class="form-group col-md-12">
+                  <label for="tags">Tag Materi Diskusi</label>
+                  <select name="tags" id="tags" class="custom-select" multiple>
+                    <option selected>Update Diskusi</option>
+                    <option selected>Progress Siswa</option>
+                    <option>Kendala Siswa</option>
+                    <option>Kendala Kelas</option>
+                    <option>Kendala Jadwal</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-12">
+                  <label for="followUp">Hasil Konfirmasi</label>
+                  <textarea
+                    name="followUp"
+                    id="followUp"
+                    class="form-control"
+                    rows="3"
+                  ></textarea>
+                </div>
+                <div class="col d-flex justify-content-end" style="gap: 10px">
+                  <button
+                    class="btn btn-default"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    Tutup
+                  </button>
+                  <button class="btn btn-primary">Kirim</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <footer class="main-footer">
         <strong
           >Copyright &copy; 2022-2026
@@ -955,12 +1013,6 @@
         >
         All rights reserved.
       </footer>
-
-      <!-- Control Sidebar -->
-      <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-      </aside>
-      <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
 
@@ -970,6 +1022,7 @@
     <script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="./plugins/select2/js/select2.full.min.js"></script>
 
     <!-- AdminLTE App -->
     <script src="./js/adminlte.min.js"></script>
@@ -977,6 +1030,7 @@
     <!-- <script src="./js/demo.js"></script> -->
     <script>
       lucide.createIcons();
+      $("#tags").select2();
     </script>
   </body>
 </html>
