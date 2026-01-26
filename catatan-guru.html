@@ -931,7 +931,7 @@
         aria-hidden="true"
         aria-labelledby="commentReportModal"
       >
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
           <div class="modal-content card-custom border-0">
             <div class="modal-header border-bottom-0 pb-0">
               <h5 class="modal-title font-weight-bold">
@@ -954,8 +954,9 @@
                   <textarea
                     name="catatan"
                     id="catatan"
-                    rows="3"
+                    rows="5"
                     class="form-control"
+                    readonly
                   >
 Sesi ke-23 dilaksanakan secara hybrid dan dihadiri oleh seluruh siswa tepat waktu, kecuali Tian yang datang terlambat. Materi yang dibahas meliputi teori serta pembuatan outline proyek trivia game yang berjalan dengan baik. Pada persiapan kelas, guru sempat mengalami kendala teknis terkait mekanisme sistem co-host zoom, sehingga dilakukan kesepakatan dengan Miss Luluk untuk bergabung pada pukul 18.00 WIB serta memberikan pengingat agar ditetapkan sebagai co-host. Permasalahan bug pada BSD telah dikomunikasikan kepada tim BSD yang dijelaskan terjadi akibat pemuatan browser yang kurang sempurna, khususnya saat pengerjaan skrip JavaScript. Tim BSD menyampaikan komitmen untuk segera melakukan perbaikan. Sebagai solusi sementara, siswa diarahkan untuk melakukan refresh halaman, clear cache browser, kembali ke langkah sebelumnya, serta memastikan browser selalu dalam kondisi terbaru. Secara umum, progres pemahaman JavaScript seluruh siswa menunjukkan peningkatan, kecuali Lintang yang mengalami kendala karena kondisi fisik kurang fit dan padatnya aktivitas. Guru terus memberikan motivasi, menginstruksikan pengerjaan lanjutan proyek di rumah, serta memberikan bimbingan tambahan melalui WhatsApp apabila siswa mengalami kesulitan dalam memahami materi dan mengerjakan proyek.</textarea
                   >
@@ -1030,7 +1031,9 @@ Sesi ke-23 dilaksanakan secara hybrid dan dihadiri oleh seluruh siswa tepat wakt
     <!-- <script src="./js/demo.js"></script> -->
     <script>
       lucide.createIcons();
-      $("#tags").select2();
+      $("#tags").select2({
+        theme: "bootstrap4",
+      });
     </script>
   </body>
 </html>

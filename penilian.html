@@ -332,6 +332,7 @@
         <!-- Main content -->
         <section class="content">
           <div class="container-fluid">
+            <!-- Stats Cards -->
             <div class="row">
               <div class="col-md-3 col-sm-6 mb-3">
                 <div class="card card-custom h-100">
@@ -340,18 +341,16 @@
                   >
                     <div class="mr-auto">
                       <p class="text-muted small font-weight-bold mb-1">
-                        Rata-rata Skor
+                        Total Penilaian
                       </p>
-                      <h3 class="font-weight-bold mb-0" id="statAverage">81</h3>
-                      <small class="text-muted">dari 100</small>
+                      <h3 class="font-weight-bold mb-0" id="statTotal">8</h3>
                     </div>
                     <div class="icon-circle bg-soft-blue">
-                      <i class="fas fa-chart-line"></i>
+                      <i class="fas fa-clipboard-list"></i>
                     </div>
                   </div>
                 </div>
               </div>
-              <!-- Excellent Teachers -->
               <div class="col-md-3 col-sm-6 mb-3">
                 <div class="card card-custom h-100">
                   <div
@@ -359,54 +358,9 @@
                   >
                     <div class="mr-auto">
                       <p class="text-muted small font-weight-bold mb-1">
-                        Guru Berprestasi
+                        Draft
                       </p>
-                      <h3 class="font-weight-bold mb-0" id="statExcellent">
-                        3
-                      </h3>
-                      <small class="text-muted">Skor ≥ 85</small>
-                    </div>
-                    <div class="icon-circle bg-soft-green">
-                      <i class="fas fa-award"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Needs Improvement -->
-              <div class="col-md-3 col-sm-6 mb-3">
-                <div class="card card-custom h-100">
-                  <div
-                    class="card-body d-flex justify-content-between align-items-center"
-                  >
-                    <div class="mr-auto">
-                      <p class="text-muted small font-weight-bold mb-1">
-                        Perlu Perbaikan
-                      </p>
-                      <h3 class="font-weight-bold mb-0" id="statImprovement">
-                        1
-                      </h3>
-                      <small class="text-muted">Skor &lt; 70</small>
-                    </div>
-                    <div class="icon-circle bg-soft-red">
-                      <i class="fas fa-exclamation-triangle"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Report Completion -->
-              <div class="col-md-3 col-sm-6 mb-3">
-                <div class="card card-custom h-100">
-                  <div
-                    class="card-body d-flex justify-content-between align-items-center"
-                  >
-                    <div class="mr-auto">
-                      <p class="text-muted small font-weight-bold mb-1">
-                        Laporan Mingguan
-                      </p>
-                      <h3 class="font-weight-bold mb-0">
-                        <span id="statCompletion">81</span>%
-                      </h3>
-                      <small class="text-muted">Rata-rata penyelesaian</small>
+                      <h3 class="font-weight-bold mb-0" id="statDraft">2</h3>
                     </div>
                     <div class="icon-circle bg-soft-purple">
                       <i class="fas fa-file-alt"></i>
@@ -414,352 +368,648 @@
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col">
-                <div class="card card-custom">
+              <div class="col-md-3 col-sm-6 mb-3">
+                <div class="card card-custom h-100">
                   <div
-                    class="card-header-custom d-flex flex-column flex-md-row justify-content-between align-items-md-center"
+                    class="card-body d-flex justify-content-between align-items-center"
                   >
-                    <div class="mb-3 mb-md-0">
-                      <h5 class="font-weight-bold mb-1">Daftar Guru</h5>
-                      <p class="text-muted mb-0">
-                        Data performa dan evaluasi kinerja semua guru.
+                    <div class="mr-auto">
+                      <p class="text-muted small font-weight-bold mb-1">
+                        Menunggu Review
                       </p>
+                      <h3 class="font-weight-bold mb-0" id="statPending">3</h3>
+                    </div>
+                    <div class="icon-circle bg-soft-red">
+                      <i class="fas fa-clock"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 mb-3">
+                <div class="card card-custom h-100">
+                  <div
+                    class="card-body d-flex justify-content-between align-items-center"
+                  >
+                    <div class="mr-auto">
+                      <p class="text-muted small font-weight-bold mb-1">
+                        Final / Approved
+                      </p>
+                      <h3 class="font-weight-bold mb-0" id="statFinal">3</h3>
+                    </div>
+                    <div class="icon-circle bg-soft-green">
+                      <i class="fas fa-check-circle"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tabs Navigation -->
+            <div class="card card-custom">
+              <div class="card-header-custom">
+                <ul
+                  class="nav nav-tabs card-header-tabs"
+                  id="penilaianTabs"
+                  role="tablist"
+                >
+                  <li class="nav-item">
+                    <a
+                      class="nav-link active"
+                      id="tab-buat"
+                      data-toggle="tab"
+                      href="#buat-penilaian"
+                      role="tab"
+                    >
+                      <i class="fas fa-plus-circle mr-1"></i> Buat Penilaian
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link"
+                      id="tab-draft"
+                      data-toggle="tab"
+                      href="#draft-penilaian"
+                      role="tab"
+                    >
+                      <i class="fas fa-file-alt mr-1"></i> Draft
+                      <span class="badge badge-secondary ml-1">2</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link"
+                      id="tab-review"
+                      data-toggle="tab"
+                      href="#review-penilaian"
+                      role="tab"
+                    >
+                      <i class="fas fa-hourglass-half mr-1"></i> Menunggu Review
+                      <span class="badge badge-warning ml-1">3</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link"
+                      id="tab-final"
+                      data-toggle="tab"
+                      href="#final-penilaian"
+                      role="tab"
+                    >
+                      <i class="fas fa-check-double mr-1"></i> Penilaian Final
+                      <span class="badge badge-success ml-1">3</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <div class="tab-content" id="penilaianTabContent">
+                  <!-- Tab 1: Buat Penilaian -->
+                  <div
+                    class="tab-pane fade show active"
+                    id="buat-penilaian"
+                    role="tabpanel"
+                  >
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="selectPeriode"
+                            ><strong>Periode Penilaian</strong></label
+                          >
+                          <select class="custom-select" id="selectPeriode">
+                            <option value="" selected disabled>
+                              -- Pilih Periode --
+                            </option>
+                            <option value="sem1-2024">
+                              Semester 1 - 2024/2025
+                            </option>
+                            <option value="sem2-2024">
+                              Semester 2 - 2024/2025
+                            </option>
+                            <option value="sem1-2025">
+                              Semester 1 - 2025/2026
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="selectGuru"
+                            ><strong>Guru / Karyawan</strong></label
+                          >
+                          <select
+                            class="custom-select"
+                            id="selectGuru"
+                            disabled
+                          >
+                            <option value="" selected disabled>
+                              -- Pilih Guru/Karyawan --
+                            </option>
+                          </select>
+                        </div>
+                      </div>
                     </div>
 
-                    <!-- Filters -->
-                    <div class="form-inline">
-                      <div class="form-group has-search mr-2 mb-2 mb-md-0">
-                        <span class="fa fa-search form-control-feedback"></span>
-                        <input
-                          type="text"
-                          id="searchInput"
-                          class="form-control form-control-sm"
-                          placeholder="Cari guru..."
-                        />
+                    <!-- Appraisal Form (hidden until guru selected) -->
+                    <div id="formPenilaian" style="display: none">
+                      <hr />
+                      <h5 class="font-weight-bold mb-3">
+                        <i class="fas fa-clipboard-check mr-2"></i>Form
+                        Penilaian
+                      </h5>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label
+                              >Kehadiran
+                              <span class="text-muted small"
+                                >(0-100)</span
+                              ></label
+                            >
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="skorKehadiran"
+                              min="0"
+                              max="100"
+                              placeholder="Masukkan skor kehadiran"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label
+                              >Kedisiplinan
+                              <span class="text-muted small"
+                                >(0-100)</span
+                              ></label
+                            >
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="skorKedisiplinan"
+                              min="0"
+                              max="100"
+                              placeholder="Masukkan skor kedisiplinan"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label
+                              >Kualitas Pengajaran
+                              <span class="text-muted small"
+                                >(0-100)</span
+                              ></label
+                            >
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="skorPengajaran"
+                              min="0"
+                              max="100"
+                              placeholder="Masukkan skor pengajaran"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label
+                              >Laporan Mingguan
+                              <span class="text-muted small"
+                                >(0-100)</span
+                              ></label
+                            >
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="skorLaporan"
+                              min="0"
+                              max="100"
+                              placeholder="Masukkan skor laporan"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <div class="form-group">
+                            <label>Catatan / Komentar</label>
+                            <textarea
+                              class="form-control"
+                              id="catatanPenilaian"
+                              rows="3"
+                              placeholder="Tuliskan catatan atau komentar untuk guru/karyawan..."
+                            ></textarea>
+                          </div>
+                        </div>
                       </div>
-                      <select
-                        class="custom-select custom-select-sm"
-                        id="statusFilter"
-                      >
-                        <option value="all">Semua Status</option>
-                        <option value="Excellent">Sangat Baik</option>
-                        <option value="Good">Baik</option>
-                        <option value="Needs Improvement">
-                          Perlu Perbaikan
-                        </option>
-                      </select>
+                      <div class="d-flex justify-content-end">
+                        <button
+                          type="button"
+                          class="btn btn-secondary mr-2"
+                          id="btnSimpanDraft"
+                        >
+                          <i class="fas fa-save mr-1"></i> Simpan Draft
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-primary"
+                          id="btnSubmitReview"
+                        >
+                          <i class="fas fa-paper-plane mr-1"></i> Submit untuk
+                          Review
+                        </button>
+                      </div>
                     </div>
                   </div>
 
-                  <div class="table-responsive">
-                    <table class="table mb-0">
-                      <thead class="bg-light">
-                        <tr>
-                          <th class="pl-4">Nama Guru</th>
-                          <th>Rombel</th>
-                          <th>Jml Kelas</th>
-                          <th>Skor Kinerja</th>
-                          <th>Kehadiran</th>
-                          <th>Laporan</th>
-                          <th>Status</th>
-                          <th class="text-right pr-4">Aksi</th>
-                        </tr>
-                      </thead>
-                      <tbody id="teacherTableBody">
-                        <tr>
-                          <td class="pl-4">
-                            <div class="d-flex align-items-center">
-                              <div class="avatar-circle mr-3">
-                                <i class="fas fa-user"></i>
-                              </div>
-                              <div>
-                                <div class="font-weight-bold text-dark">
-                                  Muhammad Yusril
+                  <!-- Tab 2: Draft Penilaian -->
+                  <div
+                    class="tab-pane fade"
+                    id="draft-penilaian"
+                    role="tabpanel"
+                  >
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead class="bg-light">
+                          <tr>
+                            <th>No</th>
+                            <th>Nama Guru/Karyawan</th>
+                            <th>Periode</th>
+                            <th>Skor Rata-rata</th>
+                            <th>Tanggal Dibuat</th>
+                            <th>Aksi</th>
+                          </tr>
+                        </thead>
+                        <tbody id="draftTableBody">
+                          <tr>
+                            <td>1</td>
+                            <td>
+                              <div class="d-flex align-items-center">
+                                <div class="avatar-circle mr-2">
+                                  <i class="fas fa-user"></i>
                                 </div>
+                                Ulfasiyah, S.S.
                               </div>
-                            </div>
-                          </td>
-                          <td>Coding 1C Curious Creators</td>
-                          <td>
-                            <span
-                              class="badge badge-light border font-weight-normal"
-                              >3 Kelas</span
-                            >
-                          </td>
-                          <td style="width: 150px">
-                            <div class="d-flex flex-column">
-                              <span class="font-weight-bold mb-1">92</span>
-                              <div class="progress progress-thin">
-                                <div
-                                  class="progress-bar bg-primary"
-                                  style="width: 92%"
-                                ></div>
-                              </div>
-                            </div>
-                          </td>
-                          <td class="small font-weight-bold text-secondary">
-                            98%
-                          </td>
-                          <td class="small font-weight-bold text-secondary">
-                            95%
-                          </td>
-                          <td>
-                            <span
-                              class="badge badge-soft-success badge-pill-custom"
-                              >Sangat Baik</span
-                            >
-                          </td>
-                          <td class="text-right pr-4">
-                            <div class="dropdown">
+                            </td>
+                            <td>Semester 1 - 2024/2025</td>
+                            <td><span class="font-weight-bold">72</span></td>
+                            <td>20 Jan 2026</td>
+                            <td>
                               <button
-                                class="btn btn-link btn-sm text-secondary p-0"
-                                type="button"
-                                data-toggle="dropdown"
+                                class="btn btn-sm btn-warning mr-1"
+                                title="Edit"
                               >
-                                <i class="fas fa-ellipsis-h"></i>
+                                <i class="fas fa-edit"></i>
                               </button>
-                              <div class="dropdown-menu dropdown-menu-right">
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  onclick="openDetailModal('1')"
-                                  ><i class="fas fa-eye mr-2 w-20"></i> Lihat
-                                  Detail</a
-                                >
-                                <a class="dropdown-item" href="#"
-                                  ><i class="fas fa-star mr-2 w-20"></i> Beri
-                                  Penilaian</a
-                                >
-                                <a class="dropdown-item" href="#"
-                                  ><i class="fas fa-print mr-2 w-20"></i>
-                                  Cetak</a
-                                >
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="pl-4">
-                            <div class="d-flex align-items-center">
-                              <div class="avatar-circle mr-3">
-                                <i class="fas fa-user"></i>
-                              </div>
-                              <div>
-                                <div class="font-weight-bold text-dark">
-                                  Rini Budi Rahayu, S.Pd.
+                              <button
+                                class="btn btn-sm btn-primary btn-submit-draft mr-1"
+                                title="Submit"
+                              >
+                                <i class="fas fa-paper-plane"></i>
+                              </button>
+                              <button
+                                class="btn btn-sm btn-danger"
+                                title="Hapus"
+                              >
+                                <i class="fas fa-trash"></i>
+                              </button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>2</td>
+                            <td>
+                              <div class="d-flex align-items-center">
+                                <div class="avatar-circle mr-2">
+                                  <i class="fas fa-user"></i>
                                 </div>
+                                Graciela Evanda R., S.Kom.
                               </div>
-                            </div>
-                          </td>
-                          <td>41 WINNER 6 SR3</td>
-                          <td>
-                            <span
-                              class="badge badge-light border font-weight-normal"
-                              >1 Kelas</span
-                            >
-                          </td>
-                          <td style="width: 150px">
-                            <div class="d-flex flex-column">
-                              <span class="font-weight-bold mb-1">88</span>
-                              <div class="progress progress-thin">
-                                <div
-                                  class="progress-bar bg-primary"
-                                  style="width: 88%"
-                                ></div>
-                              </div>
-                            </div>
-                          </td>
-                          <td class="small font-weight-bold text-secondary">
-                            88%
-                          </td>
-                          <td class="small font-weight-bold text-secondary">
-                            95%
-                          </td>
-                          <td>
-                            <span
-                              class="badge badge-soft-warning badge-pill-custom"
-                              >Baik</span
-                            >
-                          </td>
-                          <td class="text-right pr-4">
-                            <div class="dropdown">
+                            </td>
+                            <td>Semester 1 - 2024/2025</td>
+                            <td><span class="font-weight-bold">65</span></td>
+                            <td>18 Jan 2026</td>
+                            <td>
                               <button
-                                class="btn btn-link btn-sm text-secondary p-0"
-                                type="button"
-                                data-toggle="dropdown"
+                                class="btn btn-sm btn-warning mr-1"
+                                title="Edit"
                               >
-                                <i class="fas fa-ellipsis-h"></i>
+                                <i class="fas fa-edit"></i>
                               </button>
-                              <div class="dropdown-menu dropdown-menu-right">
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  onclick="openDetailModal('1')"
-                                  ><i class="fas fa-eye mr-2 w-20"></i> Lihat
-                                  Detail</a
-                                >
-                                <a class="dropdown-item" href="#"
-                                  ><i class="fas fa-star mr-2 w-20"></i> Beri
-                                  Penilaian</a
-                                >
-                                <a class="dropdown-item" href="#"
-                                  ><i class="fas fa-print mr-2 w-20"></i>
-                                  Cetak</a
-                                >
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="pl-4">
-                            <div class="d-flex align-items-center">
-                              <div class="avatar-circle mr-3">
-                                <i class="fas fa-user"></i>
-                              </div>
-                              <div>
-                                <div class="font-weight-bold text-dark">
-                                  Ulfasiyah, S.S.
+                              <button
+                                class="btn btn-sm btn-primary btn-submit-draft mr-1"
+                                title="Submit"
+                              >
+                                <i class="fas fa-paper-plane"></i>
+                              </button>
+                              <button
+                                class="btn btn-sm btn-danger"
+                                title="Hapus"
+                              >
+                                <i class="fas fa-trash"></i>
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <!-- Tab 3: Menunggu Review HR -->
+                  <div
+                    class="tab-pane fade"
+                    id="review-penilaian"
+                    role="tabpanel"
+                  >
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead class="bg-light">
+                          <tr>
+                            <th>No</th>
+                            <th>Nama Guru/Karyawan</th>
+                            <th>Periode</th>
+                            <th>Skor Rata-rata</th>
+                            <th>Tanggal Submit</th>
+                            <th>Status</th>
+                            <th>Aksi HR</th>
+                          </tr>
+                        </thead>
+                        <tbody id="reviewTableBody">
+                          <tr data-id="1">
+                            <td>1</td>
+                            <td>
+                              <div class="d-flex align-items-center">
+                                <div class="avatar-circle mr-2">
+                                  <i class="fas fa-user"></i>
                                 </div>
+                                Muhammad Yusril
                               </div>
-                            </div>
-                          </td>
-                          <td>09 GOGO 1 SR2</td>
-                          <td>
-                            <span
-                              class="badge badge-light border font-weight-normal"
-                              >1 Kelas</span
-                            >
-                          </td>
-                          <td style="width: 150px">
-                            <div class="d-flex flex-column">
-                              <span class="font-weight-bold mb-1">50</span>
-                              <div class="progress progress-thin">
-                                <div
-                                  class="progress-bar bg-primary"
-                                  style="width: 50%"
-                                ></div>
-                              </div>
-                            </div>
-                          </td>
-                          <td class="small font-weight-bold text-secondary">
-                            40%
-                          </td>
-                          <td class="small font-weight-bold text-secondary">
-                            15%
-                          </td>
-                          <td>
-                            <span
-                              class="badge badge-soft-danger badge-pill-custom"
-                              >Perlu diperhatikan</span
-                            >
-                          </td>
-                          <td class="text-right pr-4">
-                            <div class="dropdown">
-                              <button
-                                class="btn btn-link btn-sm text-secondary p-0"
-                                type="button"
-                                data-toggle="dropdown"
+                            </td>
+                            <td>Semester 1 - 2024/2025</td>
+                            <td><span class="font-weight-bold">92</span></td>
+                            <td>15 Jan 2026</td>
+                            <td>
+                              <span
+                                class="badge badge-soft-warning badge-pill-custom"
+                                >Pending Review</span
                               >
-                                <i class="fas fa-ellipsis-h"></i>
+                            </td>
+                            <td>
+                              <button
+                                class="btn btn-sm btn-success btn-hr-approve mr-1"
+                                title="Setujui"
+                              >
+                                <i class="fas fa-check"></i>
                               </button>
-                              <div class="dropdown-menu dropdown-menu-right">
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  onclick="openDetailModal('1')"
-                                  ><i class="fas fa-eye mr-2 w-20"></i> Lihat
-                                  Detail</a
-                                >
-                                <a class="dropdown-item" href="#"
-                                  ><i class="fas fa-star mr-2 w-20"></i> Beri
-                                  Penilaian</a
-                                >
-                                <a class="dropdown-item" href="#"
-                                  ><i class="fas fa-print mr-2 w-20"></i>
-                                  Cetak</a
-                                >
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="pl-4">
-                            <div class="d-flex align-items-center">
-                              <div class="avatar-circle mr-3">
-                                <i class="fas fa-user"></i>
-                              </div>
-                              <div>
-                                <div class="font-weight-bold text-dark">
-                                  Graciela Evanda Ronadi, S.Kom.
+                              <button
+                                class="btn btn-sm btn-danger btn-hr-reject"
+                                title="Tolak"
+                              >
+                                <i class="fas fa-times"></i>
+                              </button>
+                            </td>
+                          </tr>
+                          <tr data-id="2">
+                            <td>2</td>
+                            <td>
+                              <div class="d-flex align-items-center">
+                                <div class="avatar-circle mr-2">
+                                  <i class="fas fa-user"></i>
                                 </div>
+                                Rini Budi Rahayu, S.Pd.
                               </div>
-                            </div>
-                          </td>
-                          <td>Coding 1C Curious Creators</td>
-                          <td>
-                            <span
-                              class="badge badge-light border font-weight-normal"
-                              >0 Kelas</span
-                            >
-                          </td>
-                          <td style="width: 150px">
-                            <div class="d-flex flex-column">
-                              <span class="font-weight-bold mb-1">0</span>
-                              <div class="progress progress-thin">
-                                <div
-                                  class="progress-bar bg-primary"
-                                  style="width: 0%"
-                                ></div>
-                              </div>
-                            </div>
-                          </td>
-                          <td class="small font-weight-bold text-secondary">
-                            0%
-                          </td>
-                          <td class="small font-weight-bold text-secondary">
-                            0%
-                          </td>
-                          <td>
-                            <span
-                              class="badge badge-soft-secondary badge-pill-custom"
-                              >Non Aktif</span
-                            >
-                          </td>
-                          <td class="text-right pr-4">
-                            <div class="dropdown">
-                              <button
-                                class="btn btn-link btn-sm text-secondary p-0"
-                                type="button"
-                                data-toggle="dropdown"
+                            </td>
+                            <td>Semester 1 - 2024/2025</td>
+                            <td><span class="font-weight-bold">88</span></td>
+                            <td>14 Jan 2026</td>
+                            <td>
+                              <span
+                                class="badge badge-soft-warning badge-pill-custom"
+                                >Pending Review</span
                               >
-                                <i class="fas fa-ellipsis-h"></i>
+                            </td>
+                            <td>
+                              <button
+                                class="btn btn-sm btn-success btn-hr-approve mr-1"
+                                title="Setujui"
+                              >
+                                <i class="fas fa-check"></i>
                               </button>
-                              <div class="dropdown-menu dropdown-menu-right">
-                                <a
-                                  class="dropdown-item"
-                                  href="#"
-                                  onclick="openDetailModal('1')"
-                                  ><i class="fas fa-eye mr-2 w-20"></i> Lihat
-                                  Detail</a
-                                >
-                                <a class="dropdown-item" href="#"
-                                  ><i class="fas fa-star mr-2 w-20"></i> Beri
-                                  Penilaian</a
-                                >
-                                <a class="dropdown-item" href="#"
-                                  ><i class="fas fa-print mr-2 w-20"></i>
-                                  Cetak</a
-                                >
+                              <button
+                                class="btn btn-sm btn-danger btn-hr-reject"
+                                title="Tolak"
+                              >
+                                <i class="fas fa-times"></i>
+                              </button>
+                            </td>
+                          </tr>
+                          <tr data-id="3">
+                            <td>3</td>
+                            <td>
+                              <div class="d-flex align-items-center">
+                                <div class="avatar-circle mr-2">
+                                  <i class="fas fa-user"></i>
+                                </div>
+                                Titi Hapsari
                               </div>
-                            </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
+                            </td>
+                            <td>Semester 1 - 2024/2025</td>
+                            <td><span class="font-weight-bold">78</span></td>
+                            <td>12 Jan 2026</td>
+                            <td>
+                              <span
+                                class="badge badge-soft-warning badge-pill-custom"
+                                >Pending Review</span
+                              >
+                            </td>
+                            <td>
+                              <button
+                                class="btn btn-sm btn-success btn-hr-approve mr-1"
+                                title="Setujui"
+                              >
+                                <i class="fas fa-check"></i>
+                              </button>
+                              <button
+                                class="btn btn-sm btn-danger btn-hr-reject"
+                                title="Tolak"
+                              >
+                                <i class="fas fa-times"></i>
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <!-- Tab 4: Penilaian Final -->
+                  <div
+                    class="tab-pane fade"
+                    id="final-penilaian"
+                    role="tabpanel"
+                  >
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead class="bg-light">
+                          <tr>
+                            <th>No</th>
+                            <th>Nama Guru/Karyawan</th>
+                            <th>Periode</th>
+                            <th>Skor Final</th>
+                            <th>Status</th>
+                            <th>Tanggal Approve</th>
+                            <th>Tindak Lanjut</th>
+                          </tr>
+                        </thead>
+                        <tbody id="finalTableBody">
+                          <tr>
+                            <td>1</td>
+                            <td>
+                              <div class="d-flex align-items-center">
+                                <div class="avatar-circle mr-2">
+                                  <i class="fas fa-user"></i>
+                                </div>
+                                M Rahmat Muttaqin
+                              </div>
+                            </td>
+                            <td>Semester 2 - 2023/2024</td>
+                            <td>
+                              <span class="font-weight-bold text-success"
+                                >95</span
+                              >
+                            </td>
+                            <td>
+                              <span
+                                class="badge badge-soft-success badge-pill-custom"
+                                >Sangat Baik</span
+                              >
+                            </td>
+                            <td>10 Des 2024</td>
+                            <td>
+                              <div class="btn-group">
+                                <button
+                                  class="btn btn-sm btn-outline-info btn-followup"
+                                  data-action="coaching"
+                                  title="Coaching/Training"
+                                >
+                                  <i class="fas fa-chalkboard-teacher"></i>
+                                </button>
+                                <button
+                                  class="btn btn-sm btn-outline-warning btn-followup"
+                                  data-action="warning"
+                                  title="Peringatan"
+                                >
+                                  <i class="fas fa-exclamation-triangle"></i>
+                                </button>
+                                <button
+                                  class="btn btn-sm btn-outline-success btn-followup"
+                                  data-action="appreciation"
+                                  title="Apresiasi"
+                                >
+                                  <i class="fas fa-award"></i>
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>2</td>
+                            <td>
+                              <div class="d-flex align-items-center">
+                                <div class="avatar-circle mr-2">
+                                  <i class="fas fa-user"></i>
+                                </div>
+                                Qorin Rahmaniyah, S.Pd.
+                              </div>
+                            </td>
+                            <td>Semester 2 - 2023/2024</td>
+                            <td>
+                              <span class="font-weight-bold text-primary"
+                                >82</span
+                              >
+                            </td>
+                            <td>
+                              <span
+                                class="badge badge-soft-primary badge-pill-custom"
+                                >Baik</span
+                              >
+                            </td>
+                            <td>10 Des 2024</td>
+                            <td>
+                              <div class="btn-group">
+                                <button
+                                  class="btn btn-sm btn-outline-info btn-followup"
+                                  data-action="coaching"
+                                  title="Coaching/Training"
+                                >
+                                  <i class="fas fa-chalkboard-teacher"></i>
+                                </button>
+                                <button
+                                  class="btn btn-sm btn-outline-warning btn-followup"
+                                  data-action="warning"
+                                  title="Peringatan"
+                                >
+                                  <i class="fas fa-exclamation-triangle"></i>
+                                </button>
+                                <button
+                                  class="btn btn-sm btn-outline-success btn-followup"
+                                  data-action="appreciation"
+                                  title="Apresiasi"
+                                >
+                                  <i class="fas fa-award"></i>
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>3</td>
+                            <td>
+                              <div class="d-flex align-items-center">
+                                <div class="avatar-circle mr-2">
+                                  <i class="fas fa-user"></i>
+                                </div>
+                                Dian Permata Sari, S.Pd.
+                              </div>
+                            </td>
+                            <td>Semester 2 - 2023/2024</td>
+                            <td>
+                              <span class="font-weight-bold text-danger"
+                                >58</span
+                              >
+                            </td>
+                            <td>
+                              <span
+                                class="badge badge-soft-danger badge-pill-custom"
+                                >Perlu Perbaikan</span
+                              >
+                            </td>
+                            <td>10 Des 2024</td>
+                            <td>
+                              <div class="btn-group">
+                                <button
+                                  class="btn btn-sm btn-info btn-followup"
+                                  data-action="coaching"
+                                  title="Coaching/Training"
+                                >
+                                  <i class="fas fa-chalkboard-teacher"></i>
+                                </button>
+                                <button
+                                  class="btn btn-sm btn-outline-warning btn-followup"
+                                  data-action="warning"
+                                  title="Peringatan"
+                                >
+                                  <i class="fas fa-exclamation-triangle"></i>
+                                </button>
+                                <button
+                                  class="btn btn-sm btn-outline-success btn-followup"
+                                  data-action="appreciation"
+                                  title="Apresiasi"
+                                >
+                                  <i class="fas fa-award"></i>
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -769,6 +1019,119 @@
         <!-- /.content -->
       </div>
       <!-- /.content-wrapper -->
+
+      <!-- HR Review Modal -->
+      <div
+        class="modal fade"
+        id="hrReviewModal"
+        tabindex="-1"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content card-custom border-0">
+            <div class="modal-header border-bottom-0 pb-0">
+              <h5 class="modal-title font-weight-bold" id="hrReviewTitle">
+                <i class="fas fa-user-tie mr-2 text-info"></i>Review HR
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body text-center py-4">
+              <i class="fas fa-clipboard-check fa-4x text-info mb-3"></i>
+              <p class="font-weight-bold mb-1" id="hrReviewMessage">
+                Konfirmasi Review Penilaian
+              </p>
+              <p class="text-muted small" id="hrReviewSubtext">
+                Pilih tindakan untuk penilaian ini.
+              </p>
+            </div>
+            <div class="modal-footer border-top-0 justify-content-center">
+              <button
+                type="button"
+                class="btn btn-success px-4"
+                id="btnConfirmApprove"
+              >
+                <i class="fas fa-check mr-1"></i> Setujui
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger px-4"
+                id="btnConfirmReject"
+              >
+                <i class="fas fa-times mr-1"></i> Tolak (Revisi)
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Follow-up Action Modal -->
+      <div
+        class="modal fade"
+        id="followupModal"
+        tabindex="-1"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content card-custom border-0">
+            <div class="modal-header border-bottom-0">
+              <h5 class="modal-title font-weight-bold" id="followupTitle">
+                <i class="fas fa-tasks mr-2 text-primary"></i>Tindak Lanjut
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label><strong>Jenis Tindak Lanjut</strong></label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="followupType"
+                  readonly
+                />
+              </div>
+              <div class="form-group">
+                <label><strong>Catatan</strong></label>
+                <textarea
+                  class="form-control"
+                  id="followupNotes"
+                  rows="3"
+                  placeholder="Tambahkan catatan tindak lanjut..."
+                ></textarea>
+              </div>
+            </div>
+            <div class="modal-footer border-top-0">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Batal
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                id="btnSaveFollowup"
+              >
+                <i class="fas fa-save mr-1"></i> Simpan
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <footer class="main-footer">
         <strong
@@ -797,10 +1160,186 @@
 
     <!-- AdminLTE App -->
     <script src="./js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <!-- <script src="./js/demo.js"></script> -->
     <script>
-      lucide.createIcons();
+      $(document).ready(function () {
+        lucide.createIcons();
+
+        // Data guru/karyawan per periode
+        const guruData = {
+          "sem1-2024": [
+            { id: 1, nama: "Muhammad Yusril" },
+            { id: 2, nama: "Rini Budi Rahayu, S.Pd." },
+            { id: 3, nama: "Ulfasiyah, S.S." },
+            { id: 4, nama: "Titi Hapsari" },
+            { id: 5, nama: "Graciela Evanda R., S.Kom." },
+          ],
+          "sem2-2024": [
+            { id: 1, nama: "Muhammad Yusril" },
+            { id: 2, nama: "Rini Budi Rahayu, S.Pd." },
+            { id: 6, nama: "M Rahmat Muttaqin" },
+            { id: 7, nama: "Qorin Rahmaniyah, S.Pd." },
+          ],
+          "sem1-2025": [
+            { id: 1, nama: "Muhammad Yusril" },
+            { id: 2, nama: "Rini Budi Rahayu, S.Pd." },
+            { id: 3, nama: "Ulfasiyah, S.S." },
+            { id: 6, nama: "M Rahmat Muttaqin" },
+          ],
+        };
+
+        // Handle periode selection
+        $("#selectPeriode").change(function () {
+          const periode = $(this).val();
+          const guruSelect = $("#selectGuru");
+          guruSelect
+            .empty()
+            .append(
+              '<option value="" selected disabled>-- Pilih Guru/Karyawan --</option>',
+            );
+
+          if (periode && guruData[periode]) {
+            guruData[periode].forEach(function (guru) {
+              guruSelect.append(
+                `<option value="${guru.id}">${guru.nama}</option>`,
+              );
+            });
+            guruSelect.prop("disabled", false);
+          } else {
+            guruSelect.prop("disabled", true);
+          }
+          $("#formPenilaian").hide();
+        });
+
+        // Handle guru selection
+        $("#selectGuru").change(function () {
+          if ($(this).val()) {
+            $("#formPenilaian").slideDown();
+          } else {
+            $("#formPenilaian").slideUp();
+          }
+        });
+
+        // Simpan Draft
+        $("#btnSimpanDraft").click(function () {
+          const guru = $("#selectGuru option:selected").text();
+          if (!guru || guru.includes("Pilih")) {
+            alert("Silakan pilih guru/karyawan terlebih dahulu.");
+            return;
+          }
+          alert(`Penilaian untuk ${guru} disimpan sebagai Draft.`);
+          // Reset form
+          $("#formPenilaian").hide();
+          $("#selectPeriode").val("");
+          $("#selectGuru").val("").prop("disabled", true);
+          $("a[href='#draft-penilaian']").tab("show");
+        });
+
+        // Submit untuk Review
+        $("#btnSubmitReview").click(function () {
+          const guru = $("#selectGuru option:selected").text();
+          if (!guru || guru.includes("Pilih")) {
+            alert("Silakan pilih guru/karyawan terlebih dahulu.");
+            return;
+          }
+          alert(`Penilaian untuk ${guru} telah disubmit untuk Review HR.`);
+          // Reset form
+          $("#formPenilaian").hide();
+          $("#selectPeriode").val("");
+          $("#selectGuru").val("").prop("disabled", true);
+          $("a[href='#review-penilaian']").tab("show");
+        });
+
+        // Submit from Draft
+        $(".btn-submit-draft").click(function () {
+          const row = $(this).closest("tr");
+          const nama = row.find("td:eq(1)").text().trim();
+          alert(`Penilaian untuk ${nama} telah disubmit untuk Review HR.`);
+          row.fadeOut(300, function () {
+            $(this).remove();
+          });
+        });
+
+        // HR Review - Approve
+        let currentReviewRow = null;
+        $(".btn-hr-approve").click(function () {
+          currentReviewRow = $(this).closest("tr");
+          $("#hrReviewMessage").text("Setujui Penilaian Ini?");
+          $("#hrReviewSubtext").text(
+            "Penilaian akan masuk ke Penilaian Final.",
+          );
+          $("#hrReviewModal").modal("show");
+        });
+
+        // HR Review - Reject
+        $(".btn-hr-reject").click(function () {
+          currentReviewRow = $(this).closest("tr");
+          const nama = currentReviewRow.find("td:eq(1)").text().trim();
+          alert(
+            `Penilaian untuk ${nama} ditolak. Dikembalikan ke Draft untuk revisi.`,
+          );
+          currentReviewRow.fadeOut(300, function () {
+            $(this).remove();
+          });
+        });
+
+        // Confirm Approve
+        $("#btnConfirmApprove").click(function () {
+          if (currentReviewRow) {
+            const nama = currentReviewRow.find("td:eq(1)").text().trim();
+            alert(
+              `Penilaian untuk ${nama} disetujui dan masuk ke Penilaian Final.`,
+            );
+            currentReviewRow.fadeOut(300, function () {
+              $(this).remove();
+            });
+            $("#hrReviewModal").modal("hide");
+          }
+        });
+
+        // Confirm Reject
+        $("#btnConfirmReject").click(function () {
+          if (currentReviewRow) {
+            const nama = currentReviewRow.find("td:eq(1)").text().trim();
+            alert(
+              `Penilaian untuk ${nama} ditolak. Dikembalikan ke Draft untuk revisi.`,
+            );
+            currentReviewRow.fadeOut(300, function () {
+              $(this).remove();
+            });
+            $("#hrReviewModal").modal("hide");
+          }
+        });
+
+        // Follow-up Actions
+        $(".btn-followup").click(function () {
+          const action = $(this).data("action");
+          let actionText = "";
+          switch (action) {
+            case "coaching":
+              actionText = "Coaching / Training";
+              break;
+            case "warning":
+              actionText = "Peringatan";
+              break;
+            case "appreciation":
+              actionText = "Apresiasi";
+              break;
+          }
+          $("#followupType").val(actionText);
+          $("#followupNotes").val("");
+          $("#followupModal").modal("show");
+        });
+
+        // Save Follow-up
+        $("#btnSaveFollowup").click(function () {
+          const type = $("#followupType").val();
+          const notes = $("#followupNotes").val();
+          alert(
+            `Tindak lanjut "${type}" berhasil disimpan.${notes ? "\nCatatan: " + notes : ""}`,
+          );
+          $("#followupModal").modal("hide");
+        });
+      });
     </script>
   </body>
 </html>

@@ -475,6 +475,12 @@
                             </td>
                             <td>
                               <button
+                                class="btn btn-sm btn-primary"
+                                title="Download Surat"
+                              >
+                                <i class="fa fa-download"></i>
+                              </button>
+                              <button
                                 class="btn btn-sm btn-info"
                                 title="Detail surat"
                                 data-toggle="modal"
@@ -506,12 +512,10 @@
                             </td>
                             <td>
                               <button
-                                class="btn btn-sm btn-info"
-                                title="Detail surat"
-                                data-toggle="modal"
-                                data-target="#detailSuratModal"
+                                class="btn btn-sm btn-success btn-ajukan"
+                                title="Ajukan Persetujuan"
                               >
-                                <i class="fa fa-circle-info"></i>
+                                <i class="fa fa-paper-plane mr-1"></i> Ajukan
                               </button>
                               <button
                                 class="btn btn-sm btn-primary"
@@ -543,12 +547,10 @@
                             </td>
                             <td>
                               <button
-                                class="btn btn-sm btn-info"
-                                title="Detail surat"
-                                data-toggle="modal"
-                                data-target="#detailSuratModal"
+                                class="btn btn-sm btn-success btn-ajukan"
+                                title="Ajukan Persetujuan"
                               >
-                                <i class="fa fa-circle-info"></i>
+                                <i class="fa fa-paper-plane mr-1"></i> Ajukan
                               </button>
                               <button
                                 class="btn btn-sm btn-primary"
@@ -580,12 +582,10 @@
                             </td>
                             <td>
                               <button
-                                class="btn btn-sm btn-info"
-                                title="Detail surat"
-                                data-toggle="modal"
-                                data-target="#detailSuratModal"
+                                class="btn btn-sm btn-success btn-ajukan"
+                                title="Ajukan Persetujuan"
                               >
-                                <i class="fa fa-circle-info"></i>
+                                <i class="fa fa-paper-plane mr-1"></i> Ajukan
                               </button>
                               <button
                                 class="btn btn-sm btn-primary"
@@ -617,15 +617,7 @@
                             </td>
                             <td>
                               <button
-                                class="btn btn-sm btn-info"
-                                title="Detail surat"
-                                data-toggle="modal"
-                                data-target="#detailSuratModal"
-                              >
-                                <i class="fa fa-circle-info"></i>
-                              </button>
-                              <button
-                                class="btn btn-sm btn-primary"
+                                class="btn btn-sm btn-warning"
                                 title="Edit surat"
                               >
                                 <i class="fa fa-pen-to-square"></i>
@@ -660,15 +652,7 @@
                             </td>
                             <td>
                               <button
-                                class="btn btn-sm btn-info"
-                                title="Detail surat"
-                                data-toggle="modal"
-                                data-target="#detailSuratModal"
-                              >
-                                <i class="fa fa-circle-info"></i>
-                              </button>
-                              <button
-                                class="btn btn-sm btn-primary"
+                                class="btn btn-sm btn-warning"
                                 title="Edit surat"
                               >
                                 <i class="fa fa-pen-to-square"></i>
@@ -757,6 +741,59 @@
         </div>
       </div>
 
+      <!-- Simulation Modal -->
+      <div
+        class="modal fade"
+        id="simulationModal"
+        tabindex="-1"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content card-custom border-0">
+            <div class="modal-header border-bottom-0 pb-0">
+              <h5 class="modal-title text-info font-weight-bold">
+                <i class="fas fa-user-check mr-2"></i>Konfirmasi Pengajuan
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body text-center">
+              <div class="py-4">
+                <i class="fas fa-file-contract fa-4x text-info mb-3"></i>
+                <p class="mb-0 font-weight-bold">
+                  Simulasi Persetujuan Surat Tugas
+                </p>
+                <p class="text-muted small">
+                  Sebagai atasan, apa tindakan Anda?
+                </p>
+              </div>
+              <div class="d-flex justify-content-center">
+                <button
+                  type="button"
+                  class="btn btn-success mx-2 px-4"
+                  id="btnApprove"
+                >
+                  <i class="fas fa-check mr-1"></i> Setujui
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-danger mx-2 px-4"
+                  id="btnReject"
+                >
+                  <i class="fas fa-times mr-1"></i> Tolak
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div
         class="modal fade"
         id="buatSuratModal"
@@ -785,6 +822,56 @@
                   <div class="form-row row-cols-1">
                     <div class="col">
                       <div class="form-group">
+                        <label for="judul">Judul / Nomor Surat</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="judul"
+                          placeholder="Masukkan judul disini"
+                        />
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-group">
+                        <label for="tujuan">Tujuan Kegiatan</label>
+                        <textarea
+                          class="form-control"
+                          id="tujuan"
+                          placeholder="Masukkan Tujuan disini"
+                          rows="2"
+                          style="resize: none"
+                        ></textarea>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label for="tanggal">Tanggal </label>
+                        <input
+                          type="date"
+                          class="form-control"
+                          id="tanggal"
+                          placeholder="Masukkan Tanggal disini"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label for="periode">Periode</label>
+                        <select
+                          name="periode"
+                          id="periode"
+                          class="custom-select"
+                        >
+                          <option value="" disabled selected>
+                            Pilih Periode
+                          </option>
+                          <option value="">Tahun Ajaran 2024/2025</option>
+                          <option value="">Tahun Ajaran 2025/2026</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
                         <label for="staffInput">Staff Bertugas</label>
                         <select
                           name="staff"
@@ -802,46 +889,6 @@
                         </select>
                       </div>
                     </div>
-                    <div class="col">
-                      <div class="form-group">
-                        <label for="acara">Acara</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="acara"
-                          placeholder="Masukkan Acara disini"
-                        />
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="form-group">
-                        <label for="deskripsi">Deskripsi</label>
-                        <textarea
-                          class="form-control"
-                          id="deskripsi"
-                          placeholder="Masukkan Deskripsi  disini"
-                          rows="2"
-                          style="resize: none"
-                        ></textarea>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="form-group">
-                        <label for="undangan">Undangan Dari</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="undangan"
-                          placeholder="Masukkan Undangan Dari disini"
-                        />
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="form-group">
-                        <label for="tanggalDiterbitkan">Tanggal & Waktu</label>
-                        <textarea class="form-control tiny"> </textarea>
-                      </div>
-                    </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="kegiatan">Kegiatan Secara</label>
@@ -851,6 +898,7 @@
                         </select>
                       </div>
                     </div>
+
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="lokasi">Lokasi Acara</label>
@@ -860,6 +908,22 @@
                           id="lokasi"
                           placeholder="Masukkan Lokasi Acara disini"
                         />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="lampiran">Lampiran</label>
+                        <div class="custom-file">
+                          <input
+                            type="file"
+                            name="lampiran"
+                            id="lampiran"
+                            class="custom-file-input"
+                          />
+                          <label for="lampiran" class="custom-file-label">
+                            Pilih File</label
+                          >
+                        </div>
                       </div>
                     </div>
                     <div class="col">
@@ -921,6 +985,72 @@
             ).length
           ) {
             e.stopImmediatePropagation();
+          }
+        });
+
+        // --- Logic Approval Simulation ---
+        let currentRow;
+
+        // Saat tombol "Ajukan" diklik
+        $(".btn-ajukan").click(function () {
+          // Simpan referensi baris saat ini (TR)
+          currentRow = $(this).closest("tr");
+          // Tampilkan Modal Simulasi
+          $("#simulationModal").modal("show");
+        });
+
+        // Saat tombol "Setujui" diklik
+        $("#btnApprove").click(function () {
+          if (currentRow) {
+            // Ubah Status Badges
+            const badgeSpan = currentRow.find(".badge");
+            badgeSpan
+              .removeClass("badge-soft-secondary")
+              .addClass("badge-soft-success")
+              .text("Aktif");
+
+            // Ubah Tombol "Ajukan" menjadi "Download PDF" (Simulasi)
+            const btnCell = currentRow.find("td:last-child");
+            // Cari tombol ajukan dan hapus/ganti
+            const btnAjukan = btnCell.find(".btn-ajukan");
+
+            // Ganti tombol Ajukan dengan tombol Download
+            const btnDownload = `
+                <button class="btn btn-sm btn-primary" title="Download Surat">
+                    <i class="fa fa-download"></i>
+                </button>
+                <button class="btn btn-sm btn-info" title="Detail surat" data-toggle="modal" data-target="#detailSuratModal">
+                     <i class="fa fa-circle-info"></i>
+                </button>
+            `;
+
+            // Kita replace tombol ajukan dan tombol edit/hapus yg mungkin ada,
+            // Sisakan tombol download dan detail (opsional, tergantung kebutuhan)
+            // Di sini kita replace innerHTML dari cell terakhir untuk simplifikasi simulasi
+            btnCell.html(btnDownload);
+
+            // Tutup modal
+            $("#simulationModal").modal("hide");
+
+            // Tampilkan notifikasi/alert
+            alert("Surat berhasil disetujui! PDF Surat telah digenerate.");
+
+            // Simulasi selesai
+          }
+        });
+
+        // Saat tombol "Tolak" diklik
+        $("#btnReject").click(function () {
+          if (currentRow) {
+            // Ubah status jadi Draft (atau Revisi) jika belum
+            // Di kasus ini asumsikan tetap draft tapi tombol edit enabled
+
+            // Tutup modal
+            $("#simulationModal").modal("hide");
+
+            alert("Surat ditolak. Silahkan edit kembali (Masuk ke Draft).");
+
+            // Logic tambahan: Mungkin highlight baris atau apa
           }
         });
       });
