@@ -17,6 +17,10 @@
       rel="stylesheet"
       href="./plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="./plugins/daterangepicker/daterangepicker.css"
+    />
 
     <style>
       .bg-blue-soft {
@@ -307,10 +311,18 @@
                   <div class="card-tools">
                     <div class="row align-items-center" style="gap: 5px">
                       <div class="col">
-                        <button class="btn btn-primary btn-block">
-                          <i class="fa fa-archive"></i>
-                          Kelas Archive
-                        </button>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">
+                              <i class="far fa-calendar-alt"></i>
+                            </span>
+                          </div>
+                          <input
+                            type="text"
+                            class="form-control float-right"
+                            id="reservation"
+                          />
+                        </div>
                       </div>
                       <div class="col">
                         <div class="input-group">
@@ -417,366 +429,193 @@
                           </select>
                         </div>
                       </div>
+                      <div class="col">
+                        <button class="btn btn-success" role="button">
+                          <i class="fa fa-filter"></i>
+                          Filter
+                        </button>
+                        <button class="btn btn-danger" role="button">
+                          <i class="fa fa-close"></i>
+                          Batalkan
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
 
                 <div class="card-body">
-                  <div class="accordion" id="LaporanKelasWeek">
-                    <div class="card card-custom">
-                      <div class="card-header" id="headingThree">
-                        <h2 class="mb-0">
-                          <button
-                            class="btn btn-link btn-block text-left"
-                            type="button"
-                            data-toggle="collapse"
-                            data-target="#collapseThree"
-                            aria-expanded="false"
-                            aria-controls="collapseThree"
-                          >
-                            <div
-                              class="d-flex align-items-center"
-                              style="gap: 5px"
+                  <div class="table-responsive-lg">
+                    <table class="table table-borderless">
+                      <thead>
+                        <tr>
+                          <th>Tanggal</th>
+                          <th>Nama Guru</th>
+                          <th>Rombel / Kursus</th>
+                          <th>Tags</th>
+                          <th>Aksi</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <div class="d-flex flex-column">
+                              <span class="text-muted small">
+                                <i class="fas fa-calendar"></i>
+                                Mon, Jan 20
+                              </span>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="d-flex flex-column">
+                              <span class="text-muted small"
+                                >Muhammad Yusril Romadhoni</span
+                              >
+                            </div>
+                          </td>
+                          <td>
+                            <div class="d-flex flex-column">
+                              <span class="text-muted small"
+                                >Coding 1C Curious Creators / LEAP - Coding
+                                Class 2025</span
+                              >
+                            </div>
+                          </td>
+                          <td>
+                            <div class="d-flex flex-column">
+                              <span class="text-muted small"
+                                ><i class="fas fa-tags"></i> Update Diskusi,
+                                Progress Siswa</span
+                              >
+                            </div>
+                          </td>
+                          <td>
+                            <button
+                              class="btn btn-sm btn-light text-primary font-weight-bold"
+                              data-toggle="modal"
+                              data-target="#readFullReportModal"
+                              title="Baca Laporan"
                             >
-                              <div
-                                class="align-items-center p-2 bg-blue-soft"
-                                style="border-radius: 25%"
-                              >
-                                <i data-lucide="calendar"></i>
-                              </div>
-                              <span class="text-body mr-auto"
-                                >Minggu 4: 22 Jan - 31 Jan</span
-                              >
-                              <span
-                                class="badge badge-pill badge-light border text-muted"
-                                >1 reports</span
-                              >
-                            </div>
-                          </button>
-                        </h2>
-                      </div>
-                      <div
-                        id="collapseThree"
-                        class="collapse"
-                        aria-labelledby="headingThree"
-                        data-parent="#LaporanKelasWeek"
-                      >
-                        <div class="card-body">
-                          And lastly, the placeholder content for the third and
-                          final accordion panel. This panel is hidden by
-                          default.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card card-custom">
-                      <div class="card-header" id="headingOne">
-                        <h2 class="mb-0">
-                          <button
-                            class="btn btn-link btn-block text-left"
-                            type="button"
-                            data-toggle="collapse"
-                            data-target="#collapseOne"
-                            aria-expanded="true"
-                            aria-controls="collapseOne"
-                          >
-                            <div
-                              class="d-flex align-items-center"
-                              style="gap: 5px"
+                              <i class="fab fa-readme"></i>
+                              Baca Laporan
+                            </button>
+                            <button
+                              class="btn btn-sm btn-light text-primary font-weight-bold"
+                              data-toggle="modal"
+                              data-target="#commentReportModal"
+                              title="Komentar Laporan"
                             >
-                              <div
-                                class="align-items-center p-2 bg-blue-soft"
-                                style="border-radius: 25%"
-                              >
-                                <i data-lucide="calendar"></i>
-                              </div>
-                              <span class="text-body mr-auto"
-                                >Minggu 3: Jan 15 - Jan 21</span
-                              >
-                              <span
-                                class="badge badge-pill badge-light border text-muted"
-                                >4 reports</span
+                              <i class="fa fa-comment"></i>
+                              Komentar
+                            </button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <div class="d-flex flex-column">
+                              <span class="text-muted small">
+                                <i class="fas fa-calendar"></i>
+                                Thu, Jan 19
+                              </span>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="d-flex flex-column">
+                              <span class="text-muted small"
+                                >Ulfasiyah, S.S.</span
                               >
                             </div>
-                          </button>
-                        </h2>
-                      </div>
-                      <div
-                        id="collapseOne"
-                        class="collapse show"
-                        aria-labelledby="headingOne"
-                        data-parent="#LaporanKelasWeek"
-                      >
-                        <div class="card-body">
-                          <div class="card-body">
-                            <div class="table-responsive-lg">
-                              <table class="table table-borderless">
-                                <thead>
-                                  <tr>
-                                    <th>Tanggal</th>
-                                    <th>Nama Guru</th>
-                                    <th>Rombel / Kursus</th>
-                                    <th>Tags</th>
-                                    <th>Aksi</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td>
-                                      <div class="d-flex flex-column">
-                                        <span class="text-muted small">
-                                          <i class="fas fa-calendar"></i>
-                                          Mon, Jan 20
-                                        </span>
-                                      </div>
-                                    </td>
-                                    <td>
-                                      <div class="d-flex flex-column">
-                                        <span class="text-muted small"
-                                          >Muhammad Yusril Romadhoni</span
-                                        >
-                                      </div>
-                                    </td>
-                                    <td>
-                                      <div class="d-flex flex-column">
-                                        <span class="text-muted small"
-                                          >Coding 1C Curious Creators / LEAP -
-                                          Coding Class 2025</span
-                                        >
-                                      </div>
-                                    </td>
-                                    <td>
-                                      <div class="d-flex flex-column">
-                                        <span class="text-muted small"
-                                          ><i class="fas fa-tags"></i> Update
-                                          Diskusi, Progress Siswa</span
-                                        >
-                                      </div>
-                                    </td>
-                                    <td>
-                                      <button
-                                        class="btn btn-sm btn-light text-primary font-weight-bold"
-                                        data-toggle="modal"
-                                        data-target="#readFullReportModal"
-                                        title="Baca Laporan"
-                                      >
-                                        <i class="fab fa-readme"></i>
-                                        Baca Laporan
-                                      </button>
-                                      <button
-                                        class="btn btn-sm btn-light text-primary font-weight-bold"
-                                        data-toggle="modal"
-                                        data-target="#commentReportModal"
-                                        title="Komentar Laporan"
-                                      >
-                                        <i class="fa fa-comment"></i>
-                                        Komentar
-                                      </button>
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>
-                                      <div class="d-flex flex-column">
-                                        <span class="text-muted small">
-                                          <i class="fas fa-calendar"></i>
-                                          Thu, Jan 19
-                                        </span>
-                                      </div>
-                                    </td>
-                                    <td>
-                                      <div class="d-flex flex-column">
-                                        <span class="text-muted small"
-                                          >Ulfasiyah, S.S.</span
-                                        >
-                                      </div>
-                                    </td>
-                                    <td>
-                                      <div class="d-flex flex-column">
-                                        <span class="text-muted small"
-                                          >09 GOGO 1 SR2 / LEAP - General
-                                          English 2024</span
-                                        >
-                                      </div>
-                                    </td>
-                                    <td>
-                                      <div class="d-flex flex-column">
-                                        <span class="text-muted small"
-                                          ><i class="fas fa-tags"></i>
-                                          Update Siswa Sit-in/Trial/Baru
-                                        </span>
-                                      </div>
-                                    </td>
-                                    <td>
-                                      <button
-                                        class="btn btn-sm btn-light text-primary font-weight-bold"
-                                        data-toggle="modal"
-                                        data-target="#readFullReportModal"
-                                        title="Baca Laporan"
-                                      >
-                                        <i class="fab fa-readme"></i>
-                                        Baca Laporan
-                                      </button>
-                                      <button
-                                        class="btn btn-sm btn-light text-primary font-weight-bold"
-                                        data-toggle="modal"
-                                        data-target="#commentReportModal"
-                                        title="Komentar Laporan"
-                                      >
-                                        <i class="fa fa-comment"></i>
-                                        Komentar
-                                      </button>
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>
-                                      <div class="d-flex flex-column">
-                                        <span class="text-muted small">
-                                          <i class="fas fa-calendar"></i>
-                                          Thu, Jan 16
-                                        </span>
-                                      </div>
-                                    </td>
-                                    <td>
-                                      <div class="d-flex flex-column">
-                                        <span class="text-muted small"
-                                          >Rini Budi Rahayu, S.Pd.</span
-                                        >
-                                      </div>
-                                    </td>
-                                    <td>
-                                      <div class="d-flex flex-column">
-                                        <span class="text-muted small"
-                                          >41 WINNER 6 SR3 / LEAP - General
-                                          English 2024</span
-                                        >
-                                      </div>
-                                    </td>
-                                    <td>
-                                      <div class="d-flex flex-column">
-                                        <span class="text-muted small">
-                                          <i class="fa fa-minus"></i>
-                                        </span>
-                                      </div>
-                                    </td>
-                                    <td>
-                                      <button
-                                        class="btn btn-sm btn-light text-primary font-weight-bold"
-                                        data-toggle="modal"
-                                        data-target="#readFullReportModal"
-                                        title="Baca Laporan"
-                                      >
-                                        <i class="fab fa-readme"></i>
-                                        Baca Laporan
-                                      </button>
-                                      <button
-                                        class="btn btn-sm btn-light text-primary font-weight-bold"
-                                        data-toggle="modal"
-                                        data-target="#commentReportModal"
-                                        title="Komentar Laporan"
-                                      >
-                                        <i class="fa fa-comment"></i>
-                                        Komentar
-                                      </button>
-                                    </td>
-                                  </tr>
-                                </tbody>
-                              </table>
+                          </td>
+                          <td>
+                            <div class="d-flex flex-column">
+                              <span class="text-muted small"
+                                >09 GOGO 1 SR2 / LEAP - General English
+                                2024</span
+                              >
                             </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card card-custom">
-                      <div class="card-header" id="headingTwo">
-                        <h2 class="mb-0">
-                          <button
-                            class="btn btn-link btn-block text-left"
-                            type="button"
-                            data-toggle="collapse"
-                            data-target="#collapseTwo"
-                            aria-expanded="false"
-                            aria-controls="collapseTwo"
-                          >
-                            <div
-                              class="d-flex align-items-center"
-                              style="gap: 5px"
+                          </td>
+                          <td>
+                            <div class="d-flex flex-column">
+                              <span class="text-muted small"
+                                ><i class="fas fa-tags"></i>
+                                Update Siswa Sit-in/Trial/Baru
+                              </span>
+                            </div>
+                          </td>
+                          <td>
+                            <button
+                              class="btn btn-sm btn-light text-primary font-weight-bold"
+                              data-toggle="modal"
+                              data-target="#readFullReportModal"
+                              title="Baca Laporan"
                             >
-                              <div
-                                class="align-items-center p-2 bg-blue-soft"
-                                style="border-radius: 25%"
-                              >
-                                <i data-lucide="calendar"></i>
-                              </div>
-                              <span class="text-body mr-auto"
-                                >Minggu 2: Jan 8 - Jan 14</span
-                              >
-                              <span
-                                class="badge badge-pill badge-light border text-muted"
-                                >2 reports</span
-                              >
-                            </div>
-                          </button>
-                        </h2>
-                      </div>
-                      <div
-                        id="collapseTwo"
-                        class="collapse"
-                        aria-labelledby="headingTwo"
-                        data-parent="#LaporanKelasWeek"
-                      >
-                        <div class="card-body">
-                          Lorem ipsum dolor sit amet consectetur, adipisicing
-                          elit. Deleniti quidem ad vitae obcaecati! Ea deleniti
-                          voluptates animi dignissimos voluptate error enim
-                          harum expedita? Unde provident, voluptates non
-                          suscipit expedita porro.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card card-custom">
-                      <div class="card-header" id="headingThree">
-                        <h2 class="mb-0">
-                          <button
-                            class="btn btn-link btn-block text-left"
-                            type="button"
-                            data-toggle="collapse"
-                            data-target="#collapseThree"
-                            aria-expanded="false"
-                            aria-controls="collapseThree"
-                          >
-                            <div
-                              class="d-flex align-items-center"
-                              style="gap: 5px"
+                              <i class="fab fa-readme"></i>
+                              Baca Laporan
+                            </button>
+                            <button
+                              class="btn btn-sm btn-light text-primary font-weight-bold"
+                              data-toggle="modal"
+                              data-target="#commentReportModal"
+                              title="Komentar Laporan"
                             >
-                              <div
-                                class="align-items-center p-2 bg-blue-soft"
-                                style="border-radius: 25%"
-                              >
-                                <i data-lucide="calendar"></i>
-                              </div>
-                              <span class="text-body mr-auto"
-                                >Minggu 1: Jan 1 - Jan 7</span
-                              >
-                              <span
-                                class="badge badge-pill badge-light border text-muted"
-                                >1 reports</span
+                              <i class="fa fa-comment"></i>
+                              Komentar
+                            </button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <div class="d-flex flex-column">
+                              <span class="text-muted small">
+                                <i class="fas fa-calendar"></i>
+                                Thu, Jan 16
+                              </span>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="d-flex flex-column">
+                              <span class="text-muted small"
+                                >Rini Budi Rahayu, S.Pd.</span
                               >
                             </div>
-                          </button>
-                        </h2>
-                      </div>
-                      <div
-                        id="collapseThree"
-                        class="collapse"
-                        aria-labelledby="headingThree"
-                        data-parent="#LaporanKelasWeek"
-                      >
-                        <div class="card-body">
-                          And lastly, the placeholder content for the third and
-                          final accordion panel. This panel is hidden by
-                          default.
-                        </div>
-                      </div>
-                    </div>
+                          </td>
+                          <td>
+                            <div class="d-flex flex-column">
+                              <span class="text-muted small"
+                                >41 WINNER 6 SR3 / LEAP - General English
+                                2024</span
+                              >
+                            </div>
+                          </td>
+                          <td>
+                            <div class="d-flex flex-column">
+                              <span class="text-muted small">
+                                <i class="fa fa-minus"></i>
+                              </span>
+                            </div>
+                          </td>
+                          <td>
+                            <button
+                              class="btn btn-sm btn-light text-primary font-weight-bold"
+                              data-toggle="modal"
+                              data-target="#readFullReportModal"
+                              title="Baca Laporan"
+                            >
+                              <i class="fab fa-readme"></i>
+                              Baca Laporan
+                            </button>
+                            <button
+                              class="btn btn-sm btn-light text-primary font-weight-bold"
+                              data-toggle="modal"
+                              data-target="#commentReportModal"
+                              title="Komentar Laporan"
+                            >
+                              <i class="fa fa-comment"></i>
+                              Komentar
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
@@ -1024,15 +863,20 @@ Sesi ke-23 dilaksanakan secara hybrid dan dihadiri oleh seluruh siswa tepat wakt
 
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <script src="./plugins/select2/js/select2.full.min.js"></script>
+    <script src="./plugins/moment/moment.min.js"></script>
+    <script src="./plugins/daterangepicker/daterangepicker.js"></script>
 
     <!-- AdminLTE App -->
     <script src="./js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <!-- <script src="./js/demo.js"></script> -->
     <script>
-      lucide.createIcons();
-      $("#tags").select2({
-        theme: "bootstrap4",
+      document.addEventListener("DOMContentLoaded", () => {
+        lucide.createIcons();
+        $("#tags").select2({
+          theme: "bootstrap4",
+        });
+        $("#reservation").daterangepicker();
       });
     </script>
   </body>

@@ -338,7 +338,7 @@
         <section class="content">
           <div class="container-fluid">
             <div class="row">
-              <div class="col-md-3 col-sm-6 mb-3">
+              <div class="col-md-4 col-sm-6 mb-3">
                 <div class="card card-custom h-100">
                   <div
                     class="card-body d-flex justify-content-between align-items-center"
@@ -356,7 +356,7 @@
                 </div>
               </div>
               <!-- Excellent Teachers -->
-              <div class="col-md-3 col-sm-6 mb-3">
+              <div class="col-md-4 col-sm-6 mb-3">
                 <div class="card card-custom h-100">
                   <div
                     class="card-body d-flex justify-content-between align-items-center"
@@ -375,7 +375,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-3 col-sm-6 mb-3">
+              <div class="col-md-4 col-sm-6 mb-3">
                 <div class="card card-custom h-100">
                   <div
                     class="card-body d-flex justify-content-between align-items-center"
@@ -394,7 +394,45 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-3 col-sm-6 mb-3">
+              <div class="col-md-4 col-sm-6 mb-3">
+                <div class="card card-custom h-100">
+                  <div
+                    class="card-body d-flex justify-content-between align-items-center"
+                  >
+                    <div class="mr-auto">
+                      <p class="text-muted small font-weight-bold mb-1">
+                        Disetujui
+                      </p>
+                      <h3 class="font-weight-bold mb-0" id="statDisetujui">
+                        1
+                      </h3>
+                    </div>
+                    <div class="icon-circle badge-soft-success">
+                      <i class="fas fa-file-circle-check"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6 mb-3">
+                <div class="card card-custom h-100">
+                  <div
+                    class="card-body d-flex justify-content-between align-items-center"
+                  >
+                    <div class="mr-auto">
+                      <p class="text-muted small font-weight-bold mb-1">
+                        Tidak disetujui
+                      </p>
+                      <h3 class="font-weight-bold mb-0" id="statTidakDisetujui">
+                        1
+                      </h3>
+                    </div>
+                    <div class="icon-circle bg-soft-red">
+                      <i class="fas fa-file-circle-minus"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6 mb-3">
                 <div class="card card-custom h-100">
                   <div
                     class="card-body d-flex justify-content-between align-items-center"
@@ -475,12 +513,6 @@
                             </td>
                             <td>
                               <button
-                                class="btn btn-sm btn-primary"
-                                title="Download Surat"
-                              >
-                                <i class="fa fa-download"></i>
-                              </button>
-                              <button
                                 class="btn btn-sm btn-info"
                                 title="Detail surat"
                                 data-toggle="modal"
@@ -506,22 +538,18 @@
                             <td>5 Juni 2024, 09:00 - 11:00</td>
                             <td>
                               <span
-                                class="badge badge-pill-custom badge-soft-warning"
-                                >Menunggu Konfirmasi</span
+                                class="badge badge-pill-custom badge-soft-success"
+                                >Disetujui oleh kadiv</span
                               >
                             </td>
                             <td>
                               <button
-                                class="btn btn-sm btn-success btn-ajukan"
-                                title="Ajukan Persetujuan"
+                                class="btn btn-sm btn-info"
+                                title="Detail surat"
+                                data-toggle="modal"
+                                data-target="#detailSuratModal"
                               >
-                                <i class="fa fa-paper-plane mr-1"></i> Ajukan
-                              </button>
-                              <button
-                                class="btn btn-sm btn-primary"
-                                title="Edit surat"
-                              >
-                                <i class="fa fa-pen-to-square"></i>
+                                <i class="fa fa-circle-info"></i>
                               </button>
                             </td>
                           </tr>
@@ -548,15 +576,17 @@
                             <td>
                               <button
                                 class="btn btn-sm btn-success btn-ajukan"
-                                title="Ajukan Persetujuan"
+                                title="Setujui Surat Tugas"
                               >
-                                <i class="fa fa-paper-plane mr-1"></i> Ajukan
+                                <i class="fa fa-check"></i>
                               </button>
                               <button
-                                class="btn btn-sm btn-primary"
-                                title="Edit surat"
+                                class="btn btn-sm btn-info"
+                                title="Detail surat"
+                                data-toggle="modal"
+                                data-target="#detailSuratModal"
                               >
-                                <i class="fa fa-pen-to-square"></i>
+                                <i class="fa fa-circle-info"></i>
                               </button>
                             </td>
                           </tr>
@@ -583,15 +613,17 @@
                             <td>
                               <button
                                 class="btn btn-sm btn-success btn-ajukan"
-                                title="Ajukan Persetujuan"
+                                title="Setujui Surat Tugas"
                               >
-                                <i class="fa fa-paper-plane mr-1"></i> Ajukan
+                                <i class="fa fa-check"></i>
                               </button>
                               <button
-                                class="btn btn-sm btn-primary"
-                                title="Edit surat"
+                                class="btn btn-sm btn-info"
+                                title="Detail surat"
+                                data-toggle="modal"
+                                data-target="#detailSuratModal"
                               >
-                                <i class="fa fa-pen-to-square"></i>
+                                <i class="fa fa-circle-info"></i>
                               </button>
                             </td>
                           </tr>
@@ -617,11 +649,12 @@
                             </td>
                             <td>
                               <button
-                                class="btn btn-sm btn-warning"
-                                title="Edit surat"
+                                class="btn btn-sm btn-secondary btn-ajukan"
+                                title="Kembalikan Surat Tugas"
                               >
-                                <i class="fa fa-pen-to-square"></i>
+                                <i class="fa fa-arrow-rotate-right"></i>
                               </button>
+
                               <button
                                 class="btn btn-sm btn-danger"
                                 title="Hapus surat"
@@ -652,10 +685,45 @@
                             </td>
                             <td>
                               <button
-                                class="btn btn-sm btn-warning"
-                                title="Edit surat"
+                                class="btn btn-sm btn-secondary btn-ajukan"
+                                title="Kembalikan Surat Tugas"
                               >
-                                <i class="fa fa-pen-to-square"></i>
+                                <i class="fa fa-arrow-rotate-right"></i>
+                              </button>
+                              <button
+                                class="btn btn-sm btn-danger"
+                                title="Hapus surat"
+                              >
+                                <i class="fa fa-trash"></i>
+                              </button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>7</td>
+                            <td>Penyusunan Laporan Akhir Tahun Ajaran</td>
+                            <td>
+                              <div class="d-flex align-items-center">
+                                <div
+                                  class="avatar-circle mr-2 d-md-flex d-none"
+                                >
+                                  QR
+                                </div>
+                                Qorin Rahmaniyah, S.Pd.
+                              </div>
+                            </td>
+                            <td>25 Mei 2024, 09:00 - 11:00</td>
+                            <td>
+                              <span
+                                class="badge badge-pill-custom badge-soft-danger"
+                                >Tidak disetujui</span
+                              >
+                            </td>
+                            <td>
+                              <button
+                                class="btn btn-sm btn-info"
+                                title="Detail surat"
+                              >
+                                <i class="fa fa-circle-info"></i>
                               </button>
                               <button
                                 class="btn btn-sm btn-danger"
@@ -1002,40 +1070,17 @@
         // Saat tombol "Setujui" diklik
         $("#btnApprove").click(function () {
           if (currentRow) {
-            // Ubah Status Badges
             const badgeSpan = currentRow.find(".badge");
             badgeSpan
-              .removeClass("badge-soft-secondary")
+              .removeClass("badge-soft-warning")
               .addClass("badge-soft-success")
-              .text("Aktif");
+              .text("Disetujui oleh kadiv");
 
-            // Ubah Tombol "Ajukan" menjadi "Download PDF" (Simulasi)
             const btnCell = currentRow.find("td:last-child");
-            // Cari tombol ajukan dan hapus/ganti
             const btnAjukan = btnCell.find(".btn-ajukan");
+            btnAjukan.remove();
 
-            // Ganti tombol Ajukan dengan tombol Download
-            const btnDownload = `
-                <button class="btn btn-sm btn-primary" title="Download Surat">
-                    <i class="fa fa-download"></i>
-                </button>
-                <button class="btn btn-sm btn-info" title="Detail surat" data-toggle="modal" data-target="#detailSuratModal">
-                     <i class="fa fa-circle-info"></i>
-                </button>
-            `;
-
-            // Kita replace tombol ajukan dan tombol edit/hapus yg mungkin ada,
-            // Sisakan tombol download dan detail (opsional, tergantung kebutuhan)
-            // Di sini kita replace innerHTML dari cell terakhir untuk simplifikasi simulasi
-            btnCell.html(btnDownload);
-
-            // Tutup modal
             $("#simulationModal").modal("hide");
-
-            // Tampilkan notifikasi/alert
-            alert("Surat berhasil disetujui! PDF Surat telah digenerate.");
-
-            // Simulasi selesai
           }
         });
 
