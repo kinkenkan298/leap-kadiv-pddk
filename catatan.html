@@ -12,6 +12,10 @@
 
     <!-- Theme style -->
     <link rel="stylesheet" href="./css/adminlte.min.css" />
+    <link
+      rel="stylesheet"
+      href="./plugins/daterangepicker/daterangepicker.css"
+    />
     <style>
       /* Soft Badges */
       .badge-soft-success {
@@ -179,7 +183,7 @@
               <li class="nav-item">
                 <a href="./penilian.html" class="nav-link">
                   <i data-lucide="award"></i>
-                  <p>Penilian Kinerja</p>
+                  <p>Penilaian Kinerja</p>
                 </a>
               </li>
               <li class="nav-header">PENGATURAN</li>
@@ -222,21 +226,95 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Daftar Siswa</h3>
                   <div class="card-tools">
                     <div
-                      class="input-group input-group-sm"
-                      style="width: 150px"
+                      class="row align-items-center justify-content-end"
+                      style="gap: 5px"
                     >
-                      <input
-                        type="text"
-                        name="table_search"
-                        class="form-control float-right"
-                        placeholder="Search"
-                      />
-                      <div class="input-group-append">
-                        <button type="submit" class="btn btn-default">
-                          <i class="fas fa-search"></i>
+                      <div class="col">
+                        <div class="input-group">
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Search"
+                          />
+                          <div class="input-group-append">
+                            <button type="submit" class="btn btn-default">
+                              <i class="fas fa-search"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">
+                              <i class="far fa-calendar-alt"></i>
+                            </span>
+                          </div>
+                          <input
+                            type="text"
+                            class="form-control float-right"
+                            id="reservation"
+                          />
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span
+                              class="input-group-text bg-white border-right-0"
+                              ><i class="fas fa-user text-muted"></i
+                            ></span>
+                          </div>
+                          <select
+                            class="custom-select border-left-0"
+                            id="filterKursus"
+                          >
+                            <option selected disabled value="">
+                              Pilih Guru
+                            </option>
+                            <option value="">Muhammad Yusril Romadhon</option>
+                            <option value="">Qorin Rahmaniyah, S.Pd.</option>
+                            <option value="">
+                              Graciela Evanda Ronadi, S.Kom
+                            </option>
+                            <option value="">Nabila Khoirunnisa, S.Pd.</option>
+                            <option value="">Luluk Fatikah Sari, S.Pd.</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span
+                              class="input-group-text bg-white border-right-0"
+                              ><i class="fas fa-book-open text-muted"></i
+                            ></span>
+                          </div>
+                          <select
+                            class="custom-select border-left-0"
+                            id="filterRombel"
+                          >
+                            <option selected disabled value="">
+                              Pilih Rombel
+                            </option>
+                            <option>
+                              Coding 1C Curious Creators Tue 6-7 (Yusril)
+                            </option>
+                            <option>09 GOGO 1 SR2 (ULFA)</option>
+                            <option>02 GOGO 1 SK2 (Risma)</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <button class="btn btn-success" role="button">
+                          <i class="fa fa-filter"></i>
+                          Filter
+                        </button>
+                        <button class="btn btn-danger" role="button">
+                          <i class="fa fa-close"></i>
+                          Batalkan
                         </button>
                       </div>
                     </div>
@@ -244,14 +322,16 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body table-responsive p-3">
-                  <table class="table text-nowrap">
+                  <table
+                    class="table text-nowrap table-bordered table-stripedj"
+                  >
                     <caption>
                       List semua catatan siswa
                     </caption>
                     <thead>
                       <tr>
-                        <th>Siswa</th>
-                        <th>Keterangan</th>
+                        <th colspan="1">Siswa</th>
+                        <th>Kelas</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -283,27 +363,23 @@
                                 >
                               </div>
                               <div>
-                                <span class="font-weight-bold">Kelas: </span>
+                                <span class="font-weight-bold"
+                                  >Catatan Guru:</span
+                                >
                                 <div class="card-body">
                                   <table class="table table-sm">
                                     <thead>
                                       <tr>
-                                        <th>Rombel</th>
-                                        <th>Level</th>
-                                        <th>Tempat</th>
-                                        <th>Mode</th>
+                                        <th>Guru</th>
+                                        <th>Tanggal</th>
+                                        <th>Catatan</th>
                                       </tr>
                                     </thead>
                                     <tbody>
                                       <tr>
-                                        <td>13 KOM A SK1 (Retno)</td>
-                                        <td>Dasar A</td>
-                                        <td>Ruang Kelas BSI</td>
-                                        <td>
-                                          <span class="badge badge-info"
-                                            >Offline</span
-                                          >
-                                        </td>
+                                        <td>Qorin Rahmaniyah, S.Pd.</td>
+                                        <td>05 Jan 2026</td>
+                                        <td class="text-wrap">Salah jadwal</td>
                                       </tr>
                                     </tbody>
                                   </table>
@@ -316,26 +392,26 @@
                           <ul class="list-group list-group-flush">
                             <li class="list-group-item">
                               <div>
-                                <div class="card-body">
-                                  <table class="table table-sm">
-                                    <thead>
-                                      <tr>
-                                        <th>Guru</th>
-                                        <th>Tanggal</th>
-                                        <th>Catatan</th>
-                                        <th>Histori Remidi</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>
-                                        <td>Qorin Rahmaniyah, S.Pd.</td>
-                                        <td>05 Jan 2026</td>
-                                        <td class="text-wrap">Salah jadwal</td>
-                                        <td>-</td>
-                                      </tr>
-                                    </tbody>
-                                  </table>
-                                </div>
+                                <span class="font-weight-bold">Rombel:</span>
+                                13 KOM A SK1 (Retno)
+                              </div>
+                              <div>
+                                <span class="font-weight-bold">Level:</span>
+                                Dasar A
+                              </div>
+                              <div>
+                                <span class="font-weight-bold">Tempat:</span>
+                                Ruang kelas BSI
+                              </div>
+                              <div>
+                                <span class="font-weight-bold">Mode:</span>
+                                <span class="badge badge-info">Offline</span>
+                              </div>
+                              <div>
+                                <span class="font-weight-bold"
+                                  >Status Kelas:</span
+                                >
+                                -
                               </div>
                             </li>
                           </ul>
@@ -364,52 +440,23 @@
                               <div>
                                 <span class="font-weight-bold">Status:</span>
                                 <span
-                                  class="badge badge-soft-success badge-pill-custom"
-                                  >Aktif</span
+                                  class="badge badge-soft-warning badge-pill-custom"
+                                  >Non Aktif</span
                                 >
                               </div>
                               <div>
-                                <span class="font-weight-bold">Kelas:</span>
+                                <span class="font-weight-bold"
+                                  >Catatan Guru:</span
+                                >
                                 <div class="card-body">
-                                  <table class="table table-sm">
-                                    <thead>
-                                      <tr>
-                                        <th>Rombel</th>
-                                        <th>Level</th>
-                                        <th>Tempat</th>
-                                        <th>Mode</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>
-                                        <td>07 GOGO 1 SelJ1 (Rafli)</td>
-                                        <td>GO 1</td>
-                                        <td>Ruang Kelas BSI</td>
-                                        <td>
-                                          <span class="badge badge-success"
-                                            >Online</span
-                                          >
-                                        </td>
-                                      </tr>
-                                    </tbody>
-                                  </table>
-                                </div>
-                              </div>
-                            </li>
-                          </ul>
-                        </td>
-                        <td>
-                          <ul class="list-group list-group-flush">
-                            <li class="list-group-item">
-                              <div>
-                                <div class="card-body">
-                                  <table class="table table-sm">
+                                  <table
+                                    class="table table-sm table-responsive-sm"
+                                  >
                                     <thead>
                                       <tr>
                                         <th>Guru</th>
                                         <th>Tanggal</th>
                                         <th>Catatan</th>
-                                        <th>Histori Remidi</th>
                                       </tr>
                                     </thead>
                                     <tbody>
@@ -431,11 +478,40 @@
                                           tepat untuk meningkatkan kemampuan
                                           siswa tersebut.
                                         </td>
-                                        <td>-</td>
                                       </tr>
                                     </tbody>
                                   </table>
                                 </div>
+                              </div>
+                            </li>
+                          </ul>
+                        </td>
+                        <td>
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                              <div>
+                                <span class="font-weight-bold">Rombel:</span>
+                                07 GOGO 1 SelJ1 (Rafli)
+                              </div>
+                              <div>
+                                <span class="font-weight-bold">Level:</span>
+                                GOGO 1
+                              </div>
+                              <div>
+                                <span class="font-weight-bold">Tempat:</span>
+                                Ruang kelas BSI
+                              </div>
+                              <div>
+                                <span class="font-weight-bold">Mode:</span>
+                                <span class="badge badge-soft-success"
+                                  >Online</span
+                                >
+                              </div>
+                              <div>
+                                <span class="font-weight-bold"
+                                  >Status Kelas:</span
+                                >
+                                -
                               </div>
                             </li>
                           </ul>
@@ -445,10 +521,6 @@
                         <td>
                           <ul class="list-group list-group-flush">
                             <li class="list-group-item">
-                              <div>
-                                <span class="font-weight-bold">Nama:</span>
-                                Anggun Setiya Wati (0)
-                              </div>
                               <div>
                                 <span class="font-weight-bold"
                                   >Tanggal Lahir:</span
@@ -469,39 +541,9 @@
                                 >
                               </div>
                               <div>
-                                <span class="font-weight-bold">Kelas:</span>
-                                <div class="card-body">
-                                  <table class="table table-sm">
-                                    <thead>
-                                      <tr>
-                                        <th>Rombel</th>
-                                        <th>Level</th>
-                                        <th>Tempat</th>
-                                        <th>Mode</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>
-                                        <td>13 KOM A SK1 (Retno)</td>
-                                        <td>Dasar A</td>
-                                        <td>Ruang Kelas BSI</td>
-                                        <td>
-                                          <span class="badge badge-primary"
-                                            >Hybrid</span
-                                          >
-                                        </td>
-                                      </tr>
-                                    </tbody>
-                                  </table>
-                                </div>
-                              </div>
-                            </li>
-                          </ul>
-                        </td>
-                        <td>
-                          <ul class="list-group list-group-flush">
-                            <li class="list-group-item">
-                              <div>
+                                <span class="font-weight-bold"
+                                  >Catatan Guru:</span
+                                >
                                 <div class="card-body">
                                   <table class="table table-sm">
                                     <thead>
@@ -509,7 +551,6 @@
                                         <th>Guru</th>
                                         <th>Tanggal</th>
                                         <th>Catatan</th>
-                                        <th>Histori Remidi</th>
                                       </tr>
                                     </thead>
                                     <tbody>
@@ -527,11 +568,40 @@
                                         <td class="text-wrap">
                                           Acara keluarga izin
                                         </td>
-                                        <td>-</td>
                                       </tr>
                                     </tbody>
                                   </table>
                                 </div>
+                              </div>
+                            </li>
+                          </ul>
+                        </td>
+                        <td>
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                              <div>
+                                <span class="font-weight-bold">Rombel:</span>
+                                13 KOM A SK1 (Retno)
+                              </div>
+                              <div>
+                                <span class="font-weight-bold">Level:</span>
+                                Dasar A
+                              </div>
+                              <div>
+                                <span class="font-weight-bold">Tempat:</span>
+                                Ruang kelas BSI
+                              </div>
+                              <div>
+                                <span class="font-weight-bold">Mode:</span>
+                                <span class="badge badge-soft-primary"
+                                  >Hybrid</span
+                                >
+                              </div>
+                              <div>
+                                <span class="font-weight-bold"
+                                  >Status Kelas:</span
+                                >
+                                -
                               </div>
                             </li>
                           </ul>
@@ -570,13 +640,19 @@
     <script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="./plugins/select2/js/select2.full.min.js"></script>
+    <script src="./plugins/moment/moment.min.js"></script>
+    <script src="./plugins/daterangepicker/daterangepicker.js"></script>
 
     <!-- AdminLTE App -->
     <script src="./js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <!-- <script src="./js/demo.js"></script> -->
     <script>
-      lucide.createIcons();
+      $(document).ready(function () {
+        lucide.createIcons();
+        $("#reservation").daterangepicker();
+      });
     </script>
   </body>
 </html>
