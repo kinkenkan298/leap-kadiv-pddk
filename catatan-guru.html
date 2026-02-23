@@ -23,112 +23,33 @@
     />
 
     <style>
-      .bg-blue-soft {
-        background-color: #eff6ff;
-        color: #2563eb;
+      /* Soft Badges */
+      .badge-soft-success {
+        background-color: #dcfce7;
+        color: #166534;
       }
-      .text-slate-500 {
-        color: #64748b;
+      .badge-soft-danger {
+        background-color: #fee2e2;
+        color: #991b1b;
       }
-      .bg-slate-100 {
-        background-color: #f1f5f9;
+      .badge-soft-primary {
+        background-color: #dbeafe;
+        color: #1e40af;
       }
-
-      .badge-success-soft {
-        background-color: rgba(40, 167, 69, 0.1) !important;
-        color: #28a745 !important;
+      .badge-soft-warning {
+        background-color: #fef9c3;
+        color: #854d0e;
       }
-      .badge-warning-soft {
-        background-color: rgba(40, 167, 69, 0.1) !important;
-        color: #ffc107 !important;
-      }
-
-      .card-custom {
-        border: 1px solid #e9ecef;
-        border-radius: 0.75rem;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        background: white;
-        transition: all 0.2s ease;
+      .badge-soft-orange {
+        background-color: #ffedd5;
+        color: #9a3412;
       }
 
-      .card-report:hover {
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        transform: translateY(-2px);
-      }
-
-      .rounded-xl {
-        border-radius: 0.75rem !important;
-      }
-      .rounded-lg {
-        border-radius: 0.5rem !important;
-      }
-
-      .text-muted-small {
-        font-size: 0.75rem;
-        color: #6c757d;
-      }
-
-      /* Accordion Styling Override */
-      .accordion .card-header {
-        background-color: white;
-        border-bottom: 1px solid #f1f3f5;
-        padding: 1rem 1.25rem;
-      }
-
-      .accordion .btn-link {
-        color: #343a40;
-        text-decoration: none;
+      .badge-pill-custom {
+        padding: 0.4em 0.8em;
         font-weight: 600;
-        padding: 0;
-      }
-
-      .accordion .btn-link:hover {
-        text-decoration: none;
-      }
-
-      /* Badge Customization */
-      .badge-soft-blue {
-        background-color: #eff6ff;
-        color: #2563eb;
-        font-weight: 500;
-        padding: 0.5em 0.8em;
-      }
-
-      .badge-soft-secondary {
-        background-color: #f1f5f9;
-        color: #475569;
-      }
-
-      /* Avatar Circle */
-      .avatar-circle {
-        width: 32px;
-        height: 32px;
-        background-color: #e2e8f0;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         font-size: 0.75rem;
-        font-weight: 700;
-        color: #475569;
-      }
-
-      .avatar-circle-lg {
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
-        background-color: #eff6ff;
-        color: #2563eb;
-      }
-
-      /* Scroll Area imitation */
-      .scroll-area {
-        max-height: 300px;
-        overflow-y: auto;
-        background-color: #f8f9fa;
-        border: 1px solid #dee2e6;
-        border-radius: 0.375rem;
-        padding: 1rem;
+        border-radius: 9999px;
       }
     </style>
   </head>
@@ -444,179 +365,90 @@
                 </div>
 
                 <div class="card-body">
-                  <div class="table-responsive-lg">
-                    <table class="table table-borderless">
-                      <thead>
-                        <tr>
-                          <th>Tanggal</th>
-                          <th>Nama Guru</th>
-                          <th>Rombel / Kursus</th>
-                          <th>Tags</th>
-                          <th>Aksi</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>
-                            <div class="d-flex flex-column">
-                              <span class="text-muted small">
-                                <i class="fas fa-calendar"></i>
-                                Mon, Jan 20
-                              </span>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="d-flex flex-column">
-                              <span class="text-muted small"
-                                >Muhammad Yusril Romadhoni</span
-                              >
-                            </div>
-                          </td>
-                          <td>
-                            <div class="d-flex flex-column">
-                              <span class="text-muted small"
-                                >Coding 1C Curious Creators / LEAP - Coding
-                                Class 2025</span
-                              >
-                            </div>
-                          </td>
-                          <td>
-                            <div class="d-flex flex-column">
-                              <span class="text-muted small"
-                                ><i class="fas fa-tags"></i> Update Diskusi,
-                                Progress Siswa</span
-                              >
-                            </div>
-                          </td>
-                          <td>
-                            <button
-                              class="btn btn-sm btn-light text-primary font-weight-bold"
-                              data-toggle="modal"
-                              data-target="#readFullReportModal"
-                              title="Baca Laporan"
-                            >
-                              <i class="fab fa-readme"></i>
-                              Baca Laporan
-                            </button>
-                            <button
-                              class="btn btn-sm btn-light text-primary font-weight-bold"
-                              data-toggle="modal"
-                              data-target="#commentReportModal"
-                              title="Komentar Laporan"
-                            >
-                              <i class="fa fa-comment"></i>
-                              Komentar
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div class="d-flex flex-column">
-                              <span class="text-muted small">
-                                <i class="fas fa-calendar"></i>
-                                Thu, Jan 19
-                              </span>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="d-flex flex-column">
-                              <span class="text-muted small"
-                                >Ulfasiyah, S.S.</span
-                              >
-                            </div>
-                          </td>
-                          <td>
-                            <div class="d-flex flex-column">
-                              <span class="text-muted small"
-                                >09 GOGO 1 SR2 / LEAP - General English
-                                2024</span
-                              >
-                            </div>
-                          </td>
-                          <td>
-                            <div class="d-flex flex-column">
-                              <span class="text-muted small"
-                                ><i class="fas fa-tags"></i>
-                                Update Siswa Sit-in/Trial/Baru
-                              </span>
-                            </div>
-                          </td>
-                          <td>
-                            <button
-                              class="btn btn-sm btn-light text-primary font-weight-bold"
-                              data-toggle="modal"
-                              data-target="#readFullReportModal"
-                              title="Baca Laporan"
-                            >
-                              <i class="fab fa-readme"></i>
-                              Baca Laporan
-                            </button>
-                            <button
-                              class="btn btn-sm btn-light text-primary font-weight-bold"
-                              data-toggle="modal"
-                              data-target="#commentReportModal"
-                              title="Komentar Laporan"
-                            >
-                              <i class="fa fa-comment"></i>
-                              Komentar
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div class="d-flex flex-column">
-                              <span class="text-muted small">
-                                <i class="fas fa-calendar"></i>
-                                Thu, Jan 16
-                              </span>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="d-flex flex-column">
-                              <span class="text-muted small"
-                                >Rini Budi Rahayu, S.Pd.</span
-                              >
-                            </div>
-                          </td>
-                          <td>
-                            <div class="d-flex flex-column">
-                              <span class="text-muted small"
-                                >41 WINNER 6 SR3 / LEAP - General English
-                                2024</span
-                              >
-                            </div>
-                          </td>
-                          <td>
-                            <div class="d-flex flex-column">
-                              <span class="text-muted small">
-                                <i class="fa fa-minus"></i>
-                              </span>
-                            </div>
-                          </td>
-                          <td>
-                            <button
-                              class="btn btn-sm btn-light text-primary font-weight-bold"
-                              data-toggle="modal"
-                              data-target="#readFullReportModal"
-                              title="Baca Laporan"
-                            >
-                              <i class="fab fa-readme"></i>
-                              Baca Laporan
-                            </button>
-                            <button
-                              class="btn btn-sm btn-light text-primary font-weight-bold"
-                              data-toggle="modal"
-                              data-target="#commentReportModal"
-                              title="Komentar Laporan"
-                            >
-                              <i class="fa fa-comment"></i>
-                              Komentar
-                            </button>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
+                  <table class="table table-responsive-md">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Kelas</th>
+                        <th>Detail Kelas</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                              <div>
+                                <span class="font-weight-bold">Rombel:</span>
+                                Coding 1C Curious Creators Wed 5-6 (Yusril)
+                              </div>
+                              <div>
+                                <span class="font-weight-bold"
+                                  >Kursus / Tingkatan:</span
+                                >
+                                LEAP - Coding Class 2025 / Curious Creators
+                              </div>
+                              <div>
+                                <span class="font-weight-bold">Tempat:</span>
+                                Lab Komputer
+                              </div>
+                              <div>
+                                <span class="font-weight-bold">Mode:</span>
+                                <span
+                                  class="badge badge-soft-primary badge-pill-custom"
+                                  >Hybrid</span
+                                >
+                              </div>
+                              <div>
+                                <span class="font-weight-bold"
+                                  >Catatan Kelas:</span
+                                >
+                                <div class="card-body">
+                                  <table class="table table-sm">
+                                    <thead>
+                                      <tr>
+                                        <th>Guru</th>
+                                        <th>Tanggal</th>
+                                        <th>Catatan</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>Graciela Evanda Ronadi, S.Kom</td>
+                                        <td>13 Jan 2026</td>
+                                        <td class="text-wrap">
+                                          IZIN EXTRA DRUMBAND
+                                        </td>
+                                        <td>-</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Muhammad Yusril Romadhon</td>
+                                        <td>31 Jan 2026</td>
+                                        <td class="text-wrap">
+                                          Acara keluarga izin
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
+                        </td>
+                        <td>
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                              <div>
+                                <span class="font-weight-bold">Rombel:</span>
+                                Coding 1C Curious Creators Wed 5-6 (Yusril)
+                              </div>
+                            </li>
+                          </ul>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
@@ -624,226 +456,6 @@
         </section>
         <!-- /.content -->
       </div>
-      <!-- /.content-wrapper -->
-
-      <div
-        class="modal fade"
-        id="readFullReportModal"
-        tabindex="-1"
-        role="dialog"
-        aria-hidden="true"
-        aria-labelledby="readFullReportModal"
-      >
-        <div
-          class="modal-dialog modal-dialog-centered modal-xl"
-          role="document"
-        >
-          <div class="modal-content card-custom border-0">
-            <div class="modal-header border-bottom-0 pb-0">
-              <h5 class="modal-title font-weight-bold">
-                <i class="fas fa-file-alt text-primary mr-2"></i>
-                Detail Laporan
-              </h5>
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body pt-2">
-              <p class="text-muted small mb-4" id="modalDateInfo">
-                13 January 2026
-              </p>
-              <div class="row small mb-3">
-                <div class="col-6 mb-3">
-                  <div class="bg-light p-2 rounded border">
-                    <span class="text-muted d-block text-xs mb-1">Guru</span>
-                    <div class="font-weight-bold d-flex align-items-center">
-                      <div
-                        class="avatar-circle bg-primary text-white mr-2"
-                        style="width: 24px; height: 24px; font-size: 10px"
-                        id="modalAvatar"
-                      >
-                        MY
-                      </div>
-                      <span id="modalTeacher">Muhammad Yusril</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-6 mb-3">
-                  <div class="bg-light p-2 rounded border">
-                    <span class="text-muted d-block text-xs mb-1"
-                      >Kursus / Tingkatan</span
-                    >
-                    <div class="font-weight-bold">
-                      <span id="modalCourse">
-                        <i class="fas fa-calendar-day text-muted mr-1"></i>
-                        LEAP - Coding Class 2025 / Curious Creators
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="bg-light p-2 rounded border">
-                    <span class="text-muted d-block text-xs mb-1">Tempat</span>
-                    <div class="font-weight-bold">
-                      <i class="fas fa-map-marker-alt text-muted mr-1"></i>
-                      <span id="modalLocation">
-                        Lab Komputer
-                        <span class="badge badge-primary badge-pill">
-                          Hybrid
-                        </span>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="bg-light p-2 rounded border">
-                    <span class="text-muted d-block text-xs mb-1"
-                      >Hari Waktu</span
-                    >
-                    <div class="font-weight-bold" id="modalWeek">
-                      <i class="far fa-clock text-muted mr-1"></i>
-                      Selasa, 18:00 - 19:00
-                    </div>
-                  </div>
-                </div>
-                <div class="col-6 mt-3">
-                  <div class="bg-light p-2 rounded border">
-                    <span class="text-muted d-block text-xs mb-1">Tags</span>
-                    <div class="font-weight-bold" id="modalTags">
-                      <i class="fas fa-tags text-muted mr-1"></i>
-                      Update Diskusi, Progress Siswa
-                    </div>
-                  </div>
-                </div>
-                <div class="col-6 mt-3">
-                  <div class="bg-light p-2 rounded border">
-                    <span class="text-muted d-block text-xs mb-1"
-                      >Tahun Ajar</span
-                    >
-                    <div class="font-weight-bold" id="modalTags">
-                      <i class="fas fa-calendar text-muted mr-1"></i>
-                      2025 / 2026
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <h6 class="font-weight-bold mb-2">Isi Laporan</h6>
-              <div class="scroll-area" id="modalContent">
-                Sesi ke-23 dilaksanakan secara hybrid dan dihadiri oleh seluruh
-                siswa tepat waktu, kecuali Tian yang datang terlambat. Materi
-                yang dibahas meliputi teori serta pembuatan outline proyek
-                trivia game yang berjalan dengan baik. Pada persiapan kelas,
-                guru sempat mengalami kendala teknis terkait mekanisme sistem
-                co-host zoom, sehingga dilakukan kesepakatan dengan Miss Luluk
-                untuk bergabung pada pukul 18.00 WIB serta memberikan pengingat
-                agar ditetapkan sebagai co-host. Permasalahan bug pada BSD telah
-                dikomunikasikan kepada tim BSD yang dijelaskan terjadi akibat
-                pemuatan browser yang kurang sempurna, khususnya saat pengerjaan
-                skrip JavaScript. Tim BSD menyampaikan komitmen untuk segera
-                melakukan perbaikan. Sebagai solusi sementara, siswa diarahkan
-                untuk melakukan refresh halaman, clear cache browser, kembali ke
-                langkah sebelumnya, serta memastikan browser selalu dalam
-                kondisi terbaru. Secara umum, progres pemahaman JavaScript
-                seluruh siswa menunjukkan peningkatan, kecuali Lintang yang
-                mengalami kendala karena kondisi fisik kurang fit dan padatnya
-                aktivitas. Guru terus memberikan motivasi, menginstruksikan
-                pengerjaan lanjutan proyek di rumah, serta memberikan bimbingan
-                tambahan melalui WhatsApp apabila siswa mengalami kesulitan
-                dalam memahami materi dan mengerjakan proyek.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div
-        class="modal fade"
-        id="commentReportModal"
-        tabindex="-1"
-        role="dialog"
-        aria-hidden="true"
-        aria-labelledby="commentReportModal"
-      >
-        <div class="modal-dialog modal-dialog-centered modal-xl">
-          <div class="modal-content card-custom border-0">
-            <div class="modal-header border-bottom-0 pb-0">
-              <h5 class="modal-title font-weight-bold">
-                <i class="fas fa-user-check text-primary mr-2"></i>
-                Follow Up
-              </h5>
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body pt-2">
-              <div class="form-row">
-                <div class="form-group col-md-12">
-                  <label for="catatan">Catatan</label>
-                  <textarea
-                    name="catatan"
-                    id="catatan"
-                    rows="5"
-                    class="form-control"
-                    readonly
-                  >
-Sesi ke-23 dilaksanakan secara hybrid dan dihadiri oleh seluruh siswa tepat waktu, kecuali Tian yang datang terlambat. Materi yang dibahas meliputi teori serta pembuatan outline proyek trivia game yang berjalan dengan baik. Pada persiapan kelas, guru sempat mengalami kendala teknis terkait mekanisme sistem co-host zoom, sehingga dilakukan kesepakatan dengan Miss Luluk untuk bergabung pada pukul 18.00 WIB serta memberikan pengingat agar ditetapkan sebagai co-host. Permasalahan bug pada BSD telah dikomunikasikan kepada tim BSD yang dijelaskan terjadi akibat pemuatan browser yang kurang sempurna, khususnya saat pengerjaan skrip JavaScript. Tim BSD menyampaikan komitmen untuk segera melakukan perbaikan. Sebagai solusi sementara, siswa diarahkan untuk melakukan refresh halaman, clear cache browser, kembali ke langkah sebelumnya, serta memastikan browser selalu dalam kondisi terbaru. Secara umum, progres pemahaman JavaScript seluruh siswa menunjukkan peningkatan, kecuali Lintang yang mengalami kendala karena kondisi fisik kurang fit dan padatnya aktivitas. Guru terus memberikan motivasi, menginstruksikan pengerjaan lanjutan proyek di rumah, serta memberikan bimbingan tambahan melalui WhatsApp apabila siswa mengalami kesulitan dalam memahami materi dan mengerjakan proyek.</textarea
-                  >
-                </div>
-                <div class="form-group col-md-12">
-                  <label for="materi">Materi Diskusi</label>
-                  <textarea
-                    name="materi"
-                    id="materi"
-                    class="form-control"
-                    rows="3"
-                  ></textarea>
-                </div>
-                <div class="form-group col-md-12">
-                  <label for="tags">Tag Materi Diskusi</label>
-                  <select name="tags" id="tags" class="custom-select" multiple>
-                    <option selected>Update Diskusi</option>
-                    <option selected>Progress Siswa</option>
-                    <option>Kendala Siswa</option>
-                    <option>Kendala Kelas</option>
-                    <option>Kendala Jadwal</option>
-                  </select>
-                </div>
-                <div class="form-group col-md-12">
-                  <label for="followUp">Hasil Konfirmasi</label>
-                  <textarea
-                    name="followUp"
-                    id="followUp"
-                    class="form-control"
-                    rows="3"
-                  ></textarea>
-                </div>
-                <div class="col d-flex justify-content-end" style="gap: 10px">
-                  <button
-                    class="btn btn-default"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    Tutup
-                  </button>
-                  <button class="btn btn-primary">Kirim</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <footer class="main-footer">
         <strong
           >Copyright &copy; 2022-2026
