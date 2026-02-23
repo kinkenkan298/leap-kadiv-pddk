@@ -173,7 +173,7 @@
           <!-- Semester Filter -->
           <li class="nav-item ml-3">
             <div style="display: flex; align-items: center; gap: 0.5rem">
-              <span style="font-size: 0.875rem; color: #64748b">Semester:</span>
+              <span style="font-size: 0.875rem; color: #64748b">Semester</span>
               <select
                 id="globalSemesterFilter"
                 class="form-control"
@@ -186,6 +186,21 @@
                 <option value="">Semua Semester</option>
                 <option value="1">Semester 1</option>
                 <option value="2">Semester 2</option>
+              </select>
+              <span style="font-size: 0.875rem; color: #64748b"
+                >Tahun Ajaran</span
+              >
+              <select
+                id="globalTahunAjaran"
+                class="form-control"
+                style="
+                  width: 140px;
+                  font-size: 0.875rem;
+                  padding: 0.375rem 0.75rem;
+                "
+              >
+                <option value="1">2024/2025</option>
+                <option value="2">2025/2026</option>
               </select>
             </div>
           </li>
@@ -350,56 +365,19 @@
         <!-- Main content -->
         <section class="content">
           <div class="container-fluid">
-            <!-- Statistics Small Boxes -->
-            <div class="row">
+            <!-- Remidi Statistics -->
+            <div class="row mb-4">
               <div class="col-lg-3 col-6">
                 <div class="small-box bg-info">
                   <div class="inner">
                     <h3>10</h3>
-                    <p>Jumlah Guru</p>
+                    <p>Total Semua Guru</p>
                   </div>
                   <div class="icon">
                     <i class="fas fa-graduation-cap"></i>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-3 col-6">
-                <div class="small-box bg-success">
-                  <div class="inner">
-                    <h3>20</h3>
-                    <p>Jumlah Kursus / Pendidikan</p>
-                  </div>
-                  <div class="icon">
-                    <i class="fas fa-book-open"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-6">
-                <div class="small-box bg-primary">
-                  <div class="inner">
-                    <h3>10</h3>
-                    <p>Siswa Baru</p>
-                  </div>
-                  <div class="icon">
-                    <i class="fas fa-user-plus"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-6">
-                <div class="small-box bg-danger">
-                  <div class="inner">
-                    <h3>0</h3>
-                    <p>Siswa Keluar</p>
-                  </div>
-                  <div class="icon">
-                    <i class="fas fa-user-minus"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Remidi Statistics -->
-            <div class="row mb-4">
               <div class="col-lg-3 col-6">
                 <div
                   class="small-box bg-remidi-orange"
@@ -408,7 +386,7 @@
                 >
                   <div class="inner">
                     <h3 id="totalSiswaRemidi">0</h3>
-                    <p>Total Siswa Remidi</p>
+                    <p>Program dengan siswa remidi</p>
                   </div>
                   <div class="icon">
                     <i class="fas fa-exclamation-triangle"></i>
@@ -457,7 +435,6 @@
                     <option value="all">Semua Status</option>
                     <option value="submitted">Sudah Lapor</option>
                     <option value="pending">Belum Lapor</option>
-                    <option value="late">Terlambat</option>
                   </select>
                 </div>
               </div>
@@ -473,7 +450,6 @@
                       <th scope="col">Kursus / Tingkatan</th>
                       <th scope="col">Status Laporan</th>
                       <th scope="col">Terakhir Submit</th>
-                      <th scope="col" class="text-right pr-4">Aksi</th>
                     </tr>
                   </thead>
                   <tbody id="tableBody">
@@ -500,7 +476,6 @@
                         >
                       </td>
                       <td class="text-muted small">15 Jan 2026</td>
-                      <td class="text-right pr-4">-</td>
                     </tr>
                     <tr>
                       <td class="pl-4">
@@ -519,25 +494,6 @@
                         >
                       </td>
                       <td class="text-muted small">-</td>
-                      <td class="text-right pr-4">
-                        <button
-                          class="btn btn-sm btn-outline-warning text-dark font-weight-bold"
-                          style="
-                            border-color: #fdba74;
-                            background-color: transparent;
-                          "
-                          onmouseover="this.style.backgroundColor = '#fff7ed'"
-                          onmouseout="
-                            this.style.backgroundColor = 'transparent'
-                          "
-                          onclick="alert('Mengirim email pengingat ke guru...')"
-                        >
-                          <i
-                            class="fas fa-envelope-open-text mr-1 text-warning"
-                          ></i>
-                          Ingatkan
-                        </button>
-                      </td>
                     </tr>
                     <tr>
                       <td class="pl-4">
@@ -551,30 +507,11 @@
                       <td>41 WINNER 6 SR3</td>
                       <td>LEAP - General English 2024 / WINNER 6</td>
                       <td>
-                        <span class="badge badge-soft-danger badge-pill-custom"
-                          >Terlambat</span
+                        <span class="badge badge-soft-warning badge-pill-custom"
+                          >Belum Lapor</span
                         >
                       </td>
                       <td class="text-muted small">-</td>
-                      <td class="text-right pr-4">
-                        <button
-                          class="btn btn-sm btn-outline-warning text-dark font-weight-bold"
-                          style="
-                            border-color: #fdba74;
-                            background-color: transparent;
-                          "
-                          onmouseover="this.style.backgroundColor = '#fff7ed'"
-                          onmouseout="
-                            this.style.backgroundColor = 'transparent'
-                          "
-                          onclick="alert('Mengirim email pengingat ke guru')"
-                        >
-                          <i
-                            class="fas fa-envelope-open-text mr-1 text-warning"
-                          ></i>
-                          Ingatkan
-                        </button>
-                      </td>
                     </tr>
                     <tr>
                       <td class="pl-4">
@@ -593,40 +530,7 @@
                         >
                       </td>
                       <td class="text-muted small">12 Jan 2026</td>
-                      <td class="text-right pr-4">-</td>
                     </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            <!-- Tabel Daftar Guru dengan Siswa Remidi -->
-            <h4 class="mb-4 font-weight-bold mt-5">
-              Daftar Guru dengan Siswa Remidi
-            </h4>
-            <div class="card card-custom overflow-hidden">
-              <div class="table-responsive">
-                <table class="table table-hover mb-0" id="remidiTable">
-                  <thead class="bg-light">
-                    <tr>
-                      <th scope="col" class="pl-4">No</th>
-                      <th scope="col">Nama Guru</th>
-                      <th scope="col">Kelas</th>
-                      <th scope="col">Kursus/Tingkatan</th>
-                      <th scope="col" style="text-align: center">
-                        Total Siswa
-                      </th>
-                      <th scope="col" style="text-align: center">
-                        Siswa Remidi
-                      </th>
-                      <th scope="col" style="text-align: center">
-                        Nilai Rata-rata
-                      </th>
-                      <th scope="col" class="text-right pr-4">Aksi</th>
-                    </tr>
-                  </thead>
-                  <tbody id="remidiTableBody">
-                    <!-- Content will be populated by JavaScript -->
                   </tbody>
                 </table>
               </div>
@@ -645,8 +549,6 @@
         All rights reserved.
       </footer>
 
-      <aside class="control-sidebar control-sidebar-dark"></aside>
-
       <!-- Modal Detail Remidi Siswa -->
       <div
         class="modal fade"
@@ -664,7 +566,7 @@
                   class="fas fa-exclamation-triangle mr-2"
                   style="color: #f97316"
                 ></i>
-                Detail Siswa Remidi -
+                Detail Program dengan Siswa Remidi -
                 <span id="modalSemesterLabel">Semester Ini</span>
               </h5>
               <button
@@ -751,9 +653,10 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body modal-detail-remidi" id="guruRemidiContent">
-              <!-- Content will be populated by JavaScript -->
-            </div>
+            <div
+              class="modal-body modal-detail-remidi"
+              id="guruRemidiContent"
+            ></div>
           </div>
         </div>
       </div>
@@ -768,12 +671,9 @@
 
     <!-- AdminLTE App -->
     <script src="./js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <!-- <script src="./js/demo.js"></script> -->
     <script>
       lucide.createIcons();
 
-      // Data Remidi dengan struktur berdasarkan semester
       const remidiData = {
         1: [
           // Semester 1
@@ -842,7 +742,6 @@
         ],
       };
 
-      // Fungsi untuk mendapatkan semester saat ini
       function getCurrentSemester() {
         const selected = document.getElementById("globalSemesterFilter").value;
         if (selected === "") {
@@ -851,7 +750,6 @@
         return parseInt(selected);
       }
 
-      // Fungsi untuk mendapatkan data remidi berdasarkan semester
       function getRemidiDataBySemester(semester) {
         if (semester === null) {
           // Gabungkan semua semester
@@ -861,20 +759,16 @@
         return remidiData[semester] || [];
       }
 
-      // Fungsi untuk hitung total siswa remidi
       function getTotalRemidiStudents(semester) {
         const data = getRemidiDataBySemester(semester);
         return data.reduce((total, item) => total + item.siswa.length, 0);
       }
 
-      // Fungsi untuk hitung total guru dengan siswa remidi
       function getTotalGuruRemidi(semester) {
         const data = getRemidiDataBySemester(semester);
         return data.length;
       }
 
-      // Fungsi untuk update tampilan statistik
-      // Fungsi untuk populate tabel remidi
       function populateRemidiTable() {
         const currentSemester = getCurrentSemester();
         const data = getRemidiDataBySemester(currentSemester);
@@ -933,7 +827,7 @@
           });
         }
 
-        tableBody.innerHTML = content;
+        // tableBody.innerHTML = content;
       }
 
       function updateRemidiStats() {
@@ -968,28 +862,18 @@
           data.forEach((item, index) => {
             content += `
               <div class="guru-section">
-                <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-                  <div class="avatar-circle" style="width: 40px; height: 40px; background-color: #dbeafe; color: #1d4ed8; font-size: 0.9rem;">
-                    ${item.guruInitial}
-                  </div>
-                  <div style="flex: 1;">
-                    <h6 class="mb-0" style="font-weight: 600; color: #1e293b;">${item.guru}</h6>
-                    <small class="text-muted">${item.kelas}</small>
-                  </div>
-                </div>
-
-                <div style="margin-bottom: 1rem;">
-                  <small style="color: #64748b; font-weight: 600;">Kursus:</small>
-                  <p style="margin: 0.25rem 0 0 0; color: #475569;">${item.kursus}</p>
+                <div class="d-flex align-items-center">
+                  <span style="font-weight: 600; color: #1e293b;">Kursus:</span>
+                  <span style="color: #64748b; font-weight: 600; margin-left: 0.5rem;">${item.kursus} - ${item.kelas}</span>
                 </div>
 
                 <div>
-                  <small style="color: #64748b; font-weight: 600; text-transform: uppercase;">Siswa Remidi (${item.siswa.length}):</small>
-                  <ul style="margin: 0.75rem 0 0 0; padding-left: 1.25rem; list-style: none;">
+                  <span style="color: #64748b;" class="text-uppercase font-weight-bold">Siswa Remidi (${item.siswa.length}):</span>
+                  <ul class="list-group list-group-flush" style="margin-top: 0.5rem;">
                     ${item.siswa
                       .map(
                         (s, idx) => `
-                      <li style="padding: 0.35rem 0; color: #334155;">
+                      <li style="color: #334155;" class="list-group-item">
                         <i class="fas fa-circle" style="font-size: 0.35rem; margin-right: 0.5rem; color: #f97316;"></i>
                         ${s.nama}
                       </li>
@@ -1006,7 +890,6 @@
         $("#remidiDetailContent").html(content);
       }
 
-      // Fungsi untuk populate modal guru dengan siswa remidi
       function populateGuruRemidiModal() {
         const currentSemester = getCurrentSemester();
         const data = getRemidiDataBySemester(currentSemester);

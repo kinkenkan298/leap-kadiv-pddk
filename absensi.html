@@ -89,6 +89,21 @@
       .table-hover tbody tr:hover {
         background-color: #f1f5f9;
       }
+      /* --- Tabel Responsif dengan Scroll Vertikal & Horizontal --- */
+      .table-responsive {
+        max-height: 45vh; /* Batas tinggi tabel, 65% dari tinggi layar */
+        overflow-y: auto;
+        overflow-x: auto;
+      }
+
+      /* Sticky Header (Vertikal) */
+      .table thead th {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0; /* Menempel di atas area scroll internal */
+        z-index: 20;
+        box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.1); /* Bayangan bawah agar terlihat terpisah saat di-scroll */
+      }
 
       /* Modal Styling */
       .modal-content {
@@ -115,15 +130,28 @@
         min-width: 250px; /* Ensure name column has width */
       }
 
-      /* Ensure header is also sticky with higher z-index */
-      th.sticky-col {
+      .table thead th.sticky-col {
         background-color: #f8fafc;
-        z-index: 20;
+        z-index: 30; /* Paling tinggi agar tidak tertimpa header vertikal maupun kolom horizontal */
+        box-shadow: 2px 2px 5px -2px rgba(0, 0, 0, 0.1);
       }
 
       /* Hover state integration for sticky col */
       .table-hover tbody tr:hover .sticky-col {
         background-color: #f1f5f9;
+      }
+
+      /* Icon Styling Khusus Absensi */
+      .absen-icon {
+        font-size: 1.1rem;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+      }
+
+      .no-scrollbar::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
       }
     </style>
   </head>
@@ -358,8 +386,16 @@
                 <div class="mb-3 mb-md-0">
                   <h5 class="font-weight-bold mb-1">Detail Absensi Siswa</h5>
                 </div>
+                <div class="small text-muted">
+                  <span class="mr-3"
+                    ><i class="fas fa-check text-success"></i> Hadir</span
+                  >
+                  <span
+                    ><i class="fas fa-times text-danger"></i> Tidak Hadir</span
+                  >
+                </div>
               </div>
-              <div class="table-responsive">
+              <div class="table-responsive no-scrollbar">
                 <table class="table table-hover mb-0 text-center">
                   <thead>
                     <tr>
@@ -467,141 +503,920 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <!-- Baris 1 -->
                     <tr>
                       <td class="sticky-col text-left font-weight-bold">
                         AKIO KHALIFANO VICTORIO
                       </td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td>
-                        <span class="text-danger font-weight-bold">S</span>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
                       </td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Tidak Hadir">
+                        <i class="fas fa-times text-danger absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
                     </tr>
+                    <!-- Baris 2 -->
                     <tr>
                       <td class="sticky-col text-left font-weight-bold">
                         LIONEL CHRISTANDI
                       </td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
                     </tr>
+                    <!-- Baris 3 -->
                     <tr>
                       <td class="sticky-col text-left font-weight-bold">
                         AHMAD FADHIL PUTRA AJI
                       </td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td>
-                        <span class="text-warning font-weight-bold">I</span>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
                       </td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td>
-                        <span class="text-danger font-weight-bold">A</span>
+                      <td title="Tidak Hadir">
+                        <i class="fas fa-times text-danger absen-icon"></i>
                       </td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td>
-                        <span class="text-warning font-weight-bold">I</span>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
                       </td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td>
-                        <span class="text-danger font-weight-bold">A</span>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
                       </td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td>
-                        <span class="text-warning font-weight-bold">I</span>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
                       </td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
+                      <td title="Tidak Hadir">
+                        <i class="fas fa-times text-danger absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Tidak Hadir">
+                        <i class="fas fa-times text-danger absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Tidak Hadir">
+                        <i class="fas fa-times text-danger absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
                     </tr>
+                    <!-- Baris 4 -->
                     <tr>
                       <td class="sticky-col text-left font-weight-bold">
                         JESSICA VERANDA
                       </td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
                     </tr>
+                    <!-- Baris 5 -->
                     <tr>
                       <td class="sticky-col text-left font-weight-bold">
                         MELODY NURRAMDHANI
                       </td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td>
-                        <span class="text-danger font-weight-bold">S</span>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
                       </td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
-                      <td><i class="fas fa-check text-success"></i></td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Tidak Hadir">
+                        <i class="fas fa-times text-danger absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                    </tr>
+                    <!-- Baris 6 -->
+                    <tr>
+                      <td class="sticky-col text-left font-weight-bold">
+                        BIMA ARYA PUTRA
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Tidak Hadir">
+                        <i class="fas fa-times text-danger absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                    </tr>
+                    <!-- Baris 7 -->
+                    <tr>
+                      <td class="sticky-col text-left font-weight-bold">
+                        CITRA KIRANA
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                    </tr>
+                    <!-- Baris 8 -->
+                    <tr>
+                      <td class="sticky-col text-left font-weight-bold">
+                        DIMAS ANGGARA
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Tidak Hadir">
+                        <i class="fas fa-times text-danger absen-icon"></i>
+                      </td>
+                      <td title="Tidak Hadir">
+                        <i class="fas fa-times text-danger absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                    </tr>
+                    <!-- Baris 9 -->
+                    <tr>
+                      <td class="sticky-col text-left font-weight-bold">
+                        EKA WULANDARI
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                    </tr>
+                    <!-- Baris 10 -->
+                    <tr>
+                      <td class="sticky-col text-left font-weight-bold">
+                        FAJAR SIDIK
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Tidak Hadir">
+                        <i class="fas fa-times text-danger absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                    </tr>
+                    <!-- Baris 11 -->
+                    <tr>
+                      <td class="sticky-col text-left font-weight-bold">
+                        GITA GUTAWA
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                    </tr>
+                    <!-- Baris 12 -->
+                    <tr>
+                      <td class="sticky-col text-left font-weight-bold">
+                        HENDRA SETIAWAN
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Tidak Hadir">
+                        <i class="fas fa-times text-danger absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Tidak Hadir">
+                        <i class="fas fa-times text-danger absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                    </tr>
+                    <!-- Baris 13 -->
+                    <tr>
+                      <td class="sticky-col text-left font-weight-bold">
+                        INTAN NURAINI
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                    </tr>
+                    <!-- Baris 14 -->
+                    <tr>
+                      <td class="sticky-col text-left font-weight-bold">
+                        JOKO SUSILO
+                      </td>
+                      <td title="Tidak Hadir">
+                        <i class="fas fa-times text-danger absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                    </tr>
+                    <!-- Baris 15 -->
+                    <tr>
+                      <td class="sticky-col text-left font-weight-bold">
+                        KEVIN SANJAYA
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td title="Hadir">
+                        <i class="fas fa-check text-success absen-icon"></i>
+                      </td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
+                      <td class="text-muted">-</td>
                     </tr>
                   </tbody>
                 </table>
