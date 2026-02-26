@@ -170,40 +170,6 @@
               <i class="fas fa-bars"></i>
             </a>
           </li>
-          <!-- Semester Filter -->
-          <li class="nav-item ml-3">
-            <div style="display: flex; align-items: center; gap: 0.5rem">
-              <span style="font-size: 0.875rem; color: #64748b">Semester</span>
-              <select
-                id="globalSemesterFilter"
-                class="form-control"
-                style="
-                  width: 140px;
-                  font-size: 0.875rem;
-                  padding: 0.375rem 0.75rem;
-                "
-              >
-                <option value="">Semua Semester</option>
-                <option value="1">Semester 1</option>
-                <option value="2">Semester 2</option>
-              </select>
-              <span style="font-size: 0.875rem; color: #64748b"
-                >Tahun Ajaran</span
-              >
-              <select
-                id="globalTahunAjaran"
-                class="form-control"
-                style="
-                  width: 140px;
-                  font-size: 0.875rem;
-                  padding: 0.375rem 0.75rem;
-                "
-              >
-                <option value="1">2024/2025</option>
-                <option value="2">2025/2026</option>
-              </select>
-            </div>
-          </li>
         </ul>
 
         <!-- Right navbar links -->
@@ -365,6 +331,79 @@
         <!-- Main content -->
         <section class="content">
           <div class="container-fluid">
+            <!-- Filter Remidi -->
+            <div class="row mb-3">
+              <div class="col-12">
+                <div class="card card-custom" style="margin-bottom: 0">
+                  <div class="card-body py-3">
+                    <div
+                      class="d-flex align-items-center flex-wrap"
+                      style="gap: 1.25rem"
+                    >
+                      <span
+                        class="font-weight-bold"
+                        style="
+                          font-size: 0.8rem;
+                          color: #64748b;
+                          text-transform: uppercase;
+                          letter-spacing: 0.05em;
+                        "
+                      >
+                        <i class="fas fa-filter mr-1"></i> Filter Remidi
+                      </span>
+                      <div
+                        class="d-flex align-items-center"
+                        style="gap: 0.5rem"
+                      >
+                        <label
+                          class="mb-0"
+                          style="
+                            font-size: 0.875rem;
+                            color: #64748b;
+                            white-space: nowrap;
+                            font-weight: 500;
+                          "
+                          >Tahun Ajaran</label
+                        >
+                        <select
+                          id="globalTahunAjaran"
+                          class="form-control form-control-sm"
+                          style="width: 130px"
+                        >
+                          <option value="2025/2026">2025/2026</option>
+                          <option value="2024/2025">2024/2025</option>
+                        </select>
+                      </div>
+                      <div
+                        class="d-flex align-items-center"
+                        style="gap: 0.5rem"
+                      >
+                        <label
+                          class="mb-0"
+                          style="
+                            font-size: 0.875rem;
+                            color: #64748b;
+                            white-space: nowrap;
+                            font-weight: 500;
+                          "
+                          >Semester</label
+                        >
+                        <select
+                          id="globalSemesterFilter"
+                          class="form-control form-control-sm"
+                          style="width: 150px"
+                        >
+                          <option value="">Semua Semester</option>
+                          <option value="1">Semester 1</option>
+                          <option value="2">Semester 2</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <!-- Remidi Statistics -->
             <div class="row mb-4">
               <div class="col-lg-3 col-6">
@@ -617,9 +656,7 @@
             <div
               class="modal-body modal-detail-remidi"
               id="detailSiswaRemidiContent"
-            >
-              <!-- Content will be populated by JavaScript -->
-            </div>
+            ></div>
           </div>
         </div>
       </div>
@@ -675,88 +712,109 @@
       lucide.createIcons();
 
       const remidiData = {
-        1: [
-          // Semester 1
-          {
-            id: 1,
-            guru: "Muhammad Yusril",
-            guruInitial: "MY",
-            kelas: "Coding 1C Curious Creators",
-            kursus: "LEAP - Coding Class 2025",
-            siswa: [
-              { nama: "Andi Pratama", status: "Remidi" },
-              { nama: "Budi Santoso", status: "Remidi" },
-              { nama: "Citra Dewi", status: "Remidi" },
-            ],
-          },
-          {
-            id: 2,
-            guru: "Ulfasiyah, S.S.",
-            guruInitial: "UY",
-            kelas: "09 GOGO 1 SR2",
-            kursus: "LEAP - General English 2024",
-            siswa: [
-              { nama: "Dian Kusuma", status: "Remidi" },
-              { nama: "Eka Putri", status: "Remidi" },
-            ],
-          },
-          {
-            id: 3,
-            guru: "Rini Budi Rahayu, S.Pd.",
-            guruInitial: "RB",
-            kelas: "41 WINNER 6 SR3",
-            kursus: "LEAP - General English 2024",
-            siswa: [
-              { nama: "Fajar Hermawan", status: "Remidi" },
-              { nama: "Gina Malika", status: "Remidi" },
-              { nama: "Hendra Wijaya", status: "Remidi" },
-              { nama: "Indah Cahyani", status: "Remidi" },
-            ],
-          },
-        ],
-        2: [
-          // Semester 2
-          {
-            id: 4,
-            guru: "Muhammad Yusril",
-            guruInitial: "MY",
-            kelas: "Coding 2B Creative Mind",
-            kursus: "LEAP - Coding Class 2025",
-            siswa: [
-              { nama: "Joko Susilo", status: "Remidi" },
-              { nama: "Karina Sari", status: "Remidi" },
-            ],
-          },
-          {
-            id: 5,
-            guru: "Qorin Rahmaniyah, S.Pd.",
-            guruInitial: "QO",
-            kelas: "17 GOGO 3 SelK2",
-            kursus: "LEAP - General English 2024",
-            siswa: [
-              { nama: "Luki Pratama", status: "Remidi" },
-              { nama: "Maya Selsabila", status: "Remidi" },
-              { nama: "Nana Widia", status: "Remidi" },
-            ],
-          },
-        ],
+        "2025/2026": {
+          1: [
+            {
+              id: 1,
+              guru: "Muhammad Yusril",
+              guruInitial: "MY",
+              kelas: "Coding 1C Curious Creators",
+              kursus: "LEAP - Coding Class 2025",
+              siswa: [
+                { nama: "Andi Pratama", status: "Remidi" },
+                { nama: "Budi Santoso", status: "Remidi" },
+                { nama: "Citra Dewi", status: "Remidi" },
+              ],
+            },
+            {
+              id: 2,
+              guru: "Ulfasiyah, S.S.",
+              guruInitial: "UY",
+              kelas: "09 GOGO 1 SR2",
+              kursus: "LEAP - General English 2024",
+              siswa: [
+                { nama: "Dian Kusuma", status: "Remidi" },
+                { nama: "Eka Putri", status: "Remidi" },
+              ],
+            },
+            {
+              id: 3,
+              guru: "Rini Budi Rahayu, S.Pd.",
+              guruInitial: "RB",
+              kelas: "41 WINNER 6 SR3",
+              kursus: "LEAP - General English 2024",
+              siswa: [
+                { nama: "Fajar Hermawan", status: "Remidi" },
+                { nama: "Gina Malika", status: "Remidi" },
+                { nama: "Hendra Wijaya", status: "Remidi" },
+                { nama: "Indah Cahyani", status: "Remidi" },
+              ],
+            },
+          ],
+          2: [
+            {
+              id: 4,
+              guru: "Muhammad Yusril",
+              guruInitial: "MY",
+              kelas: "Coding 2B Creative Mind",
+              kursus: "LEAP - Coding Class 2025",
+              siswa: [
+                { nama: "Joko Susilo", status: "Remidi" },
+                { nama: "Karina Sari", status: "Remidi" },
+              ],
+            },
+            {
+              id: 5,
+              guru: "Qorin Rahmaniyah, S.Pd.",
+              guruInitial: "QO",
+              kelas: "17 GOGO 3 SelK2",
+              kursus: "LEAP - General English 2024",
+              siswa: [
+                { nama: "Luki Pratama", status: "Remidi" },
+                { nama: "Maya Selsabila", status: "Remidi" },
+                { nama: "Nana Widia", status: "Remidi" },
+              ],
+            },
+          ],
+        },
+        "2024/2025": {
+          1: [
+            {
+              id: 6,
+              guru: "Siti Rahma, S.Pd.",
+              guruInitial: "SR",
+              kelas: "English 3A Advanced",
+              kursus: "LEAP - General English 2024",
+              siswa: [
+                { nama: "Bagas Pratama", status: "Remidi" },
+                { nama: "Dewi Kusuma", status: "Remidi" },
+              ],
+            },
+          ],
+          2: [],
+        },
       };
+
+      function getCurrentTahunAjaran() {
+        return (
+          document.getElementById("globalTahunAjaran").value || "2025/2026"
+        );
+      }
 
       function getCurrentSemester() {
         const selected = document.getElementById("globalSemesterFilter").value;
-        if (selected === "") {
-          return null; // Semua semester
-        }
+        if (selected === "") return null;
         return parseInt(selected);
       }
 
       function getRemidiDataBySemester(semester) {
+        const tahun = getCurrentTahunAjaran();
+        const tahunData = remidiData[tahun] || {};
         if (semester === null) {
-          // Gabungkan semua semester
-          const allData = [...remidiData[1], ...remidiData[2]];
-          return allData;
+          // Gabungkan semua semester untuk tahun ajaran yang dipilih
+          return [...(tahunData[1] || []), ...(tahunData[2] || [])];
         }
-        return remidiData[semester] || [];
+        return tahunData[semester] || [];
       }
 
       function getTotalRemidiStudents(semester) {
@@ -838,12 +896,14 @@
         $("#totalSiswaRemidi").text(totalSiswa);
         $("#totalGuruRemidi").text(totalGuru);
 
-        // Update label semester di modal
+        // Update label semester & tahun ajaran di modal
+        const currentTahun = getCurrentTahunAjaran();
         let semesterLabel = currentSemester
           ? `Semester ${currentSemester}`
           : "Semua Semester";
-        $("#modalSemesterLabel").text(semesterLabel);
-        $("#modalGuruSemesterLabel").text(semesterLabel);
+        const fullLabel = `${currentTahun} - ${semesterLabel}`;
+        $("#modalSemesterLabel").text(fullLabel);
+        $("#modalGuruSemesterLabel").text(fullLabel);
 
         // Populate tabel remidi
         populateRemidiTable();
@@ -1145,6 +1205,40 @@
             },
           ],
         },
+        6: {
+          guru: "Siti Rahma, S.Pd.",
+          guruInitial: "SR",
+          email: "siti.rahma@leapsurabaya.sch.id",
+          noHP: "+62 812-1111-2222",
+          kelas: "English 3A Advanced",
+          kursus: "LEAP - General English 2024",
+          tingkat: "Tingkat 3",
+          semester: 1,
+          totalSiswa: 22,
+          siswaSukses: 20,
+          siswaRemidi: 2,
+          nilaiRataRata: 76.5,
+          statusRemidi: "Aktif",
+          tanggalMulaiRemidi: "10 Februari 2025",
+          siswa: [
+            {
+              nama: "Bagas Pratama",
+              nisn: "015",
+              nilaiAkhir: 66,
+              status: "Remidi",
+              kehadiran: "89%",
+              catatan: "Writing skill perlu ditingkatkan",
+            },
+            {
+              nama: "Dewi Kusuma",
+              nisn: "016",
+              nilaiAkhir: 69,
+              status: "Remidi",
+              kehadiran: "91%",
+              catatan: "Listening comprehension kurang",
+            },
+          ],
+        },
       };
 
       // Fungsi untuk show detail guru (bisa diexpand)
@@ -1193,25 +1287,6 @@
               </div>
             </div>
 
-            <!-- Statistics -->
-            <div style="margin-bottom: 1.5rem;">
-              <h6 style="margin: 0 0 1rem 0; font-weight: 600; color: #1e293b; border-bottom: 2px solid #f1f5f9; padding-bottom: 0.5rem;">Statistik Kelas</h6>
-              <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem;">
-                <div style="background-color: #dbeafe; padding: 0.75rem; border-radius: 0.5rem; text-align: center;">
-                  <div style="font-weight: 600; font-size: 1.5rem; color: #1e40af;">${detail.totalSiswa}</div>
-                  <small style="color: #1e40af; font-weight: 600;">Total Siswa</small>
-                </div>
-                <div style="background-color: #dcfce7; padding: 0.75rem; border-radius: 0.5rem; text-align: center;">
-                  <div style="font-weight: 600; font-size: 1.5rem; color: #166534;">${detail.siswaSukses}</div>
-                  <small style="color: #166534; font-weight: 600;">Siswa Sukses</small>
-                </div>
-                <div style="background-color: #ffedd5; padding: 0.75rem; border-radius: 0.5rem; text-align: center;">
-                  <div style="font-weight: 600; font-size: 1.5rem; color: #9a3412;">${detail.siswaRemidi}</div>
-                  <small style="color: #9a3412; font-weight: 600;">Siswa Remidi</small>
-                </div>
-              </div>
-            </div>
-
             <!-- Siswa Remidi Detail Table -->
             <div>
               <h6 style="margin: 0 0 1rem 0; font-weight: 600; color: #1e293b; border-bottom: 2px solid #f1f5f9; padding-bottom: 0.5rem;">Detail Siswa Remidi (${detail.siswa.length})</h6>
@@ -1220,7 +1295,6 @@
                   <tr style="background-color: #f8fafc;">
                     <th style="padding: 0.5rem; text-align: left; border-bottom: 1px solid #e2e8f0; font-weight: 600; color: #64748b;">Nama</th>
                     <th style="padding: 0.5rem; text-align: center; border-bottom: 1px solid #e2e8f0; font-weight: 600; color: #64748b;">Nilai</th>
-                    <th style="padding: 0.5rem; text-align: center; border-bottom: 1px solid #e2e8f0; font-weight: 600; color: #64748b;">Kehadiran</th>
                     <th style="padding: 0.5rem; text-align: left; border-bottom: 1px solid #e2e8f0; font-weight: 600; color: #64748b;">Catatan</th>
                   </tr>
                 </thead>
@@ -1235,7 +1309,6 @@
                           ${s.nilaiAkhir}
                         </span>
                       </td>
-                      <td style="padding: 0.5rem; text-align: center; color: #334155;">${s.kehadiran}</td>
                       <td style="padding: 0.5rem; color: #64748b; font-size: 0.75rem;"><em>${s.catatan}</em></td>
                     </tr>
                   `,
@@ -1253,9 +1326,15 @@
         $("#detailSiswaRemidi").modal("show");
       }
 
-      // Event listener untuk filter semester
+      // Event listener untuk filter semester & tahun ajaran
       document
         .getElementById("globalSemesterFilter")
+        .addEventListener("change", function () {
+          updateRemidiStats();
+        });
+
+      document
+        .getElementById("globalTahunAjaran")
         .addEventListener("change", function () {
           updateRemidiStats();
         });
