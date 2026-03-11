@@ -229,137 +229,67 @@
             <div class="col-md-12">
               <div class="card">
                 <div class="card-header">
-                  <div class="card-tools">
-                    <div class="row align-items-center" style="gap: 5px">
-                      <div class="col">
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">
-                              <i class="far fa-calendar-alt"></i>
-                            </span>
-                          </div>
-                          <input
-                            type="text"
-                            class="form-control float-right"
-                            id="reservation"
-                          />
+                  <div class="row justify-content-center" style="gap: 5px">
+                    <div class="col">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">
+                            <i class="far fa-calendar-alt"></i>
+                          </span>
                         </div>
+                        <input
+                          type="text"
+                          class="form-control float-right"
+                          id="reservation"
+                        />
                       </div>
-                      <div class="col">
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span
-                              class="input-group-text bg-white border-right-0"
-                              ><i class="fas fa-user text-muted"></i
-                            ></span>
-                          </div>
-                          <select
-                            class="custom-select border-left-0"
-                            id="filterKursus"
-                          >
-                            <option selected disabled value="">
-                              Pilih Kursus
-                            </option>
-                            <option>
-                              LEAP - Coding Class 2025 / Curious Creators
-                            </option>
-                            <option>LEAP - Leap Literacy Club 2025</option>
-                            <option>LEAP - Aplikasi Perkantoran</option>
-                          </select>
+                    </div>
+                    <div class="col">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span
+                            class="input-group-text bg-white border-right-0"
+                            ><i class="fas fa-tags text-muted"></i
+                          ></span>
                         </div>
+                        <select
+                          class="custom-select border-left-0"
+                          id="filterTags"
+                        >
+                          <option selected disabled value="">
+                            Pilih Tag Materi Diskusi
+                          </option>
+                          <option value="T00003">Kendala Siswa</option>
+                          <option value="T00004">Kendala Kelas</option>
+                          <option value="T00005">Kendala Jadwal</option>
+                          <option value="T00006">
+                            Ujian Susulan & Remidi
+                          </option>
+                          <option value="T00007">
+                            Kendala Zoom, Class In, Koneksi & Device
+                          </option>
+                          <option value="T00008">Update Diskusi</option>
+                          <option value="T00009">
+                            Siswa Off/Postponed/Pindah Program
+                          </option>
+                          <option value="T00010">Progress Siswa</option>
+                          <option value="T00011">
+                            Update Siswa Sit-in/Trial/Baru
+                          </option>
+                          <option value="T00012">Siswa Tidak Naik</option>
+                          <option value="T00013">Tambahan Sesi</option>
+                        </select>
                       </div>
-                      <div class="col">
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span
-                              class="input-group-text bg-white border-right-0"
-                              ><i class="fas fa-tags text-muted"></i
-                            ></span>
-                          </div>
-                          <select
-                            class="custom-select border-left-0"
-                            id="filterTags"
-                          >
-                            <option selected disabled value="">
-                              Pilih Tag Materi Diskusi
-                            </option>
-                            <option value="T00003">Kendala Siswa</option>
-                            <option value="T00004">Kendala Kelas</option>
-                            <option value="T00005">Kendala Jadwal</option>
-                            <option value="T00006">
-                              Ujian Susulan & Remidi
-                            </option>
-                            <option value="T00007">
-                              Kendala Zoom, Class In, Koneksi & Device
-                            </option>
-                            <option value="T00008">Update Diskusi</option>
-                            <option value="T00009">
-                              Siswa Off/Postponed/Pindah Program
-                            </option>
-                            <option value="T00010">Progress Siswa</option>
-                            <option value="T00011">
-                              Update Siswa Sit-in/Trial/Baru
-                            </option>
-                            <option value="T00012">Siswa Tidak Naik</option>
-                            <option value="T00013">Tambahan Sesi</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span
-                              class="input-group-text bg-white border-right-0"
-                              ><i class="fas fa-book-open text-muted"></i
-                            ></span>
-                          </div>
-                          <select
-                            class="custom-select border-left-0"
-                            id="filterRombel"
-                          >
-                            <option selected disabled value="">
-                              Pilih Rombel
-                            </option>
-                            <option>
-                              Coding 1C Curious Creators Tue 6-7 (Yusril)
-                            </option>
-                            <option>09 GOGO 1 SR2 (ULFA)</option>
-                            <option>02 GOGO 1 SK2 (Risma)</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span
-                              class="input-group-text bg-white border-right-0"
-                              ><i class="fas fa-calendar text-muted"></i
-                            ></span>
-                          </div>
-                          <select
-                            class="custom-select border-left-0"
-                            id="filterMonth"
-                          >
-                            <option selected disabled value="">
-                              Pilih Tahun
-                            </option>
-                            <option>2026</option>
-                            <option>2025</option>
-                            <option>2024</option>
-                            <option>2023</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <button class="btn btn-success" role="button">
-                          <i class="fa fa-filter"></i>
-                          Filter
-                        </button>
-                        <button class="btn btn-danger" role="button">
-                          <i class="fa fa-close"></i>
-                          Batalkan
-                        </button>
-                      </div>
+                    </div>
+                    <div class="col">
+                      <button class="btn btn-success " role="button">
+                        <i class="fa fa-filter"></i>
+                        Filter
+                      </button>
+                      <button class="btn btn-danger" role="button">
+                        <i class="fa fa-close"></i>
+                        Batalkan
+                      </button>
                     </div>
                   </div>
                 </div>
